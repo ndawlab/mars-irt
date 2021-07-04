@@ -26,8 +26,15 @@ parallel_chains = 4
 ## Load data.
 data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
 
-## Set timeouts to incorrect.
-data.accuracy = data.accuracy.fillna(0)
+## Update columns.
+data = data.rename(columns={'sub':'subject'})
+data.columns = [s.lower() for s in data.columns]
+
+## Format columns. 
+data['item'] = data.puzzle.apply(lambda x: x.split('_')[0]).astype(int)
+
+## Restrict to items with at least 50 data points.
+data = data.groupby('item').filter(lambda x: x.subject.size >= 50)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -41,7 +48,7 @@ Y = data.accuracy.values.astype(int)
 
 ## Define mappings.
 J = np.unique(data.subject, return_inverse=True)[-1] + 1
-K = np.unique(data.stimulus, return_inverse=True)[-1] + 1
+K = np.unique(data.item, return_inverse=True)[-1] + 1
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Fit Stan Model.
