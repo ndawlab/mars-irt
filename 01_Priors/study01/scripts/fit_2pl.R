@@ -2,7 +2,7 @@ library(rstan)
 options(mc.cores = parallel::detectCores())
 
 ## Load data.
-data = read.csv('data/study_02.csv')
+data = read.csv('data.csv')
 
 ## Define item.
 data$item = sub("_.*","",data$Puzzle)
@@ -21,7 +21,7 @@ N = nrow(data)
 irt_dat = list(N=N, J=J, K=K, Y=Y)
 
 ## Fit Stan Model.
-fit <- stan(file = 'stan_models/2pl.stan', data = irt_dat,
+fit <- stan(file = '2pl.stan', data = irt_dat,
             chains=4, iter=2000, warmup=1000, thin=1, seed=0)
 
 ## Extract samples.
