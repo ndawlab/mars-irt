@@ -3,7 +3,7 @@ import numpy as np
 from os.path import dirname
 from numba import njit
 from pandas import read_csv
-ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
+ROOT_DIR = dirname(dirname(dirname(os.path.realpath(__file__))))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Define parameters.
@@ -17,17 +17,10 @@ stan_model = sys.argv[1]
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Load data.
-data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
+data = read_csv(os.path.join(ROOT_DIR, 'data', 'study03', 'data.csv'))
 
-## Update columns.
-data = data.rename(columns={'sub':'subject'})
-data.columns = [s.lower() for s in data.columns]
-
-## Format columns. 
-data['item'] = data.puzzle.apply(lambda x: x.split('_')[0]).astype(int)
-
-## Restrict to items with at least 50 data points.
-data = data.groupby('item').filter(lambda x: x.subject.size >= 50)
+## Set timeouts to incorrect.
+data.accuracy = data.accuracy.fillna(0)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -41,14 +34,14 @@ Y = data.accuracy.values.astype(int)
 
 ## Define mappings.
 J = np.unique(data.subject, return_inverse=True)[-1]
-K = np.unique(data.item, return_inverse=True)[-1]
+K = np.unique(data.stimulus, return_inverse=True)[-1]
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Extract parameters.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Load DataFrame.
-StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}.tsv.gz'), sep='\t', compression='gzip')
+StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', 'study03', f'{stan_model}.tsv.gz'), sep='\t', compression='gzip')
 
 ## Extract parameters.
 theta = StanFit.filter(regex='theta').values
@@ -92,8 +85,8 @@ data['Y_pred'] = Y_pred
 data['WAIC'] = WAIC
 
 ## Restrict DataFrame to columns of interest.
-cols = ['subject','item','accuracy','Y_hat','Y_pred','WAIC']
+cols = ['subject','trial','dimension','stimulus','accuracy','Y_hat','Y_pred','WAIC']
 data = data[cols]
 
 ## Save.
-data.to_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_ppc.tsv'), sep='\t', index=False)
+data.to_csv(os.path.join(ROOT_DIR, 'stan_results', 'study03', f'{stan_model}_ppc.tsv'), sep='\t', index=False)

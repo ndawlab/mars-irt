@@ -3,7 +3,7 @@ import numpy as np
 from os.path import dirname
 from pandas import read_csv
 from cmdstanpy import CmdStanModel
-ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
+ROOT_DIR = dirname(dirname(dirname(os.path.realpath(__file__))))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Define parameters.
@@ -24,17 +24,10 @@ parallel_chains = 4
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Load data.
-data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
+data = read_csv(os.path.join(ROOT_DIR, 'data', 'study03', 'data.csv'))
 
-## Update columns.
-data = data.rename(columns={'sub':'subject'})
-data.columns = [s.lower() for s in data.columns]
-
-## Format columns. 
-data['item'] = data.puzzle.apply(lambda x: x.split('_')[0]).astype(int)
-
-## Restrict to items with at least 50 data points.
-data = data.groupby('item').filter(lambda x: x.subject.size >= 50)
+## Set timeouts to incorrect.
+data.accuracy = data.accuracy.fillna(0)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -48,7 +41,7 @@ Y = data.accuracy.values.astype(int)
 
 ## Define mappings.
 J = np.unique(data.subject, return_inverse=True)[-1] + 1
-K = np.unique(data.item, return_inverse=True)[-1] + 1
+K = np.unique(data.stimulus, return_inverse=True)[-1] + 1
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Fit Stan Model.
@@ -71,8 +64,8 @@ print('Saving data.')
     
 ## Extract and save Stan summary.
 summary = StanFit.summary()
-summary.to_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_summary.tsv'), sep='\t')
+summary.to_csv(os.path.join(ROOT_DIR, 'stan_results', 'study03', f'{stan_model}_summary.tsv'), sep='\t')
 
 ## Extract and save samples.
 samples = StanFit.draws_pd()
-samples.to_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}.tsv.gz'), sep='\t', index=False, compression='gzip')
+samples.to_csv(os.path.join(ROOT_DIR, 'stan_results', 'study03', f'{stan_model}.tsv.gz'), sep='\t', index=False, compression='gzip')

@@ -3,7 +3,7 @@ import numpy as np
 from os.path import dirname
 from pandas import read_csv
 from cmdstanpy import CmdStanModel
-ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
+ROOT_DIR = dirname(dirname(dirname(os.path.realpath(__file__))))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Define parameters.
@@ -11,6 +11,9 @@ ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
 
 ## I/O parameters.
 stan_model = sys.argv[1]
+
+## Filtering parameters.
+min_samp = 0
 
 ## Sampling parameters.
 iter_warmup   = 2000
@@ -24,10 +27,17 @@ parallel_chains = 4
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Load data.
-data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
+data = read_csv(os.path.join(ROOT_DIR, 'data', 'study02', 'data.csv'))
 
-## Set timeouts to incorrect.
-data.accuracy = data.accuracy.fillna(0)
+## Update columns.
+data = data.rename(columns={'sub':'subject'})
+data.columns = [s.lower() for s in data.columns]
+
+## Format columns. 
+data['item'] = data.puzzle.apply(lambda x: x.split('_')[0]).astype(int)
+
+## Restrict to items with at least N data points.
+data = data.groupby('item').filter(lambda x: x.subject.size >= min_samp)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -41,7 +51,7 @@ Y = data.accuracy.values.astype(int)
 
 ## Define mappings.
 J = np.unique(data.subject, return_inverse=True)[-1] + 1
-K = np.unique(data.stimulus, return_inverse=True)[-1] + 1
+K = np.unique(data.item, return_inverse=True)[-1] + 1
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Fit Stan Model.
@@ -62,10 +72,14 @@ StanFit = StanModel.sample(data=dd, chains=chains, iter_warmup=iter_warmup, iter
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 print('Saving data.')
     
+## Define fout.
+fout = os.path.join(ROOT_DIR, 'stan_results', 'study02', stan_model)
+if not min_samp: fout += '_full'
+    
 ## Extract and save Stan summary.
 summary = StanFit.summary()
-summary.to_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_summary.tsv'), sep='\t')
+summary.to_csv(f'{fout}_summary.tsv', sep='\t')
 
 ## Extract and save samples.
 samples = StanFit.draws_pd()
-samples.to_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}.tsv.gz'), sep='\t', index=False, compression='gzip')
+samples.to_csv(f'{fout}.tsv.gz', sep='\t', index=False, compression='gzip')
