@@ -2,16 +2,15 @@ data {
 
     // Metadata
     int<lower=1>  N;                   // Number of total observations
+    int<lower=1>  M;                   // Number of RT predictors
     int<lower=1>  J[N];                // Subject-indicator per observation
     int<lower=1>  K[N];                // Item-indicator per observation
     
-    // Data
-    int  Y[N];                         // Response variable
+    // Response Data
+    int        Y[N];                   // Response accuracy
 
-}
-transformed data {
-
-    real gamma = 0.25;
+    // Design matrix
+    matrix[N,M]     X;
 
 }
 parameters {
@@ -26,6 +25,9 @@ parameters {
     // Item variances
     cholesky_factor_corr[2] L;         // Cholesky factor of correlation matrix
     vector<lower=0>[2] sigma;          // Item-level standard deviations
+    
+    // Response time variables
+    vector[M]  zeta;                   // Mixture coefficients
     
 }
 transformed parameters {
@@ -48,10 +50,13 @@ transformed parameters {
 }
 model {
     
-    // Construct predictor terms
-    vector[N] mu = gamma + (1-gamma) * inv_logit( alpha[K] .* (theta[J] - beta[K]) );
+    // Compute mixture weights
+    vector[N] w = inv_logit( X * zeta );
+
+    // Compute predictor terms
+    vector[N] mu = 0.25 * w + (1-w) .* inv_logit( alpha[K] .* theta[J] - beta[K] );
     
-    // Likelihood
+    // Accuracy likelihood
     target += bernoulli_lpmf( Y | mu );
     
     // Priors
@@ -61,5 +66,30 @@ model {
     target += normal_lpdf(xi_mu[2] | 0, 1);
     target += student_t_lpdf(sigma | 3, 0, 1);
     target += lkj_corr_cholesky_lpdf(L | 2);
+    target += normal_lpdf(zeta | 0, 2);
+    
+}
+generated quantities {
+
+    vector[max(K)] Y_hat = rep_vector(0, max(K));
+    
+    {
+    
+    vector[max(K)] counts = rep_vector(0, max(K));
+    
+    // Compute mixture weights
+    vector[N] w = inv_logit( X * zeta );
+
+    // Compute predictor terms
+    vector[N] mu = 0.25 * w + (1-w) .* inv_logit( alpha[K] .* theta[J] - beta[K] );
+    
+    for (n in 1:N) {
+        Y_hat[K[n]] += bernoulli_rng(mu[n]);
+        counts[K[n]] += 1;
+    }
+    
+    Y_hat = Y_hat ./ counts;
+    
+    }
 
 }
