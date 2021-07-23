@@ -46,7 +46,7 @@ transformed parameters {
 model {
     
     // Construct predictor terms
-    vector[N] mu = gamma[K] + (1-gamma[K]) .* inv_logit( alpha[K] .* (theta[J] - beta[K]) );
+    vector[N] mu = gamma[K] + (1-gamma[K]) .* inv_logit( alpha[K] .* theta[J] - beta[K] );
     
     // Likelihood
     target += bernoulli_lpmf( Y | mu );

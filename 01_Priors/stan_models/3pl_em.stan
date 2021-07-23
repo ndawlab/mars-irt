@@ -2,15 +2,15 @@ data {
 
     // Metadata
     int<lower=1>  N;                   // Number of total observations
-    int<lower=1>  M;                   // Number of RT predictors
+    int<lower=1>  M;                   // Number of EM predictors
     int<lower=1>  J[N];                // Subject-indicator per observation
     int<lower=1>  K[N];                // Item-indicator per observation
     
-    // Response Data
+    // Response data
     int        Y[N];                   // Response accuracy
 
     // Design matrix
-    matrix[N,M]     X;
+    matrix[N,M]  X;                    // Effort-modulated predictors
 
 }
 parameters {

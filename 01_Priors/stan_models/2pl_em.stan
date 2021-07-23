@@ -2,15 +2,15 @@ data {
 
     // Metadata
     int<lower=1>  N;                   // Number of total observations
-    int<lower=1>  M;                   // Number of RT predictors
+    int<lower=1>  M;                   // Number of EM predictors
     int<lower=1>  J[N];                // Subject-indicator per observation
     int<lower=1>  K[N];                // Item-indicator per observation
     
-    // Response Data
+    // Response data
     int        Y[N];                   // Response accuracy
 
     // Design matrix
-    matrix[N,M]     X;
+    matrix[N,M]  X;                    // Effort-modulated predictors
 
 }
 parameters {
@@ -68,28 +68,4 @@ model {
     target += lkj_corr_cholesky_lpdf(L | 2);
     target += normal_lpdf(zeta | 0, 2);
     
-}
-generated quantities {
-
-    vector[max(K)] Y_hat = rep_vector(0, max(K));
-    
-    {
-    
-    vector[max(K)] counts = rep_vector(0, max(K));
-    
-    // Compute mixture weights
-    vector[N] w = inv_logit( X * zeta );
-
-    // Compute predictor terms
-    vector[N] mu = 0.25 * w + (1-w) .* inv_logit( alpha[K] .* theta[J] - beta[K] );
-    
-    for (n in 1:N) {
-        Y_hat[K[n]] += bernoulli_rng(mu[n]);
-        counts[K[n]] += 1;
-    }
-    
-    Y_hat = Y_hat ./ counts;
-    
-    }
-
 }
