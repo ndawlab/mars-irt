@@ -15,9 +15,9 @@ stan_model = '2pl'
 seed = int(sys.argv[1])
 
 ## Simulation parameters.
-n_subj  = 600                # number of total subjects
-n_item  = 30                 # number of total items
-n_split = 2                  # number of item sets
+n_subj  = 800                # number of total subjects
+n_item  = 60                 # number of total items
+n_split = 4                  # number of item sets
 
 ## Sampling parameters.
 iter_warmup   = 2000
@@ -49,22 +49,16 @@ N = J.size
 ## Generate subject abilities.
 theta = np.random.normal(0, 1, n_subj)
 
-## Iteratively sample item parameters.
-bins = norm.ppf(np.linspace(0.005,0.995,10))
-cov = [[1.50,0.00],[0.00,0.25]]
-
-while True:
-    beta, alpha = np.random.multivariate_normal(np.zeros(2), cov, n_item).T
-    counts = np.bincount(np.digitize(beta, bins), minlength=bins.size + 1)[1:-1]
-    if counts.min() >= 3: break
-    break
+## Generate item parameters.
+cov = [[1.5,0.0],[0.0,0.25]]
+beta, alpha = np.random.multivariate_normal(np.zeros(2), cov, n_item).T
         
 ## Sort parameters.
 alpha = np.exp(alpha[np.argsort(beta)])
 beta  = beta[np.argsort(beta)]
 
 ## Generate data.
-mu = inv_logit(alpha[K] * (theta[J] - beta[K]))
+mu = inv_logit(alpha[K] * theta[J] - beta[K])
 Y = np.random.binomial(1, mu).astype(int)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -87,7 +81,7 @@ StanFit = StanModel.sample(data=dd, chains=chains, iter_warmup=iter_warmup, iter
 
 ## Define IRT functions.
 def info_2pl(theta, beta, alpha):
-    p = inv_logit(alpha * (theta - beta))
+    p = inv_logit(alpha * theta - beta)
     return alpha**2 * p * (1-p)
 
 ## Define templates.
@@ -146,7 +140,7 @@ random = np.row_stack([
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Define fout.
-fout = os.path.join(ROOT_DIR, 'stan_results', '%s_n%s_s%0.3d.npz' %(stan_model, n_split, seed))
+fout = os.path.join(ROOT_DIR, 'stan_results', '%s_s%0.3d.npz' %(stan_model, seed))
 
 ## Save data.
 np.savez_compressed(fout, theta=theta, theta_hat=theta_hat, beta=beta, beta_hat=beta_hat,
