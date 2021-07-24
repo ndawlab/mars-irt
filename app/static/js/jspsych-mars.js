@@ -16,9 +16,9 @@ jsPsych.plugins["mars"] = (function() {
     name: 'mars',
     description: '',
     parameters: {
-      stimulus: {
+      puzzle: {
         type: jsPsych.plugins.parameterType.HTML_STRING,
-        pretty_name: 'Stimulus',
+        pretty_name: 'Puzzle',
         description: 'The HTML string to be displayed'
       },
       choices: {
@@ -91,103 +91,93 @@ jsPsych.plugins["mars"] = (function() {
     body {
       height: 100vh;
       max-height: 100vh;
-      overflow: hidden;
       position: fixed;
     }
     p {
-      margin-block-start: 15px;
-      margin-block-end: 0;
+      margin-block-start: 0px;
+      margin-block-end: 0px;
     }
     .mars-container {
       width: 100vw;
       height: 100vh;
+      z-index: -1;
     }
     .mars-grid {
 
       /* Grid position */
-      position: absolute;
+      position: relative;
       left: 50%;
-      top: 60px;
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 
       /* Grid size */
-      width: 100vw;
-      height: calc(100vh - 60px);
+      width: 640px;
+      height: 550px;
 
       /* Grid parameters */
       display: grid;
-      grid-template-columns: auto;
-      grid-template-rows: 45vh 10vh 16vh;
-      grid-row-gap: 2vh;
+      grid-template-columns: 160px 160px 160px 160px;
+      grid-template-rows: 310px 80px 126px;
+      grid-template-areas:
+        "item item item item"
+        "feedback feedback feedback feedback"
+        "choice-0 choice-1 choice-2 choice-3";
       justify-content: center;
 
     }
     .mars-item {
-
-      /* Stimulus position */
-      position: relative;
-
+      grid-area: item;
     }
     .mars-item img {
 
-      /* Stimulus size */
+      /* puzzle size */
       width:  auto;
       height: auto;
       max-width: 100%;
-      max-height: 44vh;
+      max-height: 300px;
 
-      /* Stimulus aesthetics */
+      /* puzzle aesthetics */
       border: 5px solid #777777;
       border-radius: 2px;
-      padding: 5px;
 
     }
-    .mars-choice-row {
-
-      /* Grid position */
-      position: relative;
-
-      /* Grid parameters */
-      display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
-      grid-template-rows: auto;
-      justify-content: center;
-      align-items: center;
-
-      /* Grid spacing */
-      grid-column-gap: 25px;
-
+    .mars-choice-0 {
+      grid-area: choice-0
     }
-    .mars-choice-row .mars-choice {
-
-      /* Choice position */
-      display: grid;
-      justify-content: center;
-      align-items: center;
-
-      /* Choice size */
-      width: 100%;
-      height: 100%;
-
+    .mars-choice-1 {
+      grid-area: choice-1
     }
-    .mars-choice-row .mars-choice img {
+    .mars-choice-2 {
+      grid-area: choice-2
+    }
+    .mars-choice-3 {
+      grid-area: choice-3
+    }
+    .mars-choice-0 img, .mars-choice-1 img, .mars-choice-2 img, .mars-choice-3 img {
 
-      /* Stimulus size */
+      /* puzzle size */
       width:  auto;
       height: auto;
       max-width: 100%;
-      max-height: 16vh;
+      max-height: 125px;
 
-      /* Stimulus aesthetics */
+      /* puzzle aesthetics */
       box-sizing: border-box;
       border: 2px solid #777777;
       border-radius: 4px;
-      padding: 2px;
 
     }
-    .mars-choice-row .mars-choice img:hover {
+    .mars-choice-0 img:hover, .mars-choice-1 img:hover,
+    .mars-choice-2 img:hover, .mars-choice-3 img:hover {
       border: 2px solid #222222;
+    }
+    .mars-feedback {
+      grid-area: feedback;
+      display: flex;
+      vertical-align: middle;
+      justify-content: center;
+      align-items: center;
     }
     </style>`;
 
@@ -195,9 +185,9 @@ jsPsych.plugins["mars"] = (function() {
     new_html += '<div class="mars-container">';
     new_html += '<div class="mars-grid">';
 
-    // Display stimulus.
+    // Display puzzle.
     new_html += '<div class="mars-item">';
-    new_html += `<img src="${trial.stimulus}">`;
+    new_html += `<img src="${trial.puzzle}">`;
     new_html += '</div>';
 
     // Randomize choice order.
@@ -207,18 +197,15 @@ jsPsych.plugins["mars"] = (function() {
     }
 
     // Display feedback.
-    new_html += '<div class="mars-item" id="feedback"></div>';
+    new_html += '<div class="mars-feedback" id="feedback"></div>';
 
     // Display responses.
-    new_html += '<div class="mars-item">';
-    new_html += '<div class="mars-choice-row">';
-    item_order.forEach((i) => {
-      new_html += `<div class="mars-choice" id="jspsych-mars-choice-${i}" choice="${i}">`;
-      new_html += `<img src="${trial.choices[i]}">`;
+    item_order.forEach((j, i) => {
+      console.log(i, j)
+      new_html += `<div class="mars-choice-${i}" id="jspsych-mars-choice-${i}" choice="${j}">`;
+      new_html += `<img src="${trial.choices[j]}">`;
       new_html += '</div>';
     })
-    new_html += '</div>';
-    new_html += '</div>';
 
     // Close containers.
     new_html += '</div>';
@@ -231,8 +218,12 @@ jsPsych.plugins["mars"] = (function() {
     //---------------------------------------//
 
     // confirm screen resolution
-    const screen_resolution = [window.screen.height, window.screen.width];
-    const mediaQuery = window.matchMedia('(min-height: 300px) and (min-width: 800px)');
+    const screen_resolution = [window.innerHeight, window.innerWidth];
+    if (screen_resolution[0] < 550 || screen_resolution[1] < 640) {
+      var minimum_resolution = 0;
+    } else {
+      var minimum_resolution = 1;
+    }
 
     // start time
     var start_time = performance.now();
@@ -247,10 +238,10 @@ jsPsych.plugins["mars"] = (function() {
 
     // define feedback
     if ( trial.correct_feedback == null ) {
-      trial.correct_feedback = '<p style="color: green; font-size: 10vh;">&#10003</p>';
+      trial.correct_feedback = '<p style="color: green; font-size: 60px;">&#10003</p>';
     }
     if ( trial.incorrect_feedback == null ) {
-      trial.incorrect_feedback = '<p style="color: red; font-size: 10vh;">&#10007</p>';
+      trial.incorrect_feedback = '<p style="color: red; font-size: 60px;">&#10007</p>';
     }
 
     // store response
@@ -303,13 +294,13 @@ jsPsych.plugins["mars"] = (function() {
 
       // gather the data to store for the trial
       var trial_data = {
-        stimulus: trial.stimulus,
+        puzzle: trial.puzzle,
         correct: trial.correct,
         choice: response.choice,
         accuracy: response.accuracy,
         rt: response.rt,
         screen_resolution: screen_resolution,
-        minimum_resolution: (mediaQuery.matches) ? 1 : 0
+        minimum_resolution: minimum_resolution
       };
 
       // clear the display

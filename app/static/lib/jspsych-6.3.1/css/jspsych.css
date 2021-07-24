@@ -27,7 +27,7 @@
  }
 
  .jspsych-content {
-   max-width: 95%; /* this is mainly an IE 10-11 fix */
+   max-width: 100%; /* this is mainly an IE 10-11 fix */
    text-align: center;
    margin: auto; /* this is for overflowing content */
  }
@@ -100,10 +100,10 @@
 
 .jspsych-slider {
   appearance: none;
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   -moz-appearance: none;
-  width: 100%; 
-  background: transparent; 
+  width: 100%;
+  background: transparent;
 }
 .jspsych-slider:focus {
   outline: none;
@@ -175,11 +175,12 @@
   color: #555;
   border-bottom: 1px solid #dedede;
   background-color: #f9f9f9;
-  margin-bottom: 1em;
+  margin-bottom: 0em;
   text-align: center;
   padding: 8px 0px;
   width: 100%;
   line-height: 1em;
+  z-index: 2;
 }
 #jspsych-progressbar-container span {
   font-size: 14px;

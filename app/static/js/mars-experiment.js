@@ -14,7 +14,7 @@ const rg_maximum = 5;
 var rg_count = 0;
 
 //---------------------------------------//
-// Define stimulus set.
+// Define puzzle set.
 //---------------------------------------//
 
 var items = [];
@@ -55,7 +55,7 @@ items.forEach((j, i) => {
   const test_form  = form_order[i % 2];
   const distractor = dist_order[i % 2]
 
-  // Define stimulus set order.
+  // Define puzzle set order.
   if ( test_form == 1 ) {
     var ss = [3,1,2];
   } else if ( test_form == 2 ) {
@@ -65,7 +65,7 @@ items.forEach((j, i) => {
   }
 
   // Define images.
-  const stimulus = img_path + `tf${test_form}/` + `tf${test_form}_${j}_M_ss${ss[(j-1)%3]}.jpeg`;
+  const puzzle = img_path + `tf${test_form}/` + `tf${test_form}_${j}_M_ss${ss[(j-1)%3]}.jpeg`;
   const choices = [
     img_path + `tf${test_form}/` + `tf${test_form}_${j}_T1_ss${ss[(j-1)%3]}_${distractor}.jpeg`,
     img_path + `tf${test_form}/` + `tf${test_form}_${j}_T2_ss${ss[(j-1)%3]}_${distractor}.jpeg`,
@@ -74,20 +74,20 @@ items.forEach((j, i) => {
   ];
 
   // Append to preload cache.
-  preload_mars = preload_mars.concat(stimulus);
+  preload_mars = preload_mars.concat(puzzle);
   preload_mars = preload_mars.concat(choices);
 
   // Define trial.
   const trial = {
     type: 'mars',
-    stimulus: stimulus,
+    puzzle: puzzle,
     choices: choices,
     correct: 0,
     countdown: true,
     feedback: false,
     trial_duration: trial_duration,
     randomize_choice_order: true,
-    data: {item_set: item_set, test_form: test_form, distractor: distractor},
+    data: {item_set: item_set, item: j, test_form: test_form, distractor: distractor},
     on_finish: function(data) {
 
       // Store number of browser interactions
