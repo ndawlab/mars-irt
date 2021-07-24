@@ -77,6 +77,17 @@ items.forEach((j, i) => {
   preload_mars = preload_mars.concat(puzzle);
   preload_mars = preload_mars.concat(choices);
 
+  // Define fixation.
+  const fixation = {
+    type: 'html-keyboard-response',
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1000,
+    on_start: function(trial) {
+      const k = jsPsych.data.get().filter({trial_type:'mars', item_set: 3}).count();
+      trial.stimulus = `<div style="font-size:24px;">Loading puzzle:<br>${k+1} / 16</div>`;
+    }
+  }
+
   // Define trial.
   const trial = {
     type: 'mars',
@@ -111,8 +122,13 @@ items.forEach((j, i) => {
 
   }
 
+  // Define trial node.
+  const trial_node = {
+    timeline: [fixation, trial]
+  }
+
   // Push trial.
-  MARS.push(trial);
+  MARS.push(trial_node);
 
 });
 
@@ -127,3 +143,26 @@ const indices = [0,2,4,6,8,10,12,14]
 indices.forEach((j, i) => {
   if (Math.random() < 0.5) { swapElement(MARS, j, j+1); }
 });
+
+//---------------------------------------//
+// Define feedback.
+//---------------------------------------//
+
+var FEEDBACK = {
+  type: 'instructions',
+  pages: [],
+  show_clickable_nav: true,
+  button_label_previous: 'Prev',
+  button_label_next: 'Next',
+  on_start: function(trial) {
+
+    // Determine number of correct responses.
+    const k = jsPsych.data.get().filter({trial_type: 'mars', item_set: 3, accuracy: 1}).count();
+
+    // Define feedback page.
+    trial.pages = [
+      `<p>You got ${k} of 16 puzzles correct.</p><p>Click the "next" button below to continue.`
+    ];
+
+  }
+}

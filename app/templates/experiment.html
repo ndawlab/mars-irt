@@ -24,6 +24,7 @@
   <script src="../static/js/jspsych-survey-demo.js"></script>
   <script src="../static/js/jspsych-mars.js"></script>
   <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-instructions.js"></script>
+  <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
   <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-preload.js"></script>
   <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
 
@@ -73,6 +74,7 @@
   timeline = timeline.concat(FULLSCREEN);
   timeline = timeline.concat(INSTRUCTIONS);
   timeline = timeline.concat(MARS);
+  timeline = timeline.concat(FEEDBACK);
   timeline = timeline.concat(DEMO);
 
   // Define global variables.
@@ -81,7 +83,7 @@
   jsPsych.init({
     timeline: timeline,
     show_progress_bar: true,
-    exclusions: {min_width: 660, min_height: 575},
+    exclusions: {min_height: 600, min_width: 660},
     on_finish: function() {
 
       // Remove requirement to verify redirect
