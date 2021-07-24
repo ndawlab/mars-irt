@@ -26,7 +26,7 @@ var instructions_02 = {
   type: 'instructions',
   pages: [
     '<p>Great job! Now you understand what to do.</p>',
-    '<p>Now, we will move onto the real puzzles.</p><p>There are 8 puzzles in total. You will have <b>30 seconds</b> to complete each one.</p><p>Try to be as accurate as you can be.</p><p>Press the "next" button to get started.</p>'
+    '<p>Now, we will move onto the real puzzles.</p><p>There are 16 puzzles in total. You will have <b>30 seconds</b> to complete each one.<br>For these puzzles, you will <u>not</u> receive feedback after you make your choice.</p><p>At the end of the game, your total number of correct answers will be converted<br>into a <b>performance bonus</b>. So try your hardest to solve the puzzles! </p><p>Press the "next" button to get started.</p>'
   ],
   show_clickable_nav: true,
   button_label_previous: 'Prev',
@@ -45,7 +45,7 @@ var preload_practice = [];
 for (let i = 0; i < 3; i++) {
 
   // Define images.
-  const stimulus = `../static/img/practice/pt${i+1}_M1.png`;
+  const puzzle = `../static/img/practice/pt${i+1}_M1.png`;
   const choices = [
     `../static/img/practice/pt${i+1}_T1.png`,
     `../static/img/practice/pt${i+1}_T2.png`,
@@ -54,13 +54,13 @@ for (let i = 0; i < 3; i++) {
   ];
 
   // Append to preload cache.
-  preload_practice = preload_practice.concat(stimulus);
+  preload_practice = preload_practice.concat(puzzle);
   preload_practice = preload_practice.concat(choices);
 
   // Define trial.
   const practice_trial = {
     type: 'mars',
-    stimulus: stimulus,
+    puzzle: puzzle,
     choices: choices,
     correct: 0,
     countdown: true,

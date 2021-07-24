@@ -81,7 +81,7 @@ items.forEach((j, i) => {
   const fixation = {
     type: 'html-keyboard-response',
     choices: jsPsych.NO_KEYS,
-    trial_duration: 1000,
+    trial_duration: 1200,
     on_start: function(trial) {
       const k = jsPsych.data.get().filter({trial_type:'mars', item_set: 3}).count();
       trial.stimulus = `<div style="font-size:24px;">Loading puzzle:<br>${k+1} / 16</div>`;

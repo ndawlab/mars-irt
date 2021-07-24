@@ -113,12 +113,12 @@ jsPsych.plugins["mars"] = (function() {
 
       /* Grid size */
       width: 640px;
-      height: 580px;
+      height: 585px;
 
       /* Grid parameters */
       display: grid;
       grid-template-columns: 160px 160px 160px 160px;
-      grid-template-rows: 330px 80px 126px;
+      grid-template-rows: 335px 80px 126px;
       grid-template-areas:
         "item item item item"
         "feedback feedback feedback feedback"
@@ -135,7 +135,7 @@ jsPsych.plugins["mars"] = (function() {
       width:  auto;
       height: auto;
       max-width: 100%;
-      max-height: 320px;
+      max-height: 325px;
 
       /* puzzle aesthetics */
       border: 5px solid #777777;
@@ -218,7 +218,7 @@ jsPsych.plugins["mars"] = (function() {
 
     // confirm screen resolution
     const screen_resolution = [window.innerHeight, window.innerWidth];
-    if (screen_resolution[0] < 580 || screen_resolution[1] < 640) {
+    if (screen_resolution[0] < 585 || screen_resolution[1] < 640) {
       var minimum_resolution = 0;
     } else {
       var minimum_resolution = 1;
@@ -253,7 +253,7 @@ jsPsych.plugins["mars"] = (function() {
     // function to display remaining time
     function countdown(t) {
       display_element.querySelector('#feedback').innerHTML = `${t}`;
-      display_element.querySelector('#feedback').style['font-size'] = '6vh';
+      display_element.querySelector('#feedback').style['font-size'] = '36px';
     };
 
     // function to handle responses by the subject
