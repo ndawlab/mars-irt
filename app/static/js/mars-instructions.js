@@ -20,6 +20,9 @@ var instructions_01 = {
   show_clickable_nav: true,
   button_label_previous: 'Prev',
   button_label_next: 'Next',
+  on_start: function(trial) {
+    pass_message('starting instructions');
+  }
 }
 
 var instructions_02 = {
@@ -31,6 +34,9 @@ var instructions_02 = {
   show_clickable_nav: true,
   button_label_previous: 'Prev',
   button_label_next: 'Next',
+  on_finish: function(trial) {
+    pass_message('starting mars');
+  }
 }
 
 //---------------------------------------//
