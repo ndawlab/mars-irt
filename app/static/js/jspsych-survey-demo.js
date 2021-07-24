@@ -163,7 +163,7 @@ jsPsych.plugins['survey-demo'] = (function() {
 
     // Item 5: Education
     html += '<div class="survey-demo-row">';
-    html += '<div class="survey-demo-prompt"><label for="race">What is the highest level of schooling you have completed?</label></div>';
+    html += '<div class="survey-demo-prompt"><label for="education">What is the highest level of schooling you have completed?</label></div>';
     html += '<div class="survey-demo-response">';
     html += '<label><input type="radio" name="education" value="Less than high school" required>Less than high school diploma</label><br>';
     html += '<label><input type="radio" name="education" value="High school" required>High school diploma or equivalent</label><br>';

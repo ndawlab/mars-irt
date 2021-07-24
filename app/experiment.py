@@ -43,7 +43,8 @@ def experiment():
         write_metadata(session, ['experiment'], 'a')
 
         ## Present experiment.
-        return render_template('experiment.html', workerId=session['workerId'], assignmentId=session['assignmentId'], hitId=session['hitId'], code_success=session['code_success'], code_reject=session['code_reject'])
+        return render_template('experiment.html', workerId=session['workerId'], assignmentId=session['assignmentId'], hitId=session['hitId'], code_success=session['code_success'], code_reject=session['code_reject'],
+        seed=session['seed'])
 
 @bp.route('/experiment', methods=['POST'])
 def pass_message():

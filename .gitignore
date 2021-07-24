@@ -20,3 +20,6 @@ build/
 data/**
 metadata/**
 reject/**
+*.jpeg
+*.png
+*.tar.gz

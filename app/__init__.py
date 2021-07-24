@@ -66,6 +66,7 @@ def index():
         version      = request.user_agent.version,          # User metadata
         code_success = cfg['PROLIFIC'].get('CODE_SUCCESS', gen_code(8).upper()),
         code_reject  = cfg['PROLIFIC'].get('CODE_REJECT', gen_code(8).upper()),
+        seed = len(os.listdir(session['metadata']))
     )
 
     ## Case 1: workerId absent.
