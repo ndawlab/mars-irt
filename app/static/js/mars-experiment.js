@@ -80,6 +80,7 @@ items.forEach((j, i) => {
   // Define fixation.
   const fixation = {
     type: 'html-keyboard-response',
+    stimulus: '',
     choices: jsPsych.NO_KEYS,
     trial_duration: 1200,
     on_start: function(trial) {
