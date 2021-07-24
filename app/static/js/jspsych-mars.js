@@ -230,6 +230,10 @@ jsPsych.plugins["mars"] = (function() {
     // Response handling.
     //---------------------------------------//
 
+    // confirm screen resolution
+    const screen_resolution = [window.screen.height, window.screen.width];
+    const mediaQuery = window.matchMedia('(min-height: 300px) and (min-width: 800px)');
+
     // start time
     var start_time = performance.now();
 
@@ -299,11 +303,13 @@ jsPsych.plugins["mars"] = (function() {
 
       // gather the data to store for the trial
       var trial_data = {
-        "stimulus": trial.stimulus,
-        "correct": trial.correct,
-        "choice": response.choice,
-        "accuracy": response.accuracy,
-        "rt": response.rt,
+        stimulus: trial.stimulus,
+        correct: trial.correct,
+        choice: response.choice,
+        accuracy: response.accuracy,
+        rt: response.rt,
+        screen_resolution: screen_resolution,
+        minimum_resolution: (mediaQuery.matches) ? 1 : 0
       };
 
       // clear the display

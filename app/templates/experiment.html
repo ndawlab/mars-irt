@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Decision Making Experiment</title>
+  <title>Puzzle Game</title>
 
   <!-- Load libraries -->
   <script src="../static/lib/jquery-3.3.1/jquery.min.js"></script>
@@ -42,14 +42,14 @@
   jsPsych.data.addProperties({
     task_version: '1.0',
     jspsych_version: '6.3.1',
-    phase: 'calibration'
+    experiment: 'calibration'
   });
 
   // Define image preloading.
   var PRELOAD = {
     type: 'preload',
     images: [preload_practice, preload_mars],
-    message: 'one moment please'
+    message: 'Loading images. This may take a moment depending on your internet connection.'
   }
 
   // Initialize demographics form.

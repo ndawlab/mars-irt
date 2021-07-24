@@ -2,6 +2,9 @@
 // Define parameters.
 //---------------------------------------//
 
+// Define item parameters.
+const item_set = 3;
+
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
 
@@ -9,23 +12,23 @@ const trial_duration = 30000;     // 30 seconds
 // Define stimulus set.
 //---------------------------------------//
 
-var stimuli = [];
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([ 6, 19, 20, 22], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([25, 28, 39, 47], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([49, 50, 51, 61], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([65, 70, 71, 10], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([15, 11, 18, 13], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([27, 31, 34, 37], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([56, 58, 62, 69], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([77, 16, 17, 12], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([23, 40, 42, 53], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([60, 72, 73, 79], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([80, 14, 26, 52], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([59, 63, 67, 74], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([76, 36, 44, 46], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([54, 55, 64, 75], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([21, 24, 29, 30], 1));
-stimuli = stimuli.concat(jsPsych.randomization.sampleWithoutReplacement([45, 78, 35, 66], 1));
+var items = [];
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([ 6, 19, 20, 22], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([25, 28, 39, 47], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([49, 50, 51, 61], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([65, 70, 71, 10], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([15, 11, 18, 13], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([27, 31, 34, 37], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([56, 58, 62, 69], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([77, 16, 17, 12], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([23, 40, 42, 53], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([60, 72, 73, 79], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([80, 14, 26, 52], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([59, 63, 67, 74], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([76, 36, 44, 46], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([54, 55, 64, 75], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([21, 24, 29, 30], 1));
+items = items.concat(jsPsych.randomization.sampleWithoutReplacement([45, 78, 35, 66], 1));
 
 //---------------------------------------//
 // Define MARS task.
@@ -36,12 +39,12 @@ var preload_mars = [];
 var MARS = [];
 
 // Define image constants.
-const img_path = '../static/img/is3/';
+const img_path = `../static/img/is${item_set}/`;
 const form_order = (workerNo % 2 == 0) ? [1,2] : [2,1];
-const dist_order = (Math.floor(workerNo / 4) == 0) ? ['md','pd'] : ['pd','md'];
+const dist_order = (Math.floor(workerNo / 2) == 0) ? ['md','pd'] : ['pd','md'];
 
-// Iteratively
-stimuli.forEach((j, i) => {
+// Iteratively construct trials.
+items.forEach((j, i) => {
 
   // Define image metadata.
   const test_form  = form_order[i % 2];
@@ -76,10 +79,13 @@ stimuli.forEach((j, i) => {
     choices: choices,
     correct: 0,
     countdown: true,
-    feedback: true,
+    feedback: false,
     trial_duration: trial_duration,
     randomize_choice_order: true,
-    data: { item_set: 3, test_form: test_form, distractor: distractor }
+    data: {item_set: item_set, test_form: test_form, distractor: distractor},
+    on_finish: function(data) {
+      data.browser_interactions = jsPsych.data.getInteractionData().filter({trial: data.trial_index}).count();
+    }
   }
 
   // Push trial.
