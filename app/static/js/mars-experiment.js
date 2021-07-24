@@ -8,6 +8,11 @@ const item_set = 3;
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
 
+// Define quality assurance parameters.
+const rg_threshold = 3000;       // 3 seconds
+const rg_maximum = 5;
+var rg_count = 0;
+
 //---------------------------------------//
 // Define stimulus set.
 //---------------------------------------//
@@ -84,8 +89,26 @@ items.forEach((j, i) => {
     randomize_choice_order: true,
     data: {item_set: item_set, test_form: test_form, distractor: distractor},
     on_finish: function(data) {
+
+      // Store number of browser interactions
       data.browser_interactions = jsPsych.data.getInteractionData().filter({trial: data.trial_index}).count();
+
+      // Evaluate rapid guessing.
+      if (data.rt < rg_threshold) {
+
+        // Increment counter.
+        rg_count++;
+
+        //  Check if experiment should end.
+        if (rg_count >= rg_maximum) {
+          low_quality = true;
+          jsPsych.endExperiment();
+        }
+
+      }
+
     }
+
   }
 
   // Push trial.
