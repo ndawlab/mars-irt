@@ -294,6 +294,7 @@ jsPsych.plugins["mars"] = (function() {
       // gather the data to store for the trial
       var trial_data = {
         puzzle: trial.puzzle,
+        item_order: item_order,
         correct: trial.correct,
         choice: response.choice,
         accuracy: response.accuracy,
