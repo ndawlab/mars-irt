@@ -9,9 +9,8 @@ const item_set = 3;
 const trial_duration = 30000;     // 30 seconds
 
 // Define quality assurance parameters.
+const max_threshold = 10;
 const rg_threshold = 3000;       // 3 seconds
-const rg_maximum = 5;
-var rg_count = 0;
 
 //---------------------------------------//
 // Define puzzle set.
@@ -36,6 +35,77 @@ items = items.concat(jsPsych.randomization.sampleWithoutReplacement([21, 24, 29,
 items = items.concat(jsPsych.randomization.sampleWithoutReplacement([45, 78, 35, 66], 1));
 
 //---------------------------------------//
+// Define distractor set.
+//---------------------------------------//
+
+const dist_order = {
+  6: 'md',
+ 10: 'pd',
+ 11: 'md',
+ 12: 'pd',
+ 13: 'md',
+ 14: 'md',
+ 15: 'md',
+ 16: 'pd',
+ 17: 'pd',
+ 18: 'md',
+ 19: 'md',
+ 20: 'md',
+ 21: 'md',
+ 22: 'md',
+ 23: 'md',
+ 24: 'md',
+ 25: 'pd',
+ 26: 'md',
+ 27: 'pd',
+ 28: 'pd',
+ 29: 'md',
+ 30: 'md',
+ 31: 'pd',
+ 34: 'pd',
+ 35: 'pd',
+ 36: 'md',
+ 37: 'pd',
+ 39: 'pd',
+ 40: 'md',
+ 42: 'md',
+ 44: 'md',
+ 45: 'pd',
+ 46: 'md',
+ 47: 'pd',
+ 49: 'md',
+ 50: 'md',
+ 51: 'md',
+ 52: 'md',
+ 53: 'md',
+ 54: 'pd',
+ 55: 'pd',
+ 56: 'md',
+ 58: 'md',
+ 59: 'pd',
+ 60: 'pd',
+ 61: 'md',
+ 62: 'md',
+ 63: 'pd',
+ 64: 'pd',
+ 65: 'pd',
+ 66: 'pd',
+ 67: 'pd',
+ 69: 'md',
+ 70: 'pd',
+ 71: 'pd',
+ 72: 'pd',
+ 73: 'pd',
+ 74: 'pd',
+ 75: 'pd',
+ 76: 'md',
+ 77: 'pd',
+ 78: 'pd',
+ 79: 'pd',
+ 80: 'md'
+}
+
+//---------------------------------------//
 // Define MARS task.
 //---------------------------------------//
 
@@ -46,14 +116,13 @@ var MARS = [];
 // Define image constants.
 const img_path = `../static/img/is${item_set}/`;
 const form_order = (workerNo % 2 == 0) ? [1,2] : [2,1];
-const dist_order = (Math.floor(workerNo / 2) == 0) ? ['md','pd'] : ['pd','md'];
 
 // Iteratively construct trials.
 items.forEach((j, i) => {
 
   // Define image metadata.
   const test_form  = form_order[i % 2];
-  const distractor = dist_order[i % 2]
+  const distractor = dist_order[j];
 
   // Define puzzle set order.
   if ( test_form == 1 ) {
@@ -105,20 +174,6 @@ items.forEach((j, i) => {
       // Store number of browser interactions
       data.browser_interactions = jsPsych.data.getInteractionData().filter({trial: data.trial_index}).count();
 
-      // Evaluate rapid guessing.
-      if (data.rt < rg_threshold) {
-
-        // Increment counter.
-        rg_count++;
-
-        //  Check if experiment should end.
-        if (rg_count >= rg_maximum) {
-          low_quality = true;
-          jsPsych.endExperiment();
-        }
-
-      }
-
     }
 
   }
@@ -144,6 +199,44 @@ const indices = [0,2,4,6,8,10,12,14]
 indices.forEach((j, i) => {
   if (Math.random() < 0.5) { swapElement(MARS, j, j+1); }
 });
+
+//---------------------------------------//
+// Define data quality check.
+//---------------------------------------//
+
+var QUALITY_CHECK = {
+  type: 'call-function',
+  func: function() {
+
+    // Count number of rapid guessing trials.
+    const rapid = jsPsych.data.get().filterCustom(function(trial) {
+      return (trial.trial_type == 'mars' && trial.item_set == 3 && trial.rt != null && trial.rt < rg_threshold);
+    }).count()
+
+    // Count number of missing trials.
+    const missing = jsPsych.data.get().filterCustom(function(trial) {
+      return (trial.trial_type == 'mars' && trial.item_set == 3 && trial.rt == null);
+    }).count()
+
+    // Count number of screen minimized trials.
+    const minimized = jsPsych.data.get().filter({trial_type: 'mars', item_set: 3, minimum_resolution: 0}).count();
+
+    // Return summary scores.
+    return [rapid, missing, minimized];
+
+  },
+  on_finish: function(trial) {
+
+    // Extract data quality scores.
+    const scores = jsPsych.data.getLastTrialData().values()[0].value;
+
+    // Check if rejection warranted.
+    if (scores.some((score) => score >= max_threshold)) {
+      low_quality = true;
+      jsPsych.endExperiment();
+    }
+  }
+}
 
 //---------------------------------------//
 // Define feedback.
