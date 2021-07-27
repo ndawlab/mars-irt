@@ -35,77 +35,6 @@ items = items.concat(jsPsych.randomization.sampleWithoutReplacement([21, 24, 29,
 items = items.concat(jsPsych.randomization.sampleWithoutReplacement([45, 78, 35, 66], 1));
 
 //---------------------------------------//
-// Define distractor set.
-//---------------------------------------//
-
-const dist_order = {
-  6: 'md',
- 10: 'pd',
- 11: 'md',
- 12: 'pd',
- 13: 'md',
- 14: 'md',
- 15: 'md',
- 16: 'pd',
- 17: 'pd',
- 18: 'md',
- 19: 'md',
- 20: 'md',
- 21: 'md',
- 22: 'md',
- 23: 'md',
- 24: 'md',
- 25: 'pd',
- 26: 'md',
- 27: 'pd',
- 28: 'pd',
- 29: 'md',
- 30: 'md',
- 31: 'pd',
- 34: 'pd',
- 35: 'pd',
- 36: 'md',
- 37: 'pd',
- 39: 'pd',
- 40: 'md',
- 42: 'md',
- 44: 'md',
- 45: 'pd',
- 46: 'md',
- 47: 'pd',
- 49: 'md',
- 50: 'md',
- 51: 'md',
- 52: 'md',
- 53: 'md',
- 54: 'pd',
- 55: 'pd',
- 56: 'md',
- 58: 'md',
- 59: 'pd',
- 60: 'pd',
- 61: 'md',
- 62: 'md',
- 63: 'pd',
- 64: 'pd',
- 65: 'pd',
- 66: 'pd',
- 67: 'pd',
- 69: 'md',
- 70: 'pd',
- 71: 'pd',
- 72: 'pd',
- 73: 'pd',
- 74: 'pd',
- 75: 'pd',
- 76: 'md',
- 77: 'pd',
- 78: 'pd',
- 79: 'pd',
- 80: 'md'
-}
-
-//---------------------------------------//
 // Define MARS task.
 //---------------------------------------//
 
@@ -122,7 +51,7 @@ items.forEach((j, i) => {
 
   // Define image metadata.
   const test_form  = form_order[i % 2];
-  const distractor = dist_order[j];
+  const distractor = (Math.random() < 0.5 ? 'md' : 'pd');
 
   // Define puzzle set order.
   if ( test_form == 1 ) {
