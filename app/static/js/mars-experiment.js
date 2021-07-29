@@ -17,22 +17,22 @@ const rg_threshold = 3000;       // 3 seconds
 //---------------------------------------//
 
 var items = [];
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([ 6, 19, 20, 22], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([25, 28, 39, 47], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([49, 50, 51, 61], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([65, 70, 71, 10], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([15, 11, 18, 13], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([27, 31, 34, 37], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([56, 58, 62, 69], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([77, 16, 17, 12], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([23, 40, 42, 53], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([60, 72, 73, 79], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([80, 14, 26, 52], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([59, 63, 67, 74], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([76, 36, 44, 46], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([54, 55, 64, 75], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([21, 24, 29, 30], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([45, 78, 35, 66], 1));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([ 6, 19, 20, 22], 1, [0.323, 0.195, 0.233, 0.248]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([25, 28, 39, 47], 1, [0.286, 0.188, 0.383, 0.143]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([49, 50, 51, 61], 1, [0.301, 0.195, 0.263, 0.241]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([65, 70, 71, 10], 1, [0.316, 0.346, 0.188, 0.15 ]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([15, 11, 18, 13], 1, [0.218, 0.15,  0.316, 0.316]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([27, 31, 34, 37], 1, [0.346, 0.263, 0.233, 0.158]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([56, 58, 62, 69], 1, [0.128, 0.301, 0.233, 0.338]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([77, 16, 17, 12], 1, [0.241, 0.368, 0.241, 0.15 ]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([23, 40, 42, 53], 1, [0.331, 0.038, 0.368, 0.263]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([60, 72, 73, 79], 1, [0.263, 0.286, 0.128, 0.323]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([80, 14, 26, 52], 1, [0.293, 0.241, 0.346, 0.12 ]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([59, 63, 67, 74], 1, [0.241, 0.256, 0.248, 0.256]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([76, 36, 44, 46], 1, [0.301, 0.248, 0.195, 0.256]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([54, 55, 64, 75], 1, [0.248, 0.211, 0.143, 0.398]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([21, 24, 29, 30], 1, [0.143, 0.376, 0.271, 0.211]));
+items = items.concat(jsPsych.randomization.sampleWithReplacement([45, 78, 35, 66], 1, [0.113, 0.376, 0.105, 0.406]));
 
 //---------------------------------------//
 // Define MARS task.
