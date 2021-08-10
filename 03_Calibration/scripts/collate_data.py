@@ -34,7 +34,9 @@ for f in files:
     dd = dict(
         subject=subject, 
         screen_resolution=[dd for dd in JSON if dd['trial_type'] == 'mars'][-1]['screen_resolution'],
-        total_time=np.round(JSON[-1]['time_elapsed'] * 1e-3, 3))
+        total_time=np.round(JSON[-1]['time_elapsed'] * 1e-3, 3),
+        image_load=JSON[0]['success']
+    )
     
     ## Add metadata.
     demo, = [dd for dd in JSON if dd['trial_type'] == 'survey-demo']
@@ -52,7 +54,8 @@ for f in files:
     mars = DataFrame(mars).query('item_set != "practice"')
     
     ## Reduce to columns of interest.
-    cols = ['item_set','test_form','item','distractor','accuracy','rt','minimum_resolution','browser_interactions']
+    cols = ['item_set','test_form','item','distractor','choice','accuracy','rt',
+            'minimum_resolution','browser_interactions']
     mars = mars[cols]
     
     ## Format columns.
@@ -78,7 +81,7 @@ DATA = concat(DATA).sort_values(['subject','trial'])
 dimension = read_csv(os.path.join(DATA_DIR, 'dimensionality.csv'))
 dimension = dimension.rename(columns={'Item':'item','Dimensionality Score':'dimension'})
 DATA = DATA.merge(dimension, on='item').sort_values(['subject','trial']).reset_index(drop=True)
-DATA = DATA[['subject','trial','item_set','item','dimension','test_form','distractor',
+DATA = DATA[['subject','trial','item_set','item','dimension','test_form','distractor','choice',
              'accuracy','rt','minimum_resolution','browser_interactions']]
                      
 ## Save data.

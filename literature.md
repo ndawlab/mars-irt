@@ -12,6 +12,7 @@ stick to 2pl: https://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1243&co
 consistency of rt pattern: https://doi.org/10.1016/j.intell.2018.04.001
 https://quantdev.ssri.psu.edu/tutorials/introduction-irt-modeling
 future explorations: https://www.mdpi.com/2079-3200/7/3/17/htm
+https://doi.org/10.1016/j.intell.2014.10.004
 
 #### rpm previous fits
 doi.org/10.1177/1073191111415999: 2PL average discrimination = 1.66 (0.60)
