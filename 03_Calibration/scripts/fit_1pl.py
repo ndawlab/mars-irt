@@ -34,7 +34,7 @@ data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 data = data.dropna()
 
 ## Define item version.
-if ('m4' in stan_model) or ('m5' in stan_model):
+if ('m4' in stan_model) or ('m5' in stan_model) or ('m6' in stan_model):
     data['M'] = data.apply(lambda x: x.distractor + '_' + '%0.2d' %x.test_form, 1)
     data['M'] = np.unique(data['M'], return_inverse=True)[-1]
 else:

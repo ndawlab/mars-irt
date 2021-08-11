@@ -19,3 +19,6 @@ doi.org/10.1177/1073191111415999: 2PL average discrimination = 1.66 (0.60)
 https://doi.org/10.1177/0734282920930923: 2PL average discrimination = 1.28, 3PL = 1.637
 https://doi.org/10.1016/j.lindif.2011.12.007 3PL average discrimination = 0.97 [0.62 and 1.50]
 sci-hub.se/10.1037/a0027830: 3PL average discrimination = 1.13 [0.62 and 1.63]
+
+#### model comparison
+https://discourse.mc-stan.org/t/loo-comparison-in-reference-to-standard-error/4009

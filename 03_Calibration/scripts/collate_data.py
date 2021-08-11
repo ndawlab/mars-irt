@@ -52,14 +52,16 @@ for f in files:
     ## Extract MARS task.
     mars = [dd for dd in JSON if dd['trial_type'] == 'mars']
     mars = DataFrame(mars).query('item_set != "practice"')
+    mars['shape_set'] = mars.puzzle.apply(lambda x: x.split('/')[-1].replace('.jpeg','')[-1])
     
     ## Reduce to columns of interest.
-    cols = ['item_set','test_form','item','distractor','choice','accuracy','rt',
+    cols = ['item_set','test_form','shape_set','item','distractor','choice','accuracy','rt',
             'minimum_resolution','browser_interactions']
     mars = mars[cols]
     
     ## Format columns.
     mars['item_set'] = mars['item_set'].astype(int)
+    mars['shape_set'] = mars['shape_set'].astype(int)
     mars['test_form'] = mars['test_form'].astype(int)
     mars['item'] = mars['item'].astype(int)
     mars['rt'] = np.round(mars['rt'] * 1e-3, 3)
@@ -81,7 +83,7 @@ DATA = concat(DATA).sort_values(['subject','trial'])
 dimension = read_csv(os.path.join(DATA_DIR, 'dimensionality.csv'))
 dimension = dimension.rename(columns={'Item':'item','Dimensionality Score':'dimension'})
 DATA = DATA.merge(dimension, on='item').sort_values(['subject','trial']).reset_index(drop=True)
-DATA = DATA[['subject','trial','item_set','item','dimension','test_form','distractor','choice',
+DATA = DATA[['subject','trial','item_set','item','dimension','test_form','shape_set','distractor','choice',
              'accuracy','rt','minimum_resolution','browser_interactions']]
                      
 ## Save data.

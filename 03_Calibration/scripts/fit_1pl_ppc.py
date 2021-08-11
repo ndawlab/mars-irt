@@ -34,7 +34,7 @@ data = data.dropna()
 ## Define item version.
 if 'm1' in stan_model:
     data['M'] = 0
-elif ('m4' in stan_model) or ('m5' in stan_model):
+elif ('m4' in stan_model) or ('m5' in stan_model) or ('m6' in stan_model):
     data['M'] = data.apply(lambda x: x.distractor + '_' + '%0.2d' %x.test_form, 1)
     data['M'] = np.unique(data['M'], return_inverse=True)[-1]
 else:

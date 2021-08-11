@@ -27,11 +27,10 @@ parameters {
     
     // Random effects
     vector[NK]  beta_pr;
-    vector[NK]  beta_d_pr;
     vector[NK]  beta_t_pr;
     
     // Item variances
-    vector<lower=0>[3] sigma;          // Item-level standard deviations
+    vector<lower=0>[2] sigma;          // Item-level standard deviations
     
 }
 transformed parameters {
@@ -41,14 +40,10 @@ transformed parameters {
     // Construction block
     {
     
-    beta[:,1] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) - (mu_pr[2] + sigma[2] * beta_d_pr)
-                  - (mu_pr[3] + sigma[3] * beta_t_pr));
-    beta[:,2] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) - (mu_pr[2] + sigma[2] * beta_d_pr)
-                  + (mu_pr[3] + sigma[3] * beta_t_pr));
-    beta[:,3] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) + (mu_pr[2] + sigma[2] * beta_d_pr)
-                  - (mu_pr[3] + sigma[3] * beta_t_pr));
-    beta[:,4] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) + (mu_pr[2] + sigma[2] * beta_d_pr)
-                  + (mu_pr[3] + sigma[3] * beta_t_pr));
+    beta[:,1] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) - mu_pr[2] - (mu_pr[3] + sigma[2] * beta_t_pr));
+    beta[:,2] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) - mu_pr[2] + (mu_pr[3] + sigma[2] * beta_t_pr));
+    beta[:,3] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) + mu_pr[2] - (mu_pr[3] + sigma[2] * beta_t_pr));
+    beta[:,4] = to_array_1d((mu_pr[1] + sigma[1] * beta_pr) + mu_pr[2] + (mu_pr[3] + sigma[2] * beta_t_pr));
         
     }
 
@@ -67,7 +62,6 @@ model {
     // Priors
     target += std_normal_lpdf(theta);
     target += std_normal_lpdf(beta_pr);
-    target += std_normal_lpdf(beta_d_pr);
     target += std_normal_lpdf(beta_t_pr);
     target += normal_lpdf(mu_pr | 0, 2);
     target += student_t_lpdf(sigma | 3, 0, 1);
