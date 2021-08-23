@@ -15,10 +15,10 @@ np.random.seed(47404)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## I/O parameters.
-stan_model = '1pl'
+stan_model = sys.argv[1]
 
 ## Model parameters.
-contrast = int(sys.argv[1])
+contrast = int(sys.argv[2])
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Load and prepare data.
@@ -72,9 +72,11 @@ StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_m{contr
 ## Extract parameters.
 theta = StanFit.filter(regex='theta').values
 beta  = StanFit.filter(regex='beta\[').values
+alpha = StanFit.filter(regex='alpha\[').values
 
 ## Reshape parameters.
 beta = beta.reshape(-1,K.max()+1,M).swapaxes(1,2)
+alpha = alpha.reshape(-1,K.max()+1,M).swapaxes(1,2)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Posterior predictive check.
@@ -90,7 +92,10 @@ n_iter = len(StanFit)
 
 ## Compute linear predictor.
 mu = np.zeros((n_iter, N))
-for n in tqdm(range(N)): mu[:,n] = theta[:,J[n]] - np.einsum('i,ji',X[n],beta[...,K[n]])
+for n in tqdm(range(N)): 
+    a = np.exp(np.einsum('i,ji',X[n],alpha[...,K[n]]))
+    b = np.einsum('i,ji',X[n],beta[...,K[n]])
+    mu[:,n] = a * theta[:,J[n]] - b
     
 ## Compute p(correct | theta).
 p = inv_logit(mu)
@@ -144,7 +149,9 @@ for j in tqdm(range(J.max()+1)):
                   norm(0,sd_i).logpdf(adapt_nodes) + std_log_weights
 
     ## Evaluate marginal log-likelihood with adaptive quadrature. 
-    mu = theta[:,j,np.newaxis] - np.einsum('kj,ijk->ik', X[J==j], beta[...,K[J==j]])
+    a = np.exp(np.einsum('kj,ijk->ik', X[J==j], alpha[...,K[J==j]]))
+    b = np.einsum('kj,ijk->ik', X[J==j], beta[...,K[J==j]])
+    mu = a * theta[:,j,np.newaxis] - b 
     p = inv_logit(np.add.outer(adapt_nodes, mu))
     loglik_by_node = np.log(np.where(Y[J==j], p, 1-p)).sum(axis=-1)
     weighted_loglik_by_node = loglik_by_node.T + log_weights
