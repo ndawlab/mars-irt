@@ -99,8 +99,25 @@ for (let i = 0; i < 3; i++) {
 // Define instructions timeline.
 //---------------------------------------//
 
+// Define screen check.
+const screen_check = {
+  timeline: [{
+    type: 'screen-check',
+    min_width: min_width,
+    min_height: min_height
+  }],
+  conditional_function: function() {
+    if (window.innerWidth >= min_width && window.innerHeight >= min_height) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
 // Define instructions timeline.
 var INSTRUCTIONS = [];
+INSTRUCTIONS = INSTRUCTIONS.concat(screen_check);
 INSTRUCTIONS = INSTRUCTIONS.concat(instructions_01);
 INSTRUCTIONS = INSTRUCTIONS.concat(practice_block);
 INSTRUCTIONS = INSTRUCTIONS.concat(instructions_02);

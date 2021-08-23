@@ -23,6 +23,7 @@
   <!-- Load jsPsych plug-ins -->
   <script src="../static/js/jspsych-survey-demo.js"></script>
   <script src="../static/js/jspsych-mars.js"></script>
+  <script src="../static/js/jspsych-screen-check.js"></script>
   <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-instructions.js"></script>
   <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
   <script src="../static/lib/jspsych-6.3.1/plugins/jspsych-preload.js"></script>
@@ -85,7 +86,6 @@
   jsPsych.init({
     timeline: timeline,
     show_progress_bar: true,
-    exclusions: {min_height: 620, min_width: 640},
     on_finish: function() {
 
       // Remove requirement to verify redirect

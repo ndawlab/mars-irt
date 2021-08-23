@@ -12,6 +12,10 @@ const trial_duration = 30000;     // 30 seconds
 const max_threshold = 10;
 const rg_threshold = 3000;       // 3 seconds
 
+// Define screen size parameters.
+var min_width = 640;
+var min_height = 600;
+
 //---------------------------------------//
 // Define puzzle set.
 //---------------------------------------//
@@ -75,6 +79,22 @@ items.forEach((j, i) => {
   preload_mars = preload_mars.concat(puzzle);
   preload_mars = preload_mars.concat(choices);
 
+  // Define screen check.
+  const screen_check = {
+    timeline: [{
+      type: 'screen-check',
+      min_width: min_width,
+      min_height: min_height
+    }],
+    conditional_function: function() {
+      if (window.innerWidth >= min_width && window.innerHeight >= min_height) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
+
   // Define fixation.
   const fixation = {
     type: 'html-keyboard-response',
@@ -109,7 +129,7 @@ items.forEach((j, i) => {
 
   // Define trial node.
   const trial_node = {
-    timeline: [fixation, trial]
+    timeline: [screen_check, fixation, trial]
   }
 
   // Push trial.
