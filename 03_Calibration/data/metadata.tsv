@@ -1,12 +1,15 @@
 subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-free-response	ethnicity	race	education	free-response
 01b653iwjusnxf359qk7596t	[800, 1280]	301.795	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+020ngoo3mx8enry0p43zo2a2	[768, 1366]	380.942	True	30	Female		Not Hispanic or Latino	['Black or African American', 'White']	Some college	
 0374obg53yvd969wid8t8a71	[900, 1440]	310.135	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 03i65ytrhnqf85c2lvnzb2ov	[864, 1536]	272.247	True	27	Other	non binary	Not Hispanic or Latino	['White']	Bachelor degree	yes, some of the images were too small. also difficult to differentiate the sets of items (no boxes around them like practice questions- not sure if that is intentional/a function of the study)
+03kchft085vfxle00q8hevgc	[720, 1280]	277.391	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 06hmew4su9ph9i5gigwdmwr4	[900, 1440]	334.56	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 06ul9f2coolrse6pnzjrdmbc	[800, 1280]	446.524	True	19	Female		Not Hispanic or Latino	['White']	High school	
 08p6c81b1uflp82myo5nw9dl	[900, 1440]	520.08	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 0989ahmna9dulp8bxcoynys0	[900, 1440]	301.022	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 0cuzisrtq2cdt8h5b4myuyfg	[900, 1440]	344.341	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+0frtfj0ch2iix4se6y6jeeol	[1824, 980]	689.886	True		Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 0fselly2tqqo5o2nhqub0t9c	[900, 1440]	340.074	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	30 seconds went by really fast for some of the puzzles
 0k9ph5p70zb8x7iugjdl96mt	[900, 1440]	451.941	True	18	Male		Not Hispanic or Latino	['White']	Associate degree	that was hard
 0lbef3rih04hlz20mpmkmfaq	[768, 1366]	494.357	True	40	Male		Not Hispanic or Latino	['White']	Some college	The puzzles were pretty tough, especially with the time limit.
@@ -16,6 +19,7 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 0pcccc08djqwblcaa0vi67g3	[900, 1440]	467.634	True	24	Male		Hispanic or Latino	['Rather not say']	Bachelor degree	
 0ppzryi0yvn8rzf45d469rfr	[900, 1440]	375.349	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 0q9kik5fwix8xvf50jzwrbv5	[900, 1440]	414.176	True	20	Male		Not Hispanic or Latino	['White']	Some college	interesting patterns
+0r0cd6op09ots3rqd7i4u3qi	[1080, 1920]	287.699	True	25	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	N/A
 0rx0bm63tj47dgu5hqgmxmco	[858, 1525]	362.581	True	40	Male		Not Hispanic or Latino	['White']	Master degree or higher	no
 0sj1lawlpszd1lz6vql6z3wg	[900, 1440]	312.874	True	19	Female		Hispanic or Latino	['White']	High school	
 0twyxryrq8iiomdpp48krw8k	[1440, 3440]	479.37	True	26	Male		Not Hispanic or Latino	['White']	Bachelor degree	I found this to be very hard to be honest!
@@ -27,6 +31,7 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 11qiftg3g7om1rk79jogt55c	[900, 1440]	274.868	True	22	Female		Not Hispanic or Latino	['Black or African American', 'White']	Bachelor degree	
 14asg0heo2pqnmiywh8uy4ly	[864, 1536]	400.783	True	18	Female		Not Hispanic or Latino	['White']	High school	no
 15ctx94v90f8rfqy1jz7gsci	[900, 1440]	372.379	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
+15sz3torqsy18eedz8ao7jsh	[900, 1440]	335.006	True	19	Female		Hispanic or Latino	['White']	Some college	no
 16eppal8mpgpv1fgz4saqd0h	[900, 1440]	316.261	True	19	Female		Hispanic or Latino	['American Indian/Alaska Native']	Some college	
 18bornvwixas0ck99a3h798j	[1050, 1680]	342.431	True	18	Male		Not Hispanic or Latino	['White']	High school	
 1993v4050stwong707xpjpem	[768, 1366]	480.816	True	33	Female		Hispanic or Latino	['White']	Some college	
@@ -42,15 +47,22 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 1qteoxfbiw6vg2dyk6yvoeih	[768, 1366]	524.546	True	35	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 1u89kobgictbxh3tts4p9ovc	[1080, 1920]	417.939	True	22	Female		Not Hispanic or Latino	['White']	Some college	
 1v5wju57r2v3rdfpkdkdtq8t	[1080, 1920]	205.226	True	31	Male		Not Hispanic or Latino	['White']	Some college	
+1wivxuhm01hyzk7nc39139yx	[1080, 1920]	407.791	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 1y5qgx77f4louwxnfrfaazed	[1440, 2560]	370.39	True	24	Male		Not Hispanic or Latino	['White']	High school	
 1y7vnm5uywcpkpjvywthival	[1080, 810]	224.006	True	21	Female		Hispanic or Latino	['White']	Some college	
 1ygwp7fma3fsmhfvk0arkk6z	[768, 1366]	495.651	True	48	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 1ztz9o9srgpb2yhdsxnv7ecj	[720, 1280]	493.773	True	25	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 22s5ikym9foi76ykw4ugev55	[864, 1536]	493.915	True	21	Male		Not Hispanic or Latino	['Asian']	Associate degree	This was a fun puzzle, but I wish there was the 30 second countdown timer so I could know how much time I have.
+23v0pmln9wfaj14u98x6j05i	[900, 1440]	497.26	True	34	Male		Not Hispanic or Latino	['White']	Some college	
 241svjoh2d3bcbz63rlg90zo	[768, 1366]	448.715	True	32	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 25qshlhy4deq4im0io70boaf	[853, 1517]	448.555	True	35	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+26644x2hm5urrqk371umteoa	[1043, 1564]	444.6	True	40	Female		Not Hispanic or Latino	['White']	Associate degree	
 26fw6mpksid4uky6r534gkz1	[1003, 1504]	193.681	True	20	Female		Not Hispanic or Latino	['Asian']	High school	
 2ak4ea9ygmndywzmwdepf5dc	[864, 1536]	320.428	True	19	Male		Hispanic or Latino	['American Indian/Alaska Native']	Some college	Thank you for the challenge. 
+2az2ts134obztar0ntfxtrdo	[800, 1280]	267.925	True	22	Female		Rather not say	['Black or African American']	High school	
+2b6j8vz42thx8cakpf490sit	[768, 1366]	327.542	True	51	Female		Rather not say	['Rather not say']	Rather not say	
+2bpou7zuxefy9xhe74f31zd0	[1080, 1920]	341.518	True	25	Female		Hispanic or Latino	['White']	High school	
+2gmcwjhr7z936kyy94lccpbl	[900, 1440]	297.562	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 2hbjprxch7iah7yy5j56wi0n	[900, 1440]	368.297	True	18	Female		Not Hispanic or Latino	['American Indian/Alaska Native']	Some college	
 2i42r2eepsi2ds5yuntjtm3i	[900, 1440]	271.817	True	21	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 2i822ubn7ntzjkjwaq4ca78r	[1080, 1920]	414.793	True	24	Male		Not Hispanic or Latino	['American Indian/Alaska Native', 'White']	Associate degree	
@@ -62,9 +74,11 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 2lxcej2tk2tol6ie9pg9ephv	[900, 1440]	471.917	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 2ng96ye3rfowy888zmjczotb	[900, 1440]	330.748	True	37	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 2noems6hp5m2jto7zpmavxm9	[900, 1440]	338.235	True	20	Female		Not Hispanic or Latino	['White']	High school	
+2nzoo77yurwqve3f4yl4camt	[1080, 1920]	387.542	True	38	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 2oasl2egv8ro3zxrnu9cdwri	[1551, 981]	532.633	True	30	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 2r28o3lv54fnis6irbr19yxf	[900, 1440]	348.913	True	20	Female		Not Hispanic or Latino	['Asian']	High school	
 2r5alrkbf4c9mvniy12cmrrp	[1080, 1920]	357.97	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
+2rems7vwqgm02ad6rr2mjbs9	[2036, 980]	367.525	True	31	Male		Not Hispanic or Latino	['White']	Master degree or higher	This survey was very nice and interesting.
 2rezgf7dcjsbrw2xo1cx85k7	[900, 1440]	273.96	True	19	Male		Not Hispanic or Latino	['Asian']	Some college	
 2ryo3nqynuc45ekjibgor0yp	[800, 1280]	405.913	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 2s9ape6golrvhw3wahi3m3r3	[900, 1440]	314.025	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -79,6 +93,8 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 34s9xql6rs74bfhznq0iti4l	[720, 1280]	250.561	True	53	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
 35c7ygm020qdlmd98x1a0479	[900, 1440]	507.673	True	33	Male		Hispanic or Latino	['White']	Bachelor degree	This was an entertaining survey. 
 35i1vwqxvv43ark5es4ehs0y	[864, 1536]	467.49	True	24	Male		Rather not say	['Black or African American']	High school	
+36ciucfggtq1z713v9xkdrx3	[900, 1440]	317.604	True	21	Female		Not Hispanic or Latino	['White']	Some college	
+36l82j6bd9lgeu8wfmkb0016	[864, 1536]	445.788	True	29	Female		Hispanic or Latino	['White']	Bachelor degree	
 374y9fwt2b00n99yi3ofx4qb	[1080, 1920]	266.4	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 38gc7m7j436bn7g55tjbetol	[1080, 1920]	398.722	True	22	Male		Not Hispanic or Latino	['Asian']	Bachelor degree	
 39i7gcci8k1p1p0swddsw7qi	[900, 1440]	433.945	True	20	Female		Not Hispanic or Latino	['White']	Some college	
@@ -90,8 +106,11 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 3hwti9vqo403bsbc57oj78ez	[900, 1440]	422.003	True	30	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 3i0fcuh5zsys7h2z3qwc09zz	[683, 1708]	428.132	True	40	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 3i5irx9r0mj1u7jsd4eal9gx	[900, 1440]	312.909	True	20	Female		Not Hispanic or Latino	['White']	Some college	
+3jtndyzy8ppzx9n84mnkkmb6	[900, 1440]	327.614	True	20	Female		Not Hispanic or Latino	['White']	High school	
 3lbs4rayaxcbl7hqxk7spw6s	[1080, 1920]	247.356	True	25	Female		Not Hispanic or Latino	['American Indian/Alaska Native']	High school	
+3lrrzv95areb6jw94zk2btuh	[1003, 1504]	384.998	True	28	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 3mlg5gieakg52hh4kb0xgrbx	[1120, 1792]	380.386	True	21	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+3n1cbejah1sclcumx3ccvk06	[864, 1536]	386.656	True	23	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
 3op34p5re2dqxm85smzsl7o7	[1152, 2048]	425.632	True	31	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 3pkivj67s83yvgkzbz3leqiu	[768, 1366]	217.181	True	70	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 3r2ifq00z06hun105tincwcm	[1050, 1680]	285.235	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -99,10 +118,14 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 3sf7bhi9na56hcqeqo68gpgl	[900, 1440]	340.957	True	19	Female		Not Hispanic or Latino	['Asian']	Some college	
 3t6pf65p8uds0ezkf75oqbwa	[900, 1440]	371.63	True	22	Male		Not Hispanic or Latino	['Asian']	Bachelor degree	
 3vhzz2zw6zgab84amn4bogng	[960, 1707]	287.564	True	20	Male		Not Hispanic or Latino	['White']	Some college	
+3vzktzr6yhj4ga7b3vtneqb9	[864, 1536]	302.372	True	18	Female		Not Hispanic or Latino	['White']	Some college	
 3ye95yp5z8qh7x1ovbgo3ich	[800, 1280]	375.243	True	23	Female		Hispanic or Latino	['White']	Bachelor degree	
 3z2z4oqvsyxn2lwrqjavmvfm	[1050, 1680]	342.306	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 3zv69q64jey2r4y0y0e575nl	[1440, 2560]	453.529	True	28	Male		Not Hispanic or Latino	['American Indian/Alaska Native', 'White']	Bachelor degree	
 3zxobbu2jzlvm8lhki7czl8t	[720, 1280]	346.927	True	24	Female		Not Hispanic or Latino	['Black or African American']	Bachelor degree	
+40hi9kdpcfp5rliuw8o8y019	[900, 1440]	373.531	True	20	Female		Not Hispanic or Latino	['Asian']	High school	
+418nzhbnxocn7ai34f1fix1p	[864, 1536]	346.591	True	26	Female		Hispanic or Latino	['Rather not say']	Bachelor degree	
+42ynztumhrbfa1venv81w82b	[900, 1440]	374.703	True	18	Female		Not Hispanic or Latino	['White']	High school	no comment
 43u61vzj6kse1j0bpne1loj7	[800, 1280]	459.221	True	32	Male		Not Hispanic or Latino	['White']	Some college	
 47rjc265202ngfb9rcn5q489	[900, 1440]	296.898	True	23	Female		Hispanic or Latino	['White']	Bachelor degree	I felt pressured so it made me confused a lot of the times. Still interesting to do. I thought I did better than my actual score!
 48w9lk7ju78tnx98jix1c0zz	[1080, 1920]	469.595	True	27	Male		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -114,8 +137,12 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 4h5yju9ncyeiyah2g5oi6vgt	[900, 1440]	215.473	True	21	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 4i8fdqxxcxtx42msnwvy3e5p	[900, 1440]	366.747	True	30	Female		Unknown	['White']	Master degree or higher	
 4kzwj52hfohn08sjrs0sstyh	[637, 1600]	1636.701	True	40	Male		Not Hispanic or Latino	['White']	Master degree or higher	excellent
+4llm81kzex771qy3tq0xyyoh	[1120, 1792]	252.802	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 4mhzsuh7xfod2do73mss6ig2	[900, 1440]	228.07	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 4qd0to88yn79ejfx21tcin9q	[900, 1440]	241.49	True	29	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+4t1nh1807h3mfgdowmmtw9yj	[864, 1536]	459.081	True	24	Female		Not Hispanic or Latino	['White']	Associate degree	Some of the lines were almost too faint to see 
+4tf8b9hhmds1kuus2si7zdjs	[900, 1440]	222.954	True	27	Other	Non-Binary	Not Hispanic or Latino	['Asian']	Bachelor degree	
+4ue4fvgeuiuz4nx9mrpv4vw0	[864, 1536]	632.385	True	38	Male		Not Hispanic or Latino	['White']	Master degree or higher	it is an nice study.
 4x3vcbfp20gszqk2fx98l2m8	[720, 1280]	462.402	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	n/a
 4xr6ujq576ixsqqo94j9t25m	[800, 1280]	415.349	True	20	Male		Not Hispanic or Latino	['Black or African American']	Some college	
 519zbyjdj3cdg883oowodetg	[960, 1708]	149.133	True	45	Male		Not Hispanic or Latino	['White']	Master degree or higher	
@@ -128,6 +155,7 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 56rfelahgx44yaqkd2iu7s0n	[900, 1440]	367.293	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 59ngy801iiqpmbpdnlmfjeei	[900, 1440]	263.334	True	18	Female		Not Hispanic or Latino	['White']	High school	N/A
 59xqa1ahxzai8xf2maadqjg7	[1120, 1792]	436.507	True	19	Male		Not Hispanic or Latino	['White']	High school	
+5auttckec7uz1re3whedxq2i	[1673, 980]	310.726	True		Male		Not Hispanic or Latino	['White']	Bachelor degree	No comment
 5b6q4ofmq1sgea0wr5whqyqp	[1080, 1920]	379.195	True	19	Male		Not Hispanic or Latino	['Asian']	High school	
 5baqefewz5asokt01f7dkh76	[1080, 1920]	288.743	True	25	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 5c1uahjwqokuaplxirx16r1p	[900, 1440]	281.978	True	27	Male		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -142,6 +170,7 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 5la01jwgjd5r0smzsld92t1m	[912, 1368]	339.355	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 5m8lau3ky2gtgpbmnr8kuv4g	[864, 1536]	466.844	True	31	Female		Not Hispanic or Latino	['White']	Some college	
 5m92mo123e9gh0jbia35or3b	[900, 1440]	279.162	True	19	Female		Not Hispanic or Latino	['White']	Some college	
+5mxingj5h4c4hwx23octnkyf	[900, 1440]	393.364	True	26	Female		Hispanic or Latino	['White']	Master degree or higher	
 5nbu6wm0asr5wgoe8y4yoz5b	[768, 1366]	359.059	True	19	Female		Hispanic or Latino	['White']	High school	
 5r5lpge5r06l18wm68y63pj3	[900, 1440]	376.479	True	21	Male		Not Hispanic or Latino	['White']	Some college	no comment
 5rx4okg7d5vk026dtzkaxc0m	[1914, 980]	618.214	True	19	Female		Not Hispanic or Latino	['White']	Associate degree	
@@ -149,17 +178,22 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 5w8iljymylasl128wlos7fim	[900, 1440]	312.519	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 5wwh67gpm4yi02txm96t0d2t	[1440, 2560]	261.106	True	25	Male		Not Hispanic or Latino	['Asian', 'White']	Bachelor degree	
 5x53d4nlu4uiap1y2at2omqh	[900, 1440]	292.615	True	23	Female		Not Hispanic or Latino	['White']	Associate degree	
+5zu4b6e0evo08jnba7fr1x1b	[1120, 1792]	473.322	True	29	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 600h90dv4z92iv06ocn127ze	[864, 1536]	400.804	True	18	Female		Not Hispanic or Latino	['White']	High school	
 601xvat5pmnwokpkryv54mhy	[1080, 1920]	454.119	True	35	Female		Hispanic or Latino	['White']	Associate degree	Needed more time for some
 61e4vo4vrncsxadrq3jv3je1	[1000, 1500]	228.708	True	20	Female		Not Hispanic or Latino	['Asian']	High school	
+62dhlx06jubqo0s1bqlvrsqu	[864, 1536]	474.16	True	21	Female		Hispanic or Latino	['White']	High school	no comment 
+64fdn5n7kti6k1gtcscs3qjk	[969, 1920]	317.603	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 657qttkac7rp4n21ts58rxcd	[900, 1440]	319.445	True	24	Male		Not Hispanic or Latino	['White']	High school	
 659a2szsz3smzj2vn38ffehh	[665, 1696]	435.553	True	44	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+66whcbgp6pnbt7t6k1gnzvyv	[864, 1536]	381.416	True	20	Female		Not Hispanic or Latino	['White']	Some college	no comment
 67heohzr97c0kcq6lwqjqc10	[768, 1366]	393.994	True	21	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 68td3tbgc9pgeihse2uscazd	[1080, 1920]	417.748	True	19	Female		Not Hispanic or Latino	['White']	Some college	no comment
 6929wbhnhtsyfyjghiwt1che	[721, 1536]	462.456	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 698cvp54se88pesq9otrvlxu	[1080, 1920]	409.579	True	22	Male		Not Hispanic or Latino	['White']	Associate degree	
 69a8fg1nchr4gnykeilh67yd	[768, 1366]	470.481	True	41	Male		Not Hispanic or Latino	['White']	Master degree or higher	It was great study
 6a80r7h6mc233wfkku689f8n	[900, 1440]	254.78	True	41	Female		Not Hispanic or Latino	['White']	Some college	
+6aisxx45n6ofmjgjnkv4ky8f	[900, 1440]	273.914	True	18	Female		Not Hispanic or Latino	['Asian']	Some college	
 6ch32n9s0qvyg0kemy3gyw07	[715, 1440]	380.215	True	20	Male		Not Hispanic or Latino	['Asian']	Some college	
 6dgt2qu2enlze2oxudlmz2tv	[900, 1440]	745.057	True	18	Male		Hispanic or Latino	['White', 'Rather not say']	High school	The puzzles really made me realize how much I pay attention to details. Some of the more complicated puzzles had smaller shapes which were difficult to focus on, but other than that, it was a fun experiment.
 6dsauyx0839dqhnltlqi16cm	[864, 1536]	287.546	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -168,18 +202,25 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 6eywh4zy4by0a1c781864e0m	[768, 1366]	330.207	True	25	Female		Not Hispanic or Latino	['White']	High school	no comment
 6fhvku0vah2hlsz8jldq3ong	[768, 1360]	457.206	True	45	Male		Not Hispanic or Latino	['White']	Bachelor degree	Fun!
 6ftq7uap3wf4d42zs3zbidwv	[1050, 1680]	324.709	True	19	Male		Not Hispanic or Latino	['White']	Some college	
+6i00hfulkaoou7jo7hmvgkjw	[768, 1366]	423.288	True	44	Male		Not Hispanic or Latino	['White']	Master degree or higher	The survey is interesting.
 6jcw5spub6h5s7grinrjk77q	[1080, 1920]	406.076	True	25	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 6ml3i9hxab3g5ldho73rp53t	[683, 1708]	422.824	True	42	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+6mv0hesmzcmngiktnpjm1540	[900, 1440]	176.397	True	22	Female		Not Hispanic or Latino	['White']	Some college	
 6myeryriugidl4p43j63fcyc	[665, 1696]	381.22	True	43	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+6n61a7b3zsb25n4m7zmbpp2n	[900, 1440]	342.934	True	19	Female		Hispanic or Latino	['White']	Some college	
+6ndgj3ldzdqw9s67xx9bxivw	[697, 1440]	302.336	True	25	Female		Hispanic or Latino	['White']	Bachelor degree	
 6nprfiv7nfr7axt7mv51m4p4	[864, 1536]	383.869	True	30	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+6pjd4cfii0108qa43ff3a8st	[800, 1280]	450.797	True	31	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	NA
 6pu02mdi58xe1h5bt0sln0th	[800, 1280]	362.101	True	24	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
 6q1t8f79wwgrq6dk0tp92ocb	[864, 1536]	406.253	True	31	Male		Not Hispanic or Latino	['White']	Associate degree	No comment
 6q96rlrtgqu6ckutin3raus9	[1080, 1920]	507.683	True	31	Male		Hispanic or Latino	['White']	Bachelor degree	those were some intense puzzles!
 6sqzntxosrpt76sm28lb0w81	[900, 1440]	395.384	True	26	Female		Not Hispanic or Latino	['White']	Master degree or higher	Interesting!
+6sym6onb6dr4g1poedichqh0	[900, 1440]	356.941	True	23	Female		Hispanic or Latino	['Rather not say']	Bachelor degree	
 6tb6fskpa6em7swy0o03q059	[768, 1366]	525.541	True	40	Male		Not Hispanic or Latino	['White']	Master degree or higher	good and easy
 6wps6g80t7g1jbj279e48mp1	[900, 1440]	383.783	True	20	Male		Not Hispanic or Latino	['Asian']	High school	
 70w8goois1gc8p9bs41qfhny	[768, 1366]	503.187	True	33	Male		Not Hispanic or Latino	['White']	Master degree or higher	the time was not sufficient
 71a0cmlv8tcccrsg49rz5ty6	[360, 722]	287.446	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+72hd8su5oh8vmpnjm5scmort	[768, 1366]	568.215	True	44	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 73pstnzr5xuos990sy1ndcib	[1200, 1920]	277.159	True	30	Male		Not Hispanic or Latino	['White']	Associate degree	
 77ns1fox63i44jwup2r16uud	[1200, 1920]	364.025	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 77poyt1iy1cqjcjztrjtaqk2	[800, 1280]	231.626	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -196,6 +237,7 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 7o693dgge46kfallr2wivb9t	[864, 1536]	348.054	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 7omx30j5cs9od4amxf2nl5is	[768, 1366]	362.179	True	32	Male		Not Hispanic or Latino	['American Indian/Alaska Native']	Bachelor degree	
 7qfcghevn1pvwlkwkxbfke8d	[768, 1366]	326.618	True	35	Male		Not Hispanic or Latino	['White']	Master degree or higher	I enjoyed the survey
+7sc02grhyhm2p69vyh7eo6vp	[768, 1366]	399.2	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 7tbdjxz8lu8j3nbhn89vhaon	[757, 1600]	242.164	True	18	Female		Not Hispanic or Latino	['White']	High school	
 7x6ngqb8r29sszek04wz6876	[764, 360]	474.132	True	34	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	No comments 
 7xfgwhsicmn01xvjvttcoxae	[1080, 1920]	320.054	True	27	Male		Not Hispanic or Latino	['White']	Master degree or higher	
@@ -209,26 +251,38 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 84t37ieskww4hptmydmm4e0j	[864, 1536]	222.422	True	20	Male		Not Hispanic or Latino	['Asian']	Some college	it got hard very fast
 85tpfwep4tvhfh6m8nxvgjmc	[900, 1440]	662.981	True	23	Male		Hispanic or Latino	['White']	Bachelor degree	
 873jao078mf4v86xccmcv7vj	[900, 1440]	331.855	True	28	Female		Not Hispanic or Latino	['Black or African American', 'White']	Master degree or higher	
+87dlyjadmxfml4do2xqf02ww	[1080, 1920]	479.592	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 88y4hijuiaefliyndapmlyf4	[900, 1440]	414.321	True	20	Male		Not Hispanic or Latino	['White']	Some college	
 8anx8gog7w9iuytpvi6bbecb	[900, 1440]	350.6	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 8aqjqtgqbshzm24ythuyysqh	[1080, 1920]	390.033	True	23	Male		Hispanic or Latino	['White']	Bachelor degree	
 8f93xuh4dq3vlzbubpfubvqk	[768, 1366]	216.048	True	32	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+8goo3v05ulpj2238sm6u4bms	[900, 1440]	274.514	True	21	Female		Not Hispanic or Latino	['Black or African American']	Bachelor degree	
 8h7jbmr0tkmh6u08l7itn6nf	[900, 1440]	283.855	True	20	Other	nonbinary	Not Hispanic or Latino	['White']	Some college	
 8hlq0l2y4cl3lyqu7mund09w	[864, 1536]	600.143	True	28	Male		Not Hispanic or Latino	['White']	Bachelor degree	the image were too small and time was too fast
+8ikq3ltajs9ll2kcc2aklau7	[1080, 1920]	332.772	True	51	Female		Not Hispanic or Latino	['White']	Associate degree	
 8ixzpcm8al461v9pfdalgvxw	[768, 1366]	367.375	True	26	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 8kdk2f4s3kyldz3qd4d8rlm0	[864, 1536]	277.108	True	19	Female		Not Hispanic or Latino	['Asian']	Some college	
+8m69xrbymke90mmv0jv67k1g	[864, 1536]	244.369	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 8nwnacinyttl7g8fgh9kszuc	[1080, 1920]	349.247	True	22	Male		Not Hispanic or Latino	['Black or African American']	Some college	
+8q4ebc9lxxtg80tuc9y885gx	[768, 1366]	328.124	True	20	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
 8qnoyczn985a0zzvg8iv7gfk	[864, 1536]	364.503	True	19	Female		Not Hispanic or Latino	['White']	Some college	some were so simple, other i completely guessed
+8qxby5jlkmrt4jejiimlrlhm	[720, 1280]	294.771	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 8s6e33zhlcvyjq7enhnfxcwl	[768, 1366]	332.101	True	36	Male		Not Hispanic or Latino	['White']	Master degree or higher	NICE STUDY
 8savjpgy7ezckpghm77oqsy7	[888, 1422]	292.993	True	29	Female		Hispanic or Latino	['White']	Master degree or higher	I was very confused, did not understand most puzzles
+8skjk4jp3swh6tnytt0xavrj	[900, 1440]	236.323	True	22	Female		Hispanic or Latino	['White']	Some college	
 8t7d0pmrn1b87qagwkta8lg1	[900, 1440]	370.745	True	18	Female		Not Hispanic or Latino	['White']	High school	
 94ug8ln7qdjhuzsrzo88gzvb	[1080, 1920]	330.674	True	20	Male		Not Hispanic or Latino	['White']	Some college	
 96d32q3ghoqw31xzl9a9fe5y	[1080, 1920]	423.893	True	19	Female		Not Hispanic or Latino	['White']	Associate degree	
 96ffdhcxagzthzjcu07wcnht	[900, 1600]	366.817	True	49	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 9ao114mcsua7sway0y8yjjxw	[1080, 1920]	336.267	True	23	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+9etxpasudw81qlr6b9155stj	[720, 1280]	365.678	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 9f66o33e03dp9zq1aqgl39ma	[900, 1440]	363.756	True	18	Female		Not Hispanic or Latino	['Black or African American']	High school	
+9g962q8bo10vukbnxlbehij2	[864, 1536]	348.437	True	18	Female		Not Hispanic or Latino	['White']	High school	
 9g968us0aftfb9s4fmflbbt4	[1024, 1280]	297.945	True	24	Female		Not Hispanic or Latino	['White']	High school	
+9garlie7kwd9195e4jqy96dv	[1120, 1792]	329.132	True	26	Female		Not Hispanic or Latino	['Rather not say']	Master degree or higher	
 9j3jtjjtdtnjmin6lbohef0a	[1080, 1920]	472.886	True	28	Male		Not Hispanic or Latino	['White']	High school	This was really confusing 
+9jheslpnfqyzv0fypaippqpj	[900, 1440]	389.804	True	28	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+9jmxq5vapebprndojrnps7nj	[864, 1536]	456.029	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 9k53ht6h0096rwmabzdwat9q	[800, 1280]	390.787	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 9kdpimklx03e225ptr8p71hl	[1200, 1920]	428.61	True	26	Female		Hispanic or Latino	['Black or African American', 'White']	Bachelor degree	
 9koygkpp3iekef87xgerze9k	[900, 1440]	444.547	True	22	Male		Hispanic or Latino	['White']	Bachelor degree	This was extremely fun!
@@ -236,27 +290,36 @@ subject	screen_resolution	total_time	image_load	age	gender-categorical	gender-fr
 9ldvxxstllzeso1i5789mrfz	[900, 1440]	387.549	True	20	Male		Hispanic or Latino	['White']	Some college	no comment
 9lgzt44k9zymblu1xqsxtwpz	[1050, 1680]	447.354	True	20	Male		Not Hispanic or Latino	['Asian']	High school	
 9n3ckjytby15xji8m3759ga0	[900, 1440]	399.741	True	19	Female		Not Hispanic or Latino	['Black or African American']	High school	no comment.
+9przs1pu83zorg339vpzgdju	[720, 1280]	293.762	True		Male		Rather not say	['White']	Master degree or higher	
 9qshg2o8fowyn3efok9hfsx7	[900, 1440]	447.356	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 9r62m0a6mkb7eserkqw0zaxx	[800, 1280]	435.765	True	30	Female		Not Hispanic or Latino	['White']	Master degree or higher	That was hard 
+9rq5sbl3rw48wjvo8gaaf8tq	[1797, 980]	338.893	True	32	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	Good survey
 9s88tid5d5r16f6vib0lf7ts	[900, 1440]	276.515	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 9w63piyvhpvu41rg6hlvkhcm	[900, 1440]	522.976	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	The images could have been a little bigger.
 9wvt1g6zjkardbrdtpg682r7	[768, 1366]	448.063	True	18	Female		Not Hispanic or Latino	['Black or African American']	High school	Really easy to complete
 9xa74pq6zv5iuhqmqrrbbohr	[1080, 810]	385.583	True	21	Female		Not Hispanic or Latino	['White']	High school	
 9xtyo079d0dy84zq715syb0e	[1080, 1920]	341.432	True	19	Male		Not Hispanic or Latino	['White']	High school	
+9zgv76e49ylfqurkrtzh2qcx	[720, 1280]	372.578	True	18	Female		Hispanic or Latino	['Rather not say']	Associate degree	
+9zj422mcb058j763603wevke	[1080, 1920]	435.947	True	50	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 a24viffx60x1jgaz5vhblnzn	[1058, 1882]	292.382	True	25	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 a2imljm500yomgyatxvt1zth	[900, 1440]	349.772	True	19	Male		Not Hispanic or Latino	['White']	High school	fun quiz!
 a5bahlr2tvrimn8sowdwuvu3	[960, 1708]	139.775	True	46	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 a6dhpnhmomduptaq2o6d92a4	[900, 1440]	259.119	True	20	Male		Rather not say	['White']	Some college	Harder than I thought!
 a6h0csayrba6igvyu0latd05	[864, 1536]	256.799	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+a7ke19xsvx2l0d966l1rtoa7	[1080, 2560]	399.089	True	35	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 a7s3mle8ync7kby44ns1h7qo	[900, 1440]	419.845	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 a9j1vgtfo3sv3mawiwd5fzke	[800, 1280]	385.105	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 abvx0zr98mor3p6u1ephdtu2	[720, 1280]	399.501	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	Hard with little time to think so quickly.
 acqwehlaccazo1mzzwbp5nsp	[900, 1440]	437.745	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	Images were slightly too small but I was still able to complete without difficulties. 
+adtiks3bqk5urjnqj0tg00n9	[900, 1440]	308.148	True	30	Female		Not Hispanic or Latino	['White']	Bachelor degree	No comment
 afdhy32dylk39yz5o87jss21	[864, 1536]	316.439	True	19	Male		Not Hispanic or Latino	['White']	Some college	
 ahiyueedkfr05pfvxta8kizv	[657, 1366]	631.188	True	46	Male		Not Hispanic or Latino	['White']	Master degree or higher	There was a survey very nice    
 ahyugxeoijrv20jhzvh0is5x	[702, 1440]	208.682	True	24	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	n/a
+allpdta1g0eim2z5m131b77x	[900, 1440]	285.42	True	22	Male		Hispanic or Latino	['White']	Bachelor degree	
+ame4q6nw8do6bbowemueoyrx	[900, 1440]	428.579	True	28	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 amuv7s75gam5t23pab21eh4h	[643, 1536]	335.976	True	40	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 aqbhw37gx70xuk98l5z7s45o	[900, 1600]	373.657	True	19	Male		Not Hispanic or Latino	['White']	High school	This was actually quite fun, I'd love to participate in more!
+ast9uh89wspxsjxyn07dhbr0	[800, 1280]	386.362	True	21	Female		Hispanic or Latino	['White']	Some college	
 atbnkyroienosrs34i83sn65	[900, 1600]	375.291	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 atlfpjhxg84kygi6ogbms3m1	[683, 1708]	381.728	True	42	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 awel4j6v0rm4ta2s647rnv2m	[800, 1280]	403.096	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -266,6 +329,8 @@ azmgn9i5xm8mka9fqwkeso89	[864, 1536]	298.839	True	20	Male		Not Hispanic or Latin
 b02ynma46gkvi2oekullmd05	[768, 1360]	420.686	True	34	Male		Not Hispanic or Latino	['White']	Some college	
 b14bptx36jp7yg07d0h1bfnk	[900, 1440]	358.956	True	18	Male		Hispanic or Latino	['White']	High school	
 b378p687zsr1gm7s05s24eg8	[768, 1366]	557.403	True	36	Male		Not Hispanic or Latino	['White']	Master degree or higher	nothing really
+b759vs3bxee3ndkkx73304iw	[937, 1920]	366.546	True	21	Female		Not Hispanic or Latino	['Black or African American', 'White']	Some college	
+b94ojuxyxy4ym1txhm160gni	[768, 1366]	328.436	True	23	Female		Not Hispanic or Latino	['Black or African American']	Bachelor degree	This was a great way to stimulate the mind
 bb80jdftgq7kmwo1trya5270	[1050, 1680]	336.682	True	18	Female		Not Hispanic or Latino	['White']	High school	
 bbekbqw42edxfqxfctcq1dcu	[900, 1440]	362.323	True	18	Female		Not Hispanic or Latino	['White']	High school	
 bcpexkb7dadjt37848mglhnx	[1310, 2328]	305.319	True	22	Male		Not Hispanic or Latino	['American Indian/Alaska Native']	Bachelor degree	no comment
@@ -273,20 +338,31 @@ beqt7e973l6xyvrcyrbo6076	[768, 1366]	566.963	True	29	Male		Not Hispanic or Latin
 bff9yq6yewxz00mevh91oumy	[1080, 1920]	441.42	True	50	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 bhaik4194elrqjdyspvfje6k	[900, 1440]	287.196	True	21	Female		Not Hispanic or Latino	['Asian', 'White']	Some college	
 bizc9o47durrat6i2ydiod1r	[900, 1440]	302.4	True	28	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+bj06p13lp4jua7gpi745zzwa	[1080, 1920]	288.076	True	26	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+bl9jeohvekgg89h9puf97a5p	[2020, 980]	438.782	True	36	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 blrvfgq37hpsbl6qlmbqsv8y	[800, 1280]	241.92	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 bot1mtv21v6v3j718yl6ehmn	[1080, 1920]	473.236	True	52	Male		Not Hispanic or Latino	['White']	Bachelor degree	this was fun
 bpfjfmu7ifcbwi41y2f48v08	[900, 1440]	428.288	True	21	Female		Hispanic or Latino	['White']	Bachelor degree	
 bsoumkwyunhkdjghfxbwaf1w	[900, 1440]	434.281	True	21	Female		Not Hispanic or Latino	['White']	Some college	
+bt0aac13cbzpfoy9cj3rs1oc	[864, 1536]	360.785	True	18	Female		Not Hispanic or Latino	['White']	Some college	
 bt6bmnj5ivm0ethe5egicg86	[854, 1280]	291.158	True	19	Female		Unknown	['Black or African American', 'White']	High school	
 bt97c9t7xjxxjos1o72mhekg	[1024, 1366]	281.877	True	20	Female		Hispanic or Latino	['White']	Bachelor degree	
+bukx59sx66j5rpkwbhjhjho6	[900, 1440]	486.317	True	31	Female		Not Hispanic or Latino	['Asian']	Master degree or higher	30 seconds was a short amount of time to process the images
+bvzypll9v3ft5nvv64j5yxgt	[1080, 1920]	354.974	True	40	Female		Not Hispanic or Latino	['American Indian/Alaska Native', 'White']	Bachelor degree	
 bxdo8xn8jhec6tnszflnl1y3	[768, 1366]	523.636	True	26	Female		Not Hispanic or Latino	['White']	Less than high school	The game was great! Those were hard! 
 bxppgpgutln8cb2zcgioxrmw	[900, 644]	338.371	True	36	Male		Hispanic or Latino	['White']	Master degree or higher	
 bxskiwp8wr28tghp3ixxxmbj	[720, 1280]	472.772	True	32	Male		Not Hispanic or Latino	['White']	Associate degree	There was a good progression from easy to hard!
 bxvixf6mzr8bojhev1381kbn	[1440, 2560]	184.665	True	20	Male		Not Hispanic or Latino	['Asian']	Some college	
 bxvopsrtgretnshtc8xk11wc	[800, 1280]	326.324	True	23	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+bz16l5m4630zn124amjycwor	[1611, 980]	383.253	True	41	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	No
+c0vupw5yicka456rqu254r1p	[1080, 1920]	421.643	True	35	Other	Nonbinary	Not Hispanic or Latino	['White']	Some college	
 c0z9cvpak4g45tssgg7e7f6b	[800, 1280]	376.484	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 c1wpouj7vjiq0ry1jkuh00fp	[900, 1440]	381.341	True	26	Female		Not Hispanic or Latino	['White']	High school	
 c2eq48a99tysozxhs8yc4his	[1050, 1680]	493.54	True	23	Male		Hispanic or Latino	['White']	Bachelor degree	
+c32yzc6j6tj65s8kgvnhvc0y	[679, 1280]	612.426	True	28	Male		Not Hispanic or Latino	['White']	Bachelor degree	thrilling and interesting survey
+c35adc9emmsaladrvgzjr4go	[900, 1440]	342.871	True	22	Female		Hispanic or Latino	['White']	Bachelor degree	no comment
+c37cfy4xw362gxknrmtq9wyd	[768, 1366]	211.745	True	30	Other	Non-Binary	Hispanic or Latino	['American Indian/Alaska Native', 'White']	Bachelor degree	
+c4dinfp75ghy6n01bhnf2rhy	[864, 1536]	284.329	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 c4fk26xv9nuiphw5fwpxko3j	[900, 1440]	382.756	True	18	Male		Not Hispanic or Latino	['White']	High school	The images were a good size and easily distinguishable.  
 c4m0py2ssiawmnlcbb1mjmm0	[722, 1536]	388.072	True	31	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 c5lm1phmk1cjw9hj59zb6k5m	[768, 1366]	391.67	True	34	Male		Not Hispanic or Latino	['White']	Master degree or higher	Nice study.
@@ -294,6 +370,7 @@ c5qonsqeqbay66sirfh53nuo	[900, 1440]	410.886	True	47	Male		Not Hispanic or Latin
 c6kcn71dud6b63c0bgd1cuhr	[900, 1440]	445.463	True	18	Female		Not Hispanic or Latino	['White']	High school	These puzzles were very engaging and fun to complete
 c6nrjcasndd9oaci7lwoezmk	[900, 1440]	395.125	True	18	Male		Not Hispanic or Latino	['Asian']	Some college	
 c786aq5xp32tkx5zyug00sw6	[900, 1440]	369.886	True	28	Female		Not Hispanic or Latino	['White']	Master degree or higher	no comment
+c8oo5yrk50kwhll3ud8wu5s9	[771, 1198]	356.906	True	43	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 cb7na65pq0i7iseu49kxexax	[1440, 2560]	334.759	True	34	Female		Not Hispanic or Latino	['White']	Associate degree	my eyes hurt, there were so many colors and patterns happening!
 cbc94by959ezj3jcactijqec	[900, 1440]	266.467	True	33	Female		Not Hispanic or Latino	['White']	Some college	no
 ccgep1ifodczpusfyihlwlz9	[900, 1440]	336.739	True	29	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
@@ -301,11 +378,17 @@ cg3vvn1tjzbrpnbvfz4pty8h	[864, 1536]	371.619	True	34	Female		Not Hispanic or Lat
 cgxxfach73em07jda3djj41z	[937, 1920]	3550.911	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 chx9959o49qax5dt319wrsr3	[900, 1600]	385.145	True	24	Male		Hispanic or Latino	['White']	Bachelor degree	
 ckb1fgsbcdwkhq4qkmoyx9bn	[900, 1440]	359.306	True	33	Male		Not Hispanic or Latino	['White']	Master degree or higher	no comment
+ckv07yswfduce0f1lx66cczy	[900, 1440]	418.905	True	19	Female		Not Hispanic or Latino	['White']	Some college	
+cmo1ukatrvzks99stgfzlgio	[900, 1440]	343.368	True	22	Female		Not Hispanic or Latino	['Black or African American']	Bachelor degree	
+csizne72q7ijh61y6ka37yol	[900, 1440]	317.858	True	24	Female		Not Hispanic or Latino	['Native Hawaiian or other Pacific Islander']	Bachelor degree	
 cxs4x05c44pa84sa0bah10te	[1024, 1280]	440.307	True	21	Male		Not Hispanic or Latino	['White']	Some college	
 czmvrek98hf1eejj4wrt7vbs	[900, 1440]	439.412	True	24	Female		Not Hispanic or Latino	['Rather not say']	Bachelor degree	
+d05krcqirluo9s50wqq2eh97	[720, 1280]	367.182	True	21	Female		Hispanic or Latino	['White']	High school	
 d1iqojx3bun3xqewwawraga3	[900, 1600]	264.232	True	22	Female		Not Hispanic or Latino	['Asian']	Master degree or higher	
 d4j3n6s052ilouwmwlt5ddgm	[900, 1440]	447.878	True	19	Female		Not Hispanic or Latino	['Black or African American']	Some college	
 d58i8ccvptnsejzpxl9qlmz9	[900, 1440]	353.792	True	19	Female		Not Hispanic or Latino	['White']	Some college	
+d71nnhhb34bslwlu8cjwglkq	[768, 1366]	427.396	True	32	Female		Hispanic or Latino	['Rather not say']	Associate degree	
+d92lwp0fbmtcujf84fnq989h	[768, 1366]	324.92	True	29	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 da4u1lurop994sw2o274ktx0	[900, 1440]	341.751	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 dej3sij27st4s0esqqiekiqu	[900, 1440]	339.631	True	21	Female		Not Hispanic or Latino	['White']	Associate degree	
 dh38d9j34jm2cdl5d6ydkkh3	[912, 1368]	347.438	True	20	Female		Hispanic or Latino	['White']	High school	
@@ -315,10 +398,13 @@ dkf95cnxz66jj22l7hqilqit	[1050, 1680]	336.971	True	24	Female		Not Hispanic or La
 dluhup2gsyh0acu06vi9gyzl	[637, 1600]	2018.08	True	39	Male		Not Hispanic or Latino	['White']	Master degree or higher	nice survey
 dlumhrmx3fi1zzq15wtiw535	[900, 1440]	279.838	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 dmx10091pinavm63nly1pcik	[1080, 1920]	361.948	True	27	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+dn6ve9urgsunj4c864kcpdfi	[1080, 1920]	189.927	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+dn9lvxsyg0mu9e4j4oisxlo0	[864, 1536]	229.916	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 dnoa4l2bl2x2hncn65qp8soe	[900, 1440]	315.007	True	34	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 dqgfspfp01qaeoytoc6i9hov	[768, 1366]	546.255	True	37	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	a good survey
 du0mgdvbqadha0x5tp2xdmpz	[683, 1708]	977.591	True	41	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 duk5wvbw636yf48esgjc6vg0	[768, 1366]	380.811	True	50	Male		Not Hispanic or Latino	['White']	Master degree or higher	no
+dwh484ks2bff7yz0gomq47vk	[864, 1536]	377.87	True	24	Female		Not Hispanic or Latino	['White']	Associate degree	
 dwwcjsgp42tpfbb1328wt11a	[900, 1440]	264.973	True	19	Male		Not Hispanic or Latino	['White']	Some college	
 dwxmj7m3aqkez4qlrbto1l5u	[900, 1440]	358.109	True	20	Male		Not Hispanic or Latino	['Native Hawaiian or other Pacific Islander', 'White']	High school	
 dy4dtu9hazrvdqk9byl8034k	[900, 1440]	379.148	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -328,10 +414,13 @@ e2ktc5ufzbg5sx0qwb24h13g	[800, 1280]	327.136	True	23	Female		Not Hispanic or Lat
 e3s7n9y4m8iyw5cnuw29obne	[900, 1440]	430.62	True	27	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 e457si1cryb8ngg63bn2rlq4	[864, 1536]	479.041	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 e54rdhagf45phsuviycwahlo	[1080, 1920]	444.751	True	21	Male		Not Hispanic or Latino	['White']	Some college	The images could be a little bigger.
+e5iuxc59vc39qt1cokfgthjp	[960, 1707]	174.043	True	33	Male		Unknown	['Rather not say']	Rather not say	
 e6q75rfq2i284zsh3jnb6k49	[864, 1536]	519.03	True	22	Male		Not Hispanic or Latino	['Black or African American']	High school	This survey was great!
+e6qinxp1taykmbrp8vz2ze2m	[1080, 1920]	356.39	True	26	Male		Not Hispanic or Latino	['White']	Some college	
 e6skreil0qv5xi9lz3jdbuzn	[768, 1366]	421.978	True	48	Female		Not Hispanic or Latino	['White']	Bachelor degree	it was hard
 e77hf5o6w3q43gbom9m8ogwf	[1080, 1920]	365.18	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 e7harksgfhkubx4bdfplzbde	[900, 1440]	285.977	True	21	Female		Hispanic or Latino	['White']	Some college	
+e8dhsmv13z2jhreqjouwl9lf	[1080, 1920]	458.368	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 e91op9p772nszc0ykurw8hgy	[1314, 2732]	833.699	True	46	Male		Not Hispanic or Latino	['White']	Bachelor degree	Thanks for the interesting Study And apologize for my Incorrect Answer.
 eaas1cuxkhqr7v577exoxg9v	[768, 1366]	271.536	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 eap73sa4jjafnlvx8uu318di	[720, 1280]	317.325	True	20	Male		Not Hispanic or Latino	['White']	Some college	
@@ -352,46 +441,65 @@ elifytbl3zjvsxeryhqs2yeg	[900, 1440]	352.855	True	21	Male		Not Hispanic or Latin
 emku8jh73bkwfnv0u3ihsear	[800, 1280]	295.661	True	23	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
 eotokeisv4uqvvrsfd11n69n	[1024, 1280]	273.385	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 eoz3hva9mqbhlx1td76x3hfb	[900, 1440]	330.959	True	21	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+ep6j9bji04jax5p7yx431e6u	[768, 1366]	964.049	True	40	Male		Not Hispanic or Latino	['White']	Master degree or higher	This is a good game survey.
 epg6mrf7d7k3reuenvinyn0u	[754, 1536]	297.049	True	19	Male		Not Hispanic or Latino	['White']	High school	
 eq6ohwyssrmeux0jlhtqpgzw	[900, 1440]	313.056	True	21	Female		Not Hispanic or Latino	['White']	High school	
 ern284uhvopuujb1lzx9pikx	[1200, 1920]	376.885	True	29	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+erpgf102bz63a590gzc4anod	[900, 1440]	240.215	True	19	Female		Hispanic or Latino	['White']	High school	
 etlhy2q3u8q1gfo4j49kwxpg	[900, 1440]	308.941	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+exykz8vb90wu6b2789wv23fa	[900, 1440]	366.808	True	20	Female		Not Hispanic or Latino	['White']	High school	
 eys0vdre9cg9vw7d4vrj9ldc	[900, 1440]	299.565	True	20	Male		Not Hispanic or Latino	['White']	Some college	
 f1nohwlh058mn7u09f6kypms	[1080, 1920]	452.705	True	30	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 f3jnwesjt4x6d8pbcyv3xgg9	[900, 1440]	416.853	True	26	Female		Not Hispanic or Latino	['White']	Master degree or higher	 NA
 f4egv81cztyag6au8tfewxoy	[864, 1536]	507.399	True	21	Male		Not Hispanic or Latino	['Asian', 'Black or African American']	High school	
 f638zjivsgccof5is1hj8i90	[768, 1366]	318.064	True	34	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+f6u4u85laj95svcqjrectp56	[900, 1440]	260.593	True	20	Female		Unknown	['White']	High school	
+f8d9rajxvqk2ylhlutr3ozih	[900, 1440]	328.036	True	22	Female		Not Hispanic or Latino	['White']	Some college	no comment
 f9hiqawiwe8kyaax9wmrf7q1	[900, 1440]	330.42	True	20	Female		Not Hispanic or Latino	['Asian']	Some college	
 fc1ey3zt9gnf40jb1eeecmri	[864, 1536]	266.999	True	28	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 fc4owb5j1x5mwpits1i0ifux	[900, 1440]	337.676	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 fduiah9gqgya670u9w4wmxf9	[1120, 1792]	507.263	True	23	Male		Hispanic or Latino	['White']	Bachelor degree	
 fh64ksnjqrfaqmkutsll5m1k	[800, 1422]	331.822	True	21	Female		Hispanic or Latino	['White']	Associate degree	
 fhdaaicy8pyqjl3opgzfn7kc	[864, 1536]	351.976	True	18	Male		Not Hispanic or Latino	['Asian']	High school	
+fj6too66q9t1j0qjm7j59djv	[800, 1280]	234.397	True	21	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+fjlylnei4spidtb8vjro0yo9	[768, 1366]	387.052	True	22	Female		Hispanic or Latino	['White']	Some college	
+flfwtp8bxguayw18nibft0dt	[768, 1366]	285.702	True	24	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
 fmpczllz4lb14nqdzrav7np3	[768, 1366]	301.692	True	35	Female		Not Hispanic or Latino	['White']	Some college	
 fneej4nu0khl8sxo5csx1ao3	[683, 1708]	409.337	True	43	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+fr0sb5796i5tclk2frrz0imb	[900, 1440]	345.302	True	18	Female		Not Hispanic or Latino	['Asian', 'White']	Some college	
 frhykohzg7vg82b8puwya2rn	[900, 1440]	373.389	True	18	Male		Not Hispanic or Latino	['White']	High school	
 frkca2ta1jdnpvz3iz37hxsa	[704, 1252]	396.88	True	38	Male		Not Hispanic or Latino	['White']	Master degree or higher	N/A
+fs2f1mqeoi51y8sx6xjaj75c	[900, 1440]	389.906	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 fuvfnvxti1ujnyyojvpjqica	[900, 1440]	230.954	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 fve9j6js22pubgc94k5hbt45	[864, 1536]	391.304	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 fwkbr91pq3h59pnn7wnawlu9	[900, 1440]	337.111	True	22	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	
 fxgjr077y3vdn9a9ll5tgb0o	[1050, 1680]	439.739	True	20	Female		Not Hispanic or Latino	['White']	Some college	
+fyss6z0c71x0oh58yj0mg8rs	[1080, 1920]	353.36	True	26	Male		Not Hispanic or Latino	['White']	Bachelor degree	n/a
 fzox5w54kcia0vg1z15655kl	[1600, 2560]	459.947	True	19	Male		Hispanic or Latino	['White']	Some college	
 g25wj0lnxn5lnaeqqd7n7r3l	[800, 1280]	439.915	True	23	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	no comment
 g2ljtifat87hzd3kvu0lmf2n	[683, 1708]	347.266	True	45	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+g594narpyvkgjctuvohu9tzj	[1960, 980]	372.136	True	35	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+g5xse63vwfyd5xgyzlb9666f	[768, 1366]	331.068	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 g6joz7lm0w3qb9p74kkymnoj	[900, 1440]	417.605	True	30	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 g7mhs3jke4gss1oy2l3w1qg5	[900, 1440]	247.521	True	19	Female		Not Hispanic or Latino	['White']	Some college	
+g7mxl1shgr4297vevkjn69hy	[800, 1280]	265.8	True	23	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 g8h72zta2vegwiej6psdia0w	[900, 1440]	368.177	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 g9dv3o9qvr5au55mpi8l04kn	[900, 1440]	448.664	True	20	Female		Hispanic or Latino	['White']	Bachelor degree	
 gcrsxezjypxo1hjjgdwu3v8w	[900, 1440]	346.225	True	21	Female		Not Hispanic or Latino	['White']	Some college	
+gduljxh7h7lt658hw48wijey	[1080, 1920]	187.776	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 ge16on34w0yhxe9i0wa15fyk	[900, 1600]	404.997	True	20	Male		Not Hispanic or Latino	['White']	Associate degree	no comment
 gftgi1d1n7e87h546xyk0opw	[768, 1366]	430.283	True	25	Male		Not Hispanic or Latino	['White']	Master degree or higher	I completed this study that was a great study.
 gk8cxnwjm9d7qvwtp38snyza	[768, 1280]	481.157	True	21	Male		Not Hispanic or Latino	['Black or African American']	Less than high school	I suck at puzzles!
 glqkbxeq69dx1gwrutzrzb4c	[1734, 980]	466.869	True	41	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	No comments 
 gm1g820uk2vf9zcjso649zaj	[800, 1280]	291.399	True	20	Female		Not Hispanic or Latino	['White']	Some college	no comment
 go2xzvl09j19w32y8f5n0ykn	[1080, 1920]	382.442	True	33	Male		Not Hispanic or Latino	['White']	High school	
+goeu22x2s0nvqm6mv01k1ykt	[1080, 1920]	260.26	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 gslk6zxuvbvyxoor9jg0jdvg	[720, 1280]	320.576	True	53	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
 gume9hgou9sjzjclxmhregyb	[800, 1280]	390.316	True	22	Female		Hispanic or Latino	['Native Hawaiian or other Pacific Islander', 'White']	Bachelor degree	
 gvvwe3yhv93iylqh4wyp3f7l	[1080, 1920]	341.482	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+gxk66rkcb0zq4ud7n3thzbyk	[1080, 1920]	296.344	True	20	Male		Not Hispanic or Latino	['White']	High school	
+h0lenbrvqiv549s8ml76e4mf	[864, 1536]	379.335	True	23	Female		Hispanic or Latino	['Rather not say']	Bachelor degree	
+h0p4bmlvr2eiojehxh8543s0	[800, 1200]	335.392	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 h18sl0uzre6b5zxnhwhmdy75	[864, 1536]	252.132	True	23	Female		Not Hispanic or Latino	['White']	Associate degree	
 h1b8fzr5yvivjatgmpky09as	[1080, 1920]	491.694	True	23	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 h338p7hwehj02u1ip7j80uvg	[768, 1366]	379.325	True	29	Female		Not Hispanic or Latino	['White']	Bachelor degree	
@@ -407,13 +515,19 @@ halr4yg761a0ho6mwpsch4ii	[1080, 1920]	415.821	True	58	Male		Not Hispanic or Lati
 hbtv8rewzmvn0zg620ju2e5z	[1080, 1920]	442.824	True	22	Male		Not Hispanic or Latino	['Asian']	Bachelor degree	
 hcgqxkgi31pnmw4ald6939o2	[900, 1440]	264.936	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 hdjmkdt1bbt19pghamosswp4	[900, 1440]	196.828	True	22	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
+hdw8vtvze52pv1x2qtmz7ysb	[768, 1366]	392.691	True	25	Other	nonbinary	Not Hispanic or Latino	['White']	Some college	
+hfpiflrjalwc6cypt05x3vvx	[1907, 980]	301.436	True	40	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 hjat3yqi4wglye3ofs05slg6	[768, 1366]	392.396	True	19	Female		Not Hispanic or Latino	['Black or African American', 'White']	High school	
 hjwh9ijhdurnaa2d9qjpllib	[900, 1440]	310.742	True	21	Female		Not Hispanic or Latino	['White']	Associate degree	
 hk17grwa7vg6ckqzmvxn3478	[864, 1536]	274.975	True	28	Male		Not Hispanic or Latino	['Asian']	Bachelor degree	
 hkc5g4tfvvxksxl8fpes0b8x	[800, 1280]	338.957	True	32	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+hkndzimkjzwf51s9a9i3x008	[900, 1440]	244.385	True	24	Female		Not Hispanic or Latino	['Black or African American']	Some college	no comment
 hlzxd4bpatz1gegx4wnkes1m	[811, 1216]	470.198	True	22	Male		Not Hispanic or Latino	['White']	Associate degree	N/A
+hn8crqpi0thaj09ygqa1hc3f	[800, 1280]	520.029	True	23	Female		Not Hispanic or Latino	['White']	Some college	
+hpn6dor3jf8of2jdd4jea8gn	[1080, 1920]	319.773	True	28	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 hqy02nwsru1x2s68xiyf24v6	[900, 1600]	265.878	True	20	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 hvhmnq158mneyv15tvtovox6	[1080, 1920]	356.248	True	22	Male		Not Hispanic or Latino	['White']	Associate degree	
+hxyd8av4dr2z8wztv0csv96n	[800, 1280]	456.264	True	34	Female		Rather not say	['White']	Bachelor degree	
 hy7o9kskrsid8hooqf7pzb7l	[900, 1440]	315.413	True	20	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 hzdkh6x1j28lplku79n53df5	[1742, 980]	753.068	True	35	Male		Not Hispanic or Latino	['White']	Master degree or higher	No comment
 i0r8hlejxp0h44sk6ryrcmhb	[768, 1366]	506.1	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	Changing the background color might make the puzzles a little easier to focus on instead of the white on white.
@@ -422,12 +536,18 @@ i2i239ol3f0ie67ekfoadw2e	[800, 1280]	267.178	True	21	Female		Not Hispanic or Lat
 i32eyt18hfgpxxz0w4ncciq3	[1080, 1920]	345.674	True	27	Female		Not Hispanic or Latino	['White']	High school	
 i38qt443du08nbbw9d9hcyh7	[657, 1366]	581.472	True	32	Male		Not Hispanic or Latino	['White']	Master degree or higher	N0
 i3ejcln7nd4h57e09ykjyx76	[1080, 1920]	500.524	True	44	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+i4sc9padz1nq0pd97gipoelt	[900, 1440]	261.72	True	24	Female		Not Hispanic or Latino	['Rather not say']	Bachelor degree	a timer would be nice
+i59tp4u8mpac0f5km0ssh0no	[900, 1440]	291.487	True	20	Female		Not Hispanic or Latino	['Asian']	Some college	Everything was good!
+i5w7g73eh8egol03sr1c4kfj	[900, 1440]	281.207	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 i6wkhc488kf6tkv286h83ko8	[900, 1440]	485.424	True	18	Male		Not Hispanic or Latino	['White']	High school	This was an actual fun study! Didn't feel like work at all.
 i7ipu4xe318k8k6h9a0dg63k	[900, 1440]	436.39	True	18	Male		Not Hispanic or Latino	['White']	Some college	
 i8bu263uo7fdg08swmegdkma	[900, 1440]	435.079	True	19	Male		Not Hispanic or Latino	['Asian']	Some college	
+i8njd58ltf83o5t2ihcmwyns	[1050, 1680]	296.531	True	20	Female		Not Hispanic or Latino	['Asian']	Associate degree	
+i9iqegidxzoyjx16dir1h9ii	[1080, 1920]	279.786	True	23	Female		Not Hispanic or Latino	['White']	Some college	
 ics5v5pbvd3yftebrz1a41li	[864, 1536]	613.254	True	39	Male		Not Hispanic or Latino	['White']	Master degree or higher	no
 id81ehgah6f6a3c4i8ylyp4b	[1440, 2560]	376.117	True	47	Male		Not Hispanic or Latino	['White']	High school	no coment
 igd10gndx7ii7uqf26eqs75p	[1024, 1280]	405.068	True	18	Male		Not Hispanic or Latino	['White']	Some college	
+ihv314u02k2ztuwsk0zxbuuq	[800, 1280]	372.604	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
 ilswa1taczugh1qrxzb99kh8	[768, 1366]	319.44	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 io6ih8gdu16ravkom65428yy	[900, 1440]	365.306	True	21	Female		Not Hispanic or Latino	['American Indian/Alaska Native', 'White']	Bachelor degree	
 iomh78i7h6nh2v0kb54gdbux	[864, 1536]	539.885	True	27	Male		Rather not say	['Rather not say']	Some college	
@@ -438,6 +558,8 @@ isshwe8oj9kgfn4iy6bp29ec	[1080, 1920]	404.543	True	18	Male		Not Hispanic or Lati
 iutic4e6kp6tew1sk6fnf0qx	[819, 2049]	165.552	True	39	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 ivya1n2y7lxbs7cvzz2fg763	[864, 1536]	445.99	True	18	Male		Not Hispanic or Latino	['White']	High school	
 iwjenztubpybq8epo459irnu	[900, 1440]	329.459	True	26	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	
+iwjow0x9e92x6gv4aljzxqkn	[1080, 810]	415.182	True	40	Female		Not Hispanic or Latino	['Black or African American']	Associate degree	
+ixdhv8wt35770dhjhsho247l	[900, 1440]	503.066	True	24	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 iyffgyj41dfhsmks29cshfkq	[800, 1280]	270.441	True	18	Male		Hispanic or Latino	['Rather not say']	Some college	
 j05g37w77dq7ufwhtozecv54	[912, 1368]	414.596	True	25	Male		Not Hispanic or Latino	['White']	Bachelor degree	this was fun
 j0sqix616fqa4pdbu0ab9z6a	[864, 1536]	383.463	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	no comment
@@ -471,13 +593,16 @@ jyelr9z8wzblfvz60r55tvmt	[1080, 2560]	145.917	True	22	Female		Hispanic or Latino
 jz2uiw571wp480ehc6zgcq8n	[768, 1366]	418.29	True	20	Other	Questioning, AMAB	Not Hispanic or Latino	['White']	Some college	Really great puzzles. Though I gotta say the practice puzzles didn't really prepare me for the actual puzzles. Lots more shapes involved. They did make me understand that I'm looking for patterns, but the patterns in the end were a lot more obscure than the practice ones.
 jzhlr225coxisf9f1w0z51na	[834, 809]	374.437	True	27	Other	agender	Not Hispanic or Latino	['White']	Bachelor degree	
 k08jrxs878op37qksq3qlf7r	[631, 1588]	315.049	True	37	Male		Not Hispanic or Latino	['White']	Master degree or higher	nice
+k0pa1ntb36mucmfajgre6wdg	[864, 1536]	365.339	True	26	Female		Not Hispanic or Latino	['White']	Some college	
 k2iv23u57llhwhicbrfx83sd	[864, 1536]	409.367	True	48	Male		Not Hispanic or Latino	['White']	Some college	
 k3bot146pfmji26jx7mdpx99	[900, 1440]	425.525	True	21	Female		Not Hispanic or Latino	['White']	Associate degree	
 k63nm6xu53y22d5z40fjszis	[900, 1440]	487.974	True	23	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
+k67dqg0sap4n64y3u6p7bzd2	[768, 1366]	369.956	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 k6fh1an6hst6mw751aa4lnju	[720, 1280]	501.368	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 k6kgwzdc5u4tva2hl2ggpyb0	[800, 1280]	520.87	True	67	Male		Not Hispanic or Latino	['White']	Master degree or higher	nice study
 k96wsef1uvtw2k1coek7xzll	[800, 1280]	298.114	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 k9nrrbxe40yo6i2w7iaim9gn	[900, 1440]	385.654	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+kazaz3p84w24gvez4mixc1k4	[900, 1440]	356.862	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 kc0xdzmg8c721vp7p0g57vxt	[900, 1440]	440.342	True	21	Female		Hispanic or Latino	['White']	Some college	
 kc2gslvz38kes9lud3v9nyi1	[768, 1366]	354.101	True	32	Male		Hispanic or Latino	['White']	Master degree or higher	
 kcc2epaykkdqi0059b3744mg	[800, 1280]	422.559	True	27	Male		Not Hispanic or Latino	['White']	Bachelor degree	NA
@@ -485,6 +610,7 @@ kcm26ywva9a56n9g1yvaseq0	[900, 1440]	318.452	True	24	Female		Not Hispanic or Lat
 khec27df802wf0g001zdobn1	[720, 1280]	325.998	True	52	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
 kjug4mgepjzfvvg01oodd05x	[1080, 1920]	424.052	True	35	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 kk3fnz2y79llszrouyupfsfe	[720, 1280]	302.21	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	n/a
+kkktbxz5fpm49dqga3wie50e	[864, 1536]	350.771	True	21	Male		Not Hispanic or Latino	['White']	Some college	
 klg7fy2e4s5kygsji811ww1l	[900, 1600]	444.263	True	25	Male		Not Hispanic or Latino	['White']	Master degree or higher	no comment
 km7jn4cvosfye4pvrwxbeqlg	[678, 1378]	336.594	True	27	Male		Hispanic or Latino	['White']	Bachelor degree	
 knecwp679n8ghawea6q3yt8b	[800, 1280]	362.711	True	18	Female		Not Hispanic or Latino	['Asian', 'White']	High school	
@@ -493,11 +619,13 @@ koksi5htb27chpv8izz0q9qg	[1080, 1920]	268.718	True	40	Male		Not Hispanic or Lati
 kpz18lr2nwh8g86rivuimsuu	[864, 1536]	449.437	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 kqfg0mfqia8f2impzazbgsz8	[900, 1440]	416.439	True	41	Male		Not Hispanic or Latino	['White']	Master degree or higher	Nice study
 ktow6kw8aysm42c0aj1m7xt1	[768, 1366]	469.668	True	22	Male		Not Hispanic or Latino	['White']	Some college	
+kw1lrk8wfic0nhhqjzpgf52d	[768, 1366]	534.248	True	28	Male		Rather not say	['American Indian/Alaska Native']	Some college	No
 kyz5q4faoecd304rsxiae9nd	[768, 1366]	343.64	True	21	Male		Not Hispanic or Latino	['White']	Associate degree	
 l0rkr2a96xlipsol8wudfvs0	[900, 1440]	279.366	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 l17esoy8522slwizblysi54z	[900, 1440]	488.221	True	25	Female		Not Hispanic or Latino	['White']	Master degree or higher	might be helpful to have the countdown the whole time or not at all
 l3fjxmpgvhqd62lh4ygdosn4	[900, 1440]	253.464	True	21	Female		Not Hispanic or Latino	['White']	Bachelor degree	More time allowance per puzzle; i.e. 1 minute each.
 l5yqrlkph4s42j6htb0nvxha	[720, 1280]	238.362	True	53	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
+l72zqiiroy5k4u1q29m46m0x	[900, 1440]	278.566	True	22	Female		Not Hispanic or Latino	['White']	Some college	
 l78dc56ar7ap42gfqe5gx52z	[720, 1280]	392.972	True	22	Male		Hispanic or Latino	['Rather not say']	Bachelor degree	
 l7oxme1020sph88dta19e34m	[864, 1536]	444.362	True	18	Male		Not Hispanic or Latino	['Asian']	High school	It would be nice to have a timer than starts from 30
 l9kljxhr127ktygvd9qqzyl7	[900, 1440]	420.807	True	20	Female		Not Hispanic or Latino	['White']	Some college	no comment
@@ -507,18 +635,24 @@ leuwb844q32tbk0e3bu4t41m	[900, 1440]	321.868	True	21	Male		Not Hispanic or Latin
 lhal8ik1dey46k0wqix8sosa	[1080, 1920]	350.19	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 lhn9nbcx2c912zadbrh6t8v5	[1080, 1920]	457.035	True	19	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
 lhyb1408gv6hehkjosvvw05c	[1080, 1920]	394.114	True	20	Male		Not Hispanic or Latino	['White']	Some college	
+lk09mowe3taqzk8l2gzae1gu	[900, 1440]	463.607	True	19	Female		Not Hispanic or Latino	['White']	High school	
 lne6b2sc369e77qndf805b3r	[900, 1440]	377.245	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	n/a
 lngzox5bj2d35flsl8kxlsqw	[864, 1536]	285.615	True	19	Female		Not Hispanic or Latino	['White']	Some college	:)
 lourr98z7q0puhk3us67jqo3	[912, 1368]	278.826	True	23	Other	genderfluid	Not Hispanic or Latino	['White']	Some college	
+lq4j99w2firepyeki51y9ous	[900, 1440]	351.954	True	19	Female		Hispanic or Latino	['White']	Some college	
+lq823y3h35obo5t4jzljp6mm	[864, 1536]	413.611	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 lqboe02t5dcbukhh6szfez8n	[900, 1440]	195.11	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 lrbc9ul7jb1toqh4v7rrznq5	[768, 1366]	444.657	True	24	Rather not say		Hispanic or Latino	['Rather not say']	Associate degree	
 lrqwr6lwgjobc51tpb2c9xcr	[900, 1440]	335.014	True	19	Other	Nonbinary	Not Hispanic or Latino	['White']	Some college	
 ls3pfibflf24z8rfbd1k0aqr	[1080, 1920]	365.456	True	19	Male		Not Hispanic or Latino	['White']	High school	
 lvi5uyy62oqz8ezppjb5hqma	[1050, 1680]	482.438	True	27	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+lvzh4o6tjnjx70ltgrocjoxk	[900, 1440]	480.475	True	23	Female		Not Hispanic or Latino	['White']	Master degree or higher	darker grid lines
 lx3g3bv04t3mr2okswk2n8i0	[1080, 1920]	239.411	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 m0iroajletpt2lvlzd7n5aqg	[1003, 1504]	364.986	True	26	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 m2877mwt8rbnu5gl6hf0f4tn	[1918, 981]	221.287	True	35	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	None thanks 
+m314yc3r7au0smjhvtfgan2f	[768, 1366]	379.598	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 m3954mo4pkct7zqrbrhf515w	[1080, 1920]	409.041	True	22	Female		Not Hispanic or Latino	['White']	Some college	
+m727jcayi3dmnxjivr9z4ooy	[720, 1280]	240.386	True	20	Female		Not Hispanic or Latino	['White']	High school	That was fun!
 m7ml1hwaw9rcn9rygsaymswi	[900, 1440]	355.962	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 m8l8odayjdj3ruw1v91dp1bu	[900, 1440]	347.323	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 maxu3x178x01fcwm0ji8qklm	[864, 1536]	254.505	True	18	Male		Hispanic or Latino	['American Indian/Alaska Native']	High school	
@@ -528,6 +662,7 @@ mgzbsix8ml13gt64x03fjznz	[900, 1440]	389.816	True	20	Male		Not Hispanic or Latin
 mjyltiv7dh6f92qp3hbxprb8	[864, 1536]	400.318	True	25	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 mk46f942z1ceqyjd1hyt69zh	[864, 1536]	306.3	True	26	Male		Not Hispanic or Latino	['White']	Bachelor degree	Harder than the MENSA pre-test! 
 mntyrnyptu7qqmuo91pcobp4	[1440, 2560]	185.911	True	25	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+mozo9axb2k3txn6sk5toxr35	[1003, 1504]	364.201	True	19	Male		Not Hispanic or Latino	['White']	Associate degree	
 mpe8k5rz40v86rg5156bk0n3	[800, 1422]	326.63	True	20	Male		Not Hispanic or Latino	['Asian']	High school	
 mpkpgpnt7xcg2asn923jgdqq	[1152, 2049]	182.471	True	36	Female		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 msl06qxu4wbbhyad3znlym9r	[864, 1536]	330.845	True	20	Male		Not Hispanic or Latino	['White']	Some college	
@@ -539,6 +674,7 @@ mxlmjd44p6himfpjh91z6fmh	[900, 1440]	306.36	True	18	Female		Not Hispanic or Lati
 n0j766vxuq6aq3qtqwrilhmp	[900, 1440]	271.596	True	18	Female		Not Hispanic or Latino	['White']	High school	no comment
 n14t0ymfo8ely4zdy29ulv8g	[900, 1440]	421.085	True	35	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 n1f6eryhbbwbcbw94euhxg19	[900, 1440]	386.457	True	21	Male		Not Hispanic or Latino	['White']	Some college	
+n3thhd4cj1c523rtufkqbl1u	[720, 1280]	503.893	True	20	Female		Not Hispanic or Latino	['Black or African American']	Some college	
 n3ut6nx7z6sse9zwp516drxr	[1080, 1920]	485.718	True	25	Male		Hispanic or Latino	['White']	Some college	no comment
 n3yir0mho6jsrz6wg7udgufo	[900, 1440]	434.275	True	18	Female		Not Hispanic or Latino	['White']	High school	Very clear images. Easy to understand instructions
 n63idqo92li7kaqqw7masjwq	[900, 1600]	518.678	True	18	Female		Not Hispanic or Latino	['White']	High school	No comment
@@ -548,6 +684,7 @@ na3ym0knose6but5an64stam	[864, 1536]	349.34	True	19	Male		Hispanic or Latino	['W
 na7s8tyky4mtxz53vxrnlnkx	[768, 1366]	355.353	True	20	Male		Not Hispanic or Latino	['Black or African American', 'White']	Some college	no comment
 naejt0lpbz1pyan0kra2451d	[900, 1440]	285.961	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 nb4v84vbhb8iyhhar368g0g8	[1440, 2560]	376.448	True	21	Female		Hispanic or Latino	['White']	Some college	
+nbgf0vgequ1ldp40ftk2unzb	[900, 1440]	307.888	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 nbt33et2oe3snb3wggo7h8rs	[1080, 1920]	473.198	True	24	Male		Hispanic or Latino	['White']	Bachelor degree	
 necm8o0d3jvf7uyccz3g51mb	[864, 1536]	410.017	True	18	Female		Not Hispanic or Latino	['Black or African American']	Associate degree	
 nhl8x7eujej6gd2jj5s0qe0n	[864, 1536]	348.818	True	19	Female		Not Hispanic or Latino	['Asian']	Some college	
@@ -559,48 +696,63 @@ nnbpf3cs8crba2hqfievmmws	[864, 1536]	500.052	True	19	Male		Not Hispanic or Latin
 nnpnxu035nr2jn47p9hb4mwn	[1440, 2560]	462.086	True	20	Male		Not Hispanic or Latino	['White']	High school	
 no79r17gbmsnfaxmsvt2x282	[900, 1440]	441.601	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 noiqmbscbspfc2y0y6vznv56	[858, 1525]	426.289	True	44	Male		Not Hispanic or Latino	['White']	Master degree or higher	Interesting
+nopg1f4yphxdivmz94gdkble	[983, 1746]	449.625	True	18	Female		Not Hispanic or Latino	['Black or African American']	High school	
 npkn4iwennf0cinvblqnkvna	[864, 1536]	298.157	True	30	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 nr0bhsx29bitsjt5agofl2xp	[900, 1440]	428.123	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 nt17df92nh15u5kuepgd2zdf	[864, 1536]	254.824	True	21	Female		Not Hispanic or Latino	['White']	High school	No comment
 nv667shab57egd7g3ncul495	[720, 1280]	239.542	True	53	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
+nwz8pb2er95avv5i6t5iscot	[768, 1366]	399.372	True	25	Female		Hispanic or Latino	['White']	Bachelor degree	
 nx3vumnvmjwvjatnrxnvfqab	[900, 1440]	375.01	True	21	Female		Not Hispanic or Latino	['White']	Associate degree	
 ny2r7p9gfpb4g3ohrv61kmgx	[912, 1368]	406.256	True	21	Female		Hispanic or Latino	['White']	Bachelor degree	
 nyp0x0lmeq7m879smonj6vrk	[960, 1707]	514.476	True	35	Male		Not Hispanic or Latino	['White']	Associate degree	
 o1tos2nwwrata0b3klg441yd	[864, 1536]	450.626	True	18	Male		Not Hispanic or Latino	['White']	Some college	
+o57f72qegd5l9d1jm94msjcb	[912, 1368]	418.959	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	I thoroughly enjoyed this
 o7hgvk3h6aowiopffw7p938l	[1920, 1080]	213.465	True	18	Female		Not Hispanic or Latino	['White']	Some college	
 o7n6ozmpmpwzjvrvr1yytrwm	[864, 1536]	338.442	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 o8umkr95qyly8rgf0rtmcy3s	[864, 1536]	184.754	True	24	Female		Hispanic or Latino	['White']	Some college	no comment
+o9j1qefu3fwjyvghu3tgvu19	[900, 1440]	278.26	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 o9miomtb3mn9v5vsryhadm2u	[1080, 1920]	304.178	True	35	Male		Not Hispanic or Latino	['Asian']	Some college	no comment
 ocanhvhg30leak7ex0xpi5hq	[900, 1440]	382.615	True	21	Male		Not Hispanic or Latino	['Asian']	Bachelor degree	
 oevt4l3i1drw88b245fiauez	[800, 1280]	520.66	True	23	Male		Hispanic or Latino	['White']	Bachelor degree	
 ok87f166tplnhejuz7yp63uk	[1568, 980]	217.832	True	37	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	
 ongrwq33bi7cdwlh5bt0he7a	[853, 1517]	401.367	True	41	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+oqrdgfsl1w4vkylusrzac9f2	[900, 1440]	419.706	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 os36a81toy3zuqad24e8dtc1	[800, 1422]	395.363	True	22	Male		Not Hispanic or Latino	['White']	Some college	
 ossnddhxij8isfps0srjzpau	[1080, 1920]	378.56	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+otcp91md9ccy9hqjo5pqzqnt	[720, 1280]	324.001	True	19	Male		Not Hispanic or Latino	['White']	Some college	no comment
 otm2dayq6chz01zfbqkgks2d	[1080, 1920]	363.227	True	25	Male		Not Hispanic or Latino	['White']	Some college	
 ouw6wphsab42qxavim9erpan	[900, 1440]	422.876	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+ov9w3zi9f3y60i7dgc4ufivb	[900, 1440]	365.063	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 ovx7ikbmmf6md5l0p23t67sz	[683, 1708]	352.62	True	45	Male		Not Hispanic or Latino	['White']	Master degree or higher	no comment
 owqpf659onftyp18ksy7ksrd	[900, 1440]	414.476	True	21	Female		Not Hispanic or Latino	['Asian']	High school	
 oz9hqthy74lrv45itbc7rlyh	[864, 1536]	323.915	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 p0gubdem9cy31mmst2ju5xfa	[1080, 1920]	533.56	True	67	Male		Not Hispanic or Latino	['White']	Master degree or higher	wow. some were really tough, took a while to get some rhythm going. thanks! 
 p0zfz586atp2z9eeyuic1z0j	[1200, 1920]	414.778	True	25	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	N/A
 p160r00itrmxr9ncm3cop402	[800, 1422]	286.131	True	21	Female		Not Hispanic or Latino	['White']	Some college	
+p1k6ps1m422g149e4lajkpt3	[864, 1536]	372.386	True	22	Female		Hispanic or Latino	['White']	Associate degree	
 p2fjrflncvz6cnssj5zuodug	[900, 1440]	508.644	True	21	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 p2gx2i4tp0sbon7r3746jdl1	[720, 1280]	323.837	True	18	Female		Not Hispanic or Latino	['White']	Some college	
 p7i7qssivxd7zlsvcmqmplgl	[864, 1536]	396.562	True	22	Male		Not Hispanic or Latino	['American Indian/Alaska Native', 'White']	Some college	
 p7xey9ossdviiivxkbbwirvl	[800, 1280]	427.091	True	20	Male		Not Hispanic or Latino	['White']	Some college	
 p8q6xgeuz66a7fiaq9l4ldi7	[1080, 1920]	370.027	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 p95yqapklgt5g9gjw5r5tucl	[800, 1422]	381.635	True	20	Female		Hispanic or Latino	['White']	Some college	
+p9qae0rw9yw0kjyluj0akfhf	[900, 1440]	337.836	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	NO COMMENT
 pahgiz79e3lnlf65cru472aa	[768, 1366]	197.488	True	47	Male		Not Hispanic or Latino	['White']	Master degree or higher	
+pc35dokwv9r27l3pmgrobg9f	[831, 1520]	491.625	True	22	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
+pc47pbfrw7adur5s1eap39aa	[1050, 1680]	380.178	True	19	Male		Not Hispanic or Latino	['White']	Some college	
 pcoe9w68pra5y46bb60p4z2h	[1080, 1920]	320.886	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	That was the most difficult pattern study I've ever done. Fun though!
 pcrwm8admq6a6k5hka26ouu9	[1841, 980]	408.902	True	30	Male		Not Hispanic or Latino	['White']	Master degree or higher	Interesting
+pdbk7ai7kojj5by23yijdyu6	[1916, 980]	341.015	True	18	Female		Hispanic or Latino	['White']	Less than high school	
 pf395xh1g6bbc99zqja4aow5	[1080, 1920]	354.93	True	22	Male		Not Hispanic or Latino	['White']	Some college	
+pg8szf1l9qbm9ha1hsginwgy	[1080, 1920]	250.273	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 phn90p3430q5bahnnidc70w9	[1786, 980]	332.731	True	38	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 phy0n8m41hplzy9qx3z4ofek	[1050, 1680]	212.45	True	20	Female		Hispanic or Latino	['White']	Some college	
 pig2ct90qeloylu8x9ggbg5s	[810, 1080]	401.263	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 pjpf4gpn7em7dthvmn4t51ca	[800, 1422]	522.842	True	25	Male		Not Hispanic or Latino	['White']	Master degree or higher	n/a; everything was clear to me
 pjvbs9rsw6va3122ewavzsw2	[735, 1307]	411.053	True	35	Female		Not Hispanic or Latino	['White']	Some college	The pressure of the timer makes it harder. 
+pjzsuaonurxcisf1xe021kow	[900, 1440]	390.829	True	21	Female		Hispanic or Latino	['Black or African American']	Bachelor degree	
 pktxlw3e866n17d1conf4eac	[900, 1440]	489.21	True	18	Male		Hispanic or Latino	['White']	High school	No
+pm9vd1063ymahnif49edcuib	[1080, 1920]	375.589	True	25	Female		Hispanic or Latino	['Black or African American']	Associate degree	
 pokdue7ffjs11ut01tlbz8vd	[1050, 1680]	513.498	True	37	Female		Not Hispanic or Latino	['White']	Some college	
 ppgaa4b9lf025gzc9hwou4mw	[768, 1366]	337.821	True	31	Female		Not Hispanic or Latino	['White']	Associate degree	
 pqt1rngu144as559m4e40nhw	[864, 1536]	305.422	True	20	Female		Not Hispanic or Latino	['White']	Some college	
@@ -618,11 +770,13 @@ pyq2w5429fdj2ghgjt4qbnoa	[1928, 980]	504.51	True	32	Male		Not Hispanic or Latino
 pz33t09htiil1kzttvp8hrqd	[900, 1440]	376.809	True	29	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 pzomn4d304twbs33rvirrj41	[1080, 1920]	432.263	True	39	Female		Hispanic or Latino	['White']	Some college	
 q038vq6hv85iqgrq1wr7akl9	[1440, 2560]	289.256	True	30	Female		Not Hispanic or Latino	['White']	Bachelor degree	that was fun!
+q059u18vo6uyuh4wtgsdswfg	[900, 1440]	349.295	True	23	Female		Not Hispanic or Latino	['Native Hawaiian or other Pacific Islander', 'White']	Some college	
 q185wqohhj40gf05yv020g8m	[720, 1280]	311.302	True	26	Male		Rather not say	['Rather not say']	Bachelor degree	
 qdjjtxzsv2173385x11av6qm	[800, 1280]	326.531	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 qg7y6akl8otxgjz8r4xwjlp6	[768, 1366]	455.133	True	38	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 qht4u6pdz1yplbciantlfleg	[853, 1517]	430.252	True	21	Male		Not Hispanic or Latino	['White']	High school	
 qihx5unmoy0nkmmv0u2da7h2	[900, 1440]	424.582	True	24	Female		Not Hispanic or Latino	['American Indian/Alaska Native', 'Asian', 'White']	Bachelor degree	very engaging! I liked this survey a lot!
+qk1ile1163265gnzzwneise1	[900, 1440]	329.21	True	21	Female		Hispanic or Latino	['White']	High school	
 qkflu15ih48pyx6llghsjhmu	[768, 1366]	364.679	True	30	Male		Not Hispanic or Latino	['Black or African American']	Associate degree	
 qkp881homezaqofyo5k476xs	[960, 1536]	188.94	True	19	Female		Not Hispanic or Latino	['White']	High school	
 qljtqe2mz191ug4t0t8d6ty0	[900, 1440]	369.485	True	20	Female		Not Hispanic or Latino	['White']	Some college	
@@ -631,7 +785,10 @@ qqux8g17dcceudbvbv8p0tc8	[720, 1280]	341.03	True	52	Male		Not Hispanic or Latino
 qqwgzfhtt4yewcjcf5f8oeii	[900, 1440]	537.295	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 qrct31ibfodan5fuwt81ohbm	[900, 1440]	234.411	True	18	Female		Not Hispanic or Latino	['White']	High school	
 qsfx5o0gdlavorxzpk0syjw2	[900, 1440]	330.986	True	22	Male		Not Hispanic or Latino	['White']	High school	
+qshme3ps4xew81gpypl7l8a9	[1024, 1280]	304.482	True	63	Female		Not Hispanic or Latino	['White']	High school	No
+qsjzguhurwpww3swub4k7ra8	[864, 1536]	339.177	True	21	Female		Not Hispanic or Latino	['Native Hawaiian or other Pacific Islander', 'White']	Some college	
 qvhvyke7l1n87mkjbk6vt2gp	[768, 1366]	509.811	True	23	Female		Not Hispanic or Latino	['White']	High school	
+qwyfg0aaouh0lolywlkiz4aa	[1080, 1920]	312.119	True	25	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	images were fine and can be seen clearly 
 qxazh3x4r7up131vwxpkeu9u	[900, 1440]	443.386	True	18	Male		Not Hispanic or Latino	['Asian', 'White']	High school	
 qy0cx6u91y8rhh1s6rsmcah1	[1440, 2560]	235.073	True	24	Male		Hispanic or Latino	['White']	Bachelor degree	
 qyeer2wafwandwmfhvjbnje6	[864, 1536]	416.837	True	20	Female		Not Hispanic or Latino	['White']	Some college	
@@ -639,13 +796,17 @@ r3b05yxd3uz12t4fvulu2lxd	[900, 1440]	406.405	True	18	Male		Not Hispanic or Latin
 r5e3mtvk86osgwu9u24idh2g	[683, 1708]	942.221	True	39	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 r6t600bl7hw6clo5ra8q1j5v	[864, 1536]	378.853	True	26	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 r72mx919wcjkgf4ntsu94pxm	[800, 1280]	374.744	True	19	Female		Not Hispanic or Latino	['White']	Some college	
+r7q7ga0zbf17u7cczaao2mzc	[864, 1536]	260.83	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 r8t0ef6r0tzetihcebrzdrb8	[900, 1440]	508.989	True	18	Female		Not Hispanic or Latino	['Asian']	High school	no comment
 r97qw53z147758end2ny84qs	[864, 1536]	414.29	True	23	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 rcsai83fhf5lxeeqk7e8rdcv	[800, 1422]	412.691	True	27	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 rcxffsyt1nnw6wm7xu2ppww8	[720, 1280]	334.895	True	21	Female		Not Hispanic or Latino	['White']	Some college	
+rfd1jmbnu8evw0zebwznk2z8	[900, 1440]	305.014	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 rfkok0a4cozo2limde5reqvq	[912, 1368]	365.1	True	20	Male		Not Hispanic or Latino	['White']	Some college	
 rge4b8vlsuu5v1357bocnzdi	[900, 1440]	409.998	True	34	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+rhwvkk5krk01g9k8iw06h17g	[1050, 1680]	439.797	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 richzagvg42dka0e7mrfgnd8	[1440, 2560]	452.155	True	32	Female		Not Hispanic or Latino	['White']	High school	
+rifalecbcsn33f350sbnibg9	[900, 1440]	358.099	True	23	Female		Not Hispanic or Latino	['Asian', 'White']	Bachelor degree	
 rle0gtd7x7k6zahs3mjyd3iy	[912, 1368]	405.056	True	18	Male		Hispanic or Latino	['White']	High school	
 rn4ce5rvcc9sw4dtu3f79o6r	[1080, 1920]	462.667	True	60	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 rngtcz4xoxlj1oh3tqv6rbcb	[900, 1440]	292.17	True	28	Male		Not Hispanic or Latino	['Asian', 'White']	Master degree or higher	
@@ -668,11 +829,14 @@ s664797k76032w0fsrdmz7hp	[900, 1440]	318.495	True	27	Female		Not Hispanic or Lat
 s88uka5ddbitw78yh38aey4k	[900, 1440]	329.844	True	25	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 s8ax8r0ez3gvlpnhof1ephm3	[1080, 1920]	305.574	True	28	Female		Not Hispanic or Latino	['White']	Some college	
 s9c2f6vyt0pgkv6aybfkhw02	[900, 1440]	415.4	True	18	Female		Not Hispanic or Latino	['White']	High school	
+s9gbeivbgy54kqu79em5ojq9	[900, 1440]	351.073	True	19	Female		Not Hispanic or Latino	['White']	High school	
 sa3iazfcsonzxpfyyt5xzmrp	[1024, 1280]	509.534	True	37	Female		Hispanic or Latino	['White']	Bachelor degree	
 sawv2d6eih9zg4tdj9ec4u2m	[800, 1280]	319.25	True	28	Male		Not Hispanic or Latino	['White']	Master degree or higher	that was hard!
 sc2qtdd29yduu2n8n9fge4v7	[900, 1440]	367.339	True	20	Female		Not Hispanic or Latino	['White']	Some college	no comment
 scyqillfkavwf7yh4ju90tym	[1080, 1920]	430.809	True	33	Male		Not Hispanic or Latino	['White']	Associate degree	Some of these hurt my brain, thanks.
 sdcs16gmr1bfcbl839dp21uz	[900, 1440]	450.666	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+sddhsu5lsspu0do4utajad8e	[900, 1440]	218.33	True	23	Female		Not Hispanic or Latino	['White']	Associate degree	
+senn0bekdnon8ciup3mfej2c	[768, 1366]	419.753	True	19	Female		Not Hispanic or Latino	['White']	High school	
 sh1o7xm3qnq9zor7lhk40kev	[900, 1440]	405.852	True	21	Female		Hispanic or Latino	['White']	High school	
 sh3hponphz0e6uwpganyhumn	[1884, 980]	930.617	True	40	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	A good study. 
 shj9k00xm0ip8w7xo1gesade	[768, 1366]	626.858	True	32	Male		Not Hispanic or Latino	['White']	Master degree or higher	It was a challenging task
@@ -688,12 +852,14 @@ squpbxm5amwhg3yr3hff3wb3	[768, 1366]	390.439	True	36	Male		Unknown	['White']	Som
 srue929wie58a44hsus7u3pq	[900, 1440]	284.734	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 ssxk4309w1a2lru7zl62jn4b	[1050, 1680]	295.969	True	22	Male		Not Hispanic or Latino	['White']	Some college	A little hard to see sometimes.
 st2k1ipv8pl42t1zuckvjanf	[1120, 1792]	464.044	True	23	Male		Not Hispanic or Latino	['White']	Bachelor degree	
+stqaafkik0wp2svtvczs3thy	[637, 1600]	1044.48	True	44	Male		Not Hispanic or Latino	['White']	Bachelor degree	i enjoyed this survey studies.
 sw1664uyq2kk0hiy93um28y2	[768, 1366]	525.011	True	39	Male		Not Hispanic or Latino	['American Indian/Alaska Native', 'Native Hawaiian or other Pacific Islander', 'Black or African American']	Associate degree	No comment
 sw3vjhrne39iaqnyggi2ecxi	[864, 1536]	326.527	True	20	Female		Not Hispanic or Latino	['White']	Associate degree	
 sx9fp4zmvwn6dpoe9azndvlv	[900, 1440]	299.809	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 sybujbswng9l1imoys6zqeav	[900, 1440]	383.458	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 t2ubbcwfqwoox7b7adhxfxll	[912, 1368]	292.296	True	21	Male		Not Hispanic or Latino	['White']	Some college	
 t3ea20ros2a2simnidv0tr1b	[1080, 1920]	428.837	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	no comment
+t5oi693gj1fmyra1j7y1z9rn	[912, 1368]	359.632	True	21	Female		Not Hispanic or Latino	['White']	Associate degree	
 t6abtt8i4dtx1rx3o9v711fe	[864, 1536]	335.018	True	23	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 t6iyl0ad1e03glkt0bblw75j	[731, 1300]	324.181	True	18	Female		Not Hispanic or Latino	['White']	High school	
 t9b1x9y0oyxcf8vhff8buu0x	[768, 1366]	308.095	True	20	Female		Not Hispanic or Latino	['White']	Some college	no comment
@@ -702,27 +868,36 @@ tbb3mwap256tjfutn1ylzrmr	[800, 1422]	335.417	True	23	Female		Not Hispanic or Lat
 tcjc100a3kyhceh1ocl3idq8	[720, 1280]	309.388	True	56	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
 tdupaf7lg51fabubz38tvzv5	[800, 1280]	682.644	True	31	Male		Hispanic or Latino	['White']	Master degree or higher	the 30 seconds was short because the puzzles are techincal
 tfa4znf5y1wsi4l6kt8uizdx	[900, 1440]	390.272	True	21	Female		Not Hispanic or Latino	['White']	High school	
+tftbqlb11qdi1am7zypd9fg7	[900, 1440]	391.854	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 tij927ayuolgojgownmwfsll	[768, 1366]	218.432	True	31	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	no
+tk359vhwkve8g2p0fcemdums	[720, 1280]	278.35	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 tlvesdku3wbrjmw2vc81o2yv	[1050, 1680]	266.852	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	these were so hard haha
 tm8tuw1pb8x7xkfvdvk193x1	[1080, 1920]	360.572	True	20	Male		Not Hispanic or Latino	['White']	Some college	
+tmwgiud9yafb4ndv2o2o9g7y	[900, 1440]	250.331	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 tnhklic5iyq0vh5fqatla2al	[900, 1440]	386.434	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+to4wj4wiyw4fsr224e5vobgd	[768, 1366]	328.595	True	22	Female		Hispanic or Latino	['White']	Associate degree	
 tpmo45du0hq5ms9ozxyspwcd	[900, 1440]	317.726	True	18	Female		Not Hispanic or Latino	['White']	Some college	
 tsl7o2m610ugig25uy7z86j2	[960, 1440]	418.704	True	18	Male		Not Hispanic or Latino	['White']	High school	
 tuwe3rt6yefgfh6ilrayfxl0	[900, 1440]	394.66	True	22	Male		Not Hispanic or Latino	['White']	Bachelor degree	n/a
 tvn2bzd303giw1e19mg1cr9t	[1200, 1920]	387.529	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 ty1wskoh98xaoxyihob0v19g	[900, 1440]	409.646	True	19	Female		Not Hispanic or Latino	['White']	Associate degree	
 tziqg1watcqmn37bbb7qj2sr	[643, 1366]	866.869	True	43	Male		Not Hispanic or Latino	['White']	Master degree or higher	Hard puzzle
+u0a7btw7qnf1k6haktw7k8v1	[864, 1536]	199.015	True	23	Female		Not Hispanic or Latino	['White']	Master degree or higher	
+u1pditzxyndvy2zsfqvompaa	[768, 1366]	291.05	True	18	Female		Not Hispanic or Latino	['Black or African American']	High school	
 u2wlh2xmb8r1v9sg8vxivzbz	[800, 1280]	348.824	True	37	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 u55xz19eaoxuzl0aphnmunn8	[800, 1280]	252.031	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 u7py5mlbbtkxhsf04vzxf5q2	[864, 1536]	334.33	True	24	Female		Not Hispanic or Latino	['White']	Some college	
 uaii3mf364ywko25atnplibq	[768, 1366]	632.216	True	37	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	Wow, this was a difficult puzzle.
+uetc5ommg2yfri1nz9zqgb6i	[900, 1440]	368.254	True	29	Female		Not Hispanic or Latino	['White']	Some college	
 ufid3xr3z51350iidywqc1da	[900, 1440]	240.482	True	19	Male		Not Hispanic or Latino	['White']	Some college	
 ughziv05wzim0p6nbe4zm9bd	[768, 1366]	465.855	True	36	Male		Not Hispanic or Latino	['White']	Master degree or higher	no comment
 ujgygyxx3lie3tjq12bmw19g	[1080, 1920]	382.394	True	28	Female		Hispanic or Latino	['Rather not say']	Some college	
 ujvb7963rvrp03czb7gwkpiy	[864, 1536]	327.464	True	23	Female		Not Hispanic or Latino	['Asian']	Bachelor degree	
+ulj9nh1cea5sdtlqonp1ij5d	[900, 1440]	229.003	True	20	Female		Hispanic or Latino	['White']	Some college	
 uoqadaa6ak52gddbv6let3aw	[800, 1280]	488.194	True	51	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 uqkl119q6s11o7q58pofozb5	[900, 1440]	191.28	True	19	Female		Not Hispanic or Latino	['Black or African American']	Associate degree	
 uqom99g7ey39ch27dt56mi4a	[1440, 2560]	423.485	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	No comment
+ur34vc9t3devnkv4dmofruuv	[768, 1366]	479.277	True	19	Female		Hispanic or Latino	['White']	Some college	
 us4eun7345fmumzs9dz3itmy	[900, 1440]	296.215	True	18	Female		Not Hispanic or Latino	['White']	High school	
 usloji0nelh1cj5m41t0ggu2	[900, 1440]	332.935	True	20	Male		Not Hispanic or Latino	['Asian']	Some college	no comment
 usxqlkcwscnhe9ht38avmk52	[900, 1440]	504.738	True	24	Male		Not Hispanic or Latino	['White']	Some college	
@@ -733,16 +908,19 @@ uz3sxod4s3omoh017abhcnly	[768, 1366]	360.511	True	32	Male		Not Hispanic or Latin
 v077itmn4fcuk26clbe27c2y	[900, 1440]	324.061	True	20	Female		Not Hispanic or Latino	['White']	High school	
 v0d8t3df8ossfts4jtb17mrl	[900, 1440]	282.363	True	21	Male		Not Hispanic or Latino	['Asian']	Some college	
 v1drvbjxr5612wvtf94js1ox	[1120, 1792]	393.849	True	19	Female		Not Hispanic or Latino	['White']	Some college	
+v2fkliu1ap3q6c5jmib689at	[1080, 1920]	248.861	True	57	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 v4aafmya1o9jdi1gyqw24qcw	[768, 1366]	859.773	True	41	Male		Not Hispanic or Latino	['White']	Master degree or higher	
 v76quwfff2g6f1l0tllnp4eb	[900, 1440]	361.834	True	19	Male		Not Hispanic or Latino	['White']	Associate degree	
 v7ahvqm23r0dh50av05yez69	[900, 1440]	281.973	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 v7kop23uju5kchhpflsruuwj	[1440, 2560]	422.735	True	27	Male		Not Hispanic or Latino	['White']	High school	
+v8mn7x4dbptijporqog1v9pi	[900, 1440]	279.836	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 v92zl14170e2w4jnmx79imby	[900, 1440]	320.446	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 vajyhtc5oy4sv1uiga20e6fy	[900, 1440]	262.305	True	22	Female		Not Hispanic or Latino	['White']	Some college	
 vd1pkq7rhjzkaarxxm4tq9hu	[768, 1366]	530.57	True	31	Male		Not Hispanic or Latino	['White']	Associate degree	It was hard to see some of the lines in the patterns, eg: / | \
 vhgct5yl76ewd8dt2jm8zuqc	[1152, 2048]	420.491	True	22	Male		Hispanic or Latino	['White']	Some college	
 vj8758r7tzrlqkhrm38dt8kg	[864, 1536]	331.842	True	19	Female		Not Hispanic or Latino	['Asian', 'White']	Some college	
 vkfqzm7m5gtz5xl8jqnu1o2w	[1050, 1680]	332.605	True	22	Female		Not Hispanic or Latino	['White']	Some college	no comment
+vkrr50r1eyzzi13cc7rbzhs7	[1050, 1680]	462.869	True	20	Female		Not Hispanic or Latino	['Asian']	High school	
 vlilw8g7c0f9b1lyd7062o59	[768, 1366]	302.638	True	28	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 vn5vsnpp3hkf9rdf4jzzhxzo	[900, 1440]	476.842	True	21	Female		Hispanic or Latino	['Rather not say']	Bachelor degree	
 vno1r5izi6xu4qgr0ygzsp4m	[900, 1440]	317.626	True	19	Female		Not Hispanic or Latino	['White']	Some college	
@@ -753,19 +931,23 @@ vqadqpwhsiy6f1m3dv43bpzc	[900, 1440]	384.431	True	18	Female		Not Hispanic or Lat
 vqjjti1tfihk2z23c04g2j6d	[900, 1440]	256.912	True	21	Female		Not Hispanic or Latino	['White']	Some college	
 vql2msmflray2huzrs0k4c1w	[864, 1536]	425.221	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 vrqbehqvie7zt25yyl6cs99r	[864, 1536]	237.751	True	19	Female		Hispanic or Latino	['Rather not say']	Some college	
+vvh5cddfdybn773pl6rpesat	[768, 1366]	328.63	True	26	Female		Not Hispanic or Latino	['Black or African American']	Associate degree	
 vwpz9qs5dz3d9w0yzqt3gczb	[888, 1422]	291.879	True	24	Female		Hispanic or Latino	['White']	Some college	
 vxqdd4cikkvjqng6qsa68pbq	[900, 1440]	682.156	True	20	Male		Hispanic or Latino	['White']	Some college	
 vymrc339mr590qlz88yjvwdz	[750, 1200]	352.747	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 vyu7emdw7wzkiqd9u70if4wp	[1080, 1920]	401.119	True	26	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 vzhaljiuocyfp1xyk2mctjgd	[1080, 1920]	271.873	True	19	Male		Not Hispanic or Latino	['Asian']	Some college	
 w00u1z0uplczwjhwva5rmcz1	[900, 1440]	322.862	True	20	Female		Hispanic or Latino	['Rather not say']	Some college	
+w35jpmtogsq3a62blqel67dk	[900, 1440]	325.003	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 w4ojmi3nbf00ig5go1n86ijq	[900, 1440]	463.468	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 w7pxptxkx91dam296wq8fz8g	[1923, 980]	570.606	True	33	Male		Not Hispanic or Latino	['Black or African American']	Bachelor degree	Anything went smoothly 
+w7ststdmfrd3tj75v3ojo1qx	[768, 1366]	514.217	True	35	Female		Rather not say	['White']	Bachelor degree	no
 w8fph6feyyhyp0j6tu8it0g6	[768, 1366]	566.091	True	34	Male		Not Hispanic or Latino	['White']	Bachelor degree	IT IS GREAT
 w9hn7bwz2gwnf2dwa0jzfvzh	[900, 1440]	411.145	True	21	Female		Not Hispanic or Latino	['White']	Some college	no comment
 waao3yqokpvba46iuksa9nh7	[1080, 1920]	151.45	True	22	Male		Not Hispanic or Latino	['White']	Some college	
 wbrayn4ein1ornafqkzxqib7	[864, 1536]	306.605	True	25	Female		Not Hispanic or Latino	['White']	Master degree or higher	super fun!!!!!
 wclxp7v1lk7nc4bn06c012jv	[900, 1440]	471.07	True	20	Female		Not Hispanic or Latino	['White']	Some college	
+wekfmf9v3412wjouesvw101w	[900, 1440]	259.243	True	26	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 wengnax64w68gljuenmzyqqd	[900, 1440]	257.513	True	26	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 wjqgkx4ub57fihda7xpb2z56	[912, 1368]	417.036	True	18	Male		Hispanic or Latino	['White']	High school	
 wkajt1hjtrrrwqr4qu8zfvsg	[800, 1280]	354.533	True	20	Female		Not Hispanic or Latino	['White']	High school	
@@ -775,19 +957,27 @@ wp3cunultzpy4gtdyllhb38i	[768, 1360]	442.144	True	20	Male		Not Hispanic or Latin
 wq5ml1y0on92fp9ujayoln0a	[900, 1440]	401.37	True	19	Female		Not Hispanic or Latino	['White']	Some college	
 wqny4a8us4evktbh76yplnxh	[1896, 980]	511.452	True	38	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	None
 wsfm2x8nz31jo2s681f3q556	[900, 1440]	289.329	True	20	Female		Not Hispanic or Latino	['Native Hawaiian or other Pacific Islander', 'White']	Associate degree	
+wv4yd7f8ia7u8jggpfbx516u	[1710, 980]	409.696	True	36	Male		Not Hispanic or Latino	['Black or African American']	Master degree or higher	No
 wvlwgws9asevbhciuprmnl8m	[768, 1366]	481.461	True	24	Female		Not Hispanic or Latino	['White']	Less than high school	This was a fun study. Thank you!
+ww6yslt4aciibbu4nnp2z4st	[720, 1280]	239.222	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 wxxkujpaggrvdku6ma4erecv	[900, 1440]	530.407	True	24	Male		Not Hispanic or Latino	['American Indian/Alaska Native', 'Asian', 'Black or African American']	Associate degree	
 x0ejvi2xzy1ozig1y6kjffnl	[900, 1440]	259.433	True	22	Female		Not Hispanic or Latino	['White']	High school	
+x24pg9se9qgbaiz898th95iw	[969, 1920]	334.241	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 x2ebfgg47v7m96chhh1diyu0	[864, 1536]	369.263	True	24	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 x41von3kmtt880jdipapgh5u	[900, 1440]	357.015	True	20	Female		Not Hispanic or Latino	['Asian']	Some college	
+x5liq5hmhgrfkinxwyisnhkj	[900, 1440]	477.758	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 x5z699na6147yuokwnni1j5k	[900, 1440]	370.706	True	18	Male		Not Hispanic or Latino	['White']	High school	
 x64mm9omc4vz5l011jbr8hiv	[900, 1440]	355.467	True	24	Female		Not Hispanic or Latino	['American Indian/Alaska Native', 'Black or African American', 'White']	Bachelor degree	
+xasffkgbc4wryuo4lqynei7i	[900, 1440]	287.561	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+xbl0m4pih37vtwphag2llwqi	[864, 1536]	233.804	True	21	Female		Not Hispanic or Latino	['White']	Less than high school	
 xblrkfz282y1tvniv6joycif	[1568, 980]	833.024	True	31	Male		Not Hispanic or Latino	['White']	Master degree or higher	It was difficult
 xddyqw8ul4ov7lah5jskuqyy	[864, 1536]	460.564	True	20	Female		Hispanic or Latino	['White']	Associate degree	
 xdwc1fgq59k0sj7pfonlazrn	[900, 1440]	367.935	True	18	Female		Not Hispanic or Latino	['White']	High school	
 xe1w22rz1yls6vylg6pbi0xn	[900, 1440]	336.504	True	22	Female		Hispanic or Latino	['White']	Bachelor degree	Just a little fast, I think if I had some more time to analyze I would have gotten more right
 xej4mi7p65f4kfi5st8kj82j	[864, 1536]	315.657	True	27	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+xgxc47jdtp1ukqz80bgyvjtf	[900, 1440]	373.163	True	23	Female		Not Hispanic or Latino	['White']	Master degree or higher	
 xh456xpp4fi706w2tqkmx72r	[900, 1440]	186.539	True	25	Male		Not Hispanic or Latino	['Asian', 'White']	Bachelor degree	N/A
+xjlsif5lwnwbdul949e8uj6x	[864, 1536]	377.221	True	35	Female		Not Hispanic or Latino	['Asian']	Master degree or higher	some of them were pretty tough
 xkepidji57pz2aiggs7qaxct	[900, 1440]	397.643	True	27	Male		Not Hispanic or Latino	['White']	Associate degree	
 xnt4z9rf8xls7vfaxzmvvky6	[1080, 1920]	360.662	True	23	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 xrhknlvf0k45amccpnc4hid8	[800, 1280]	328.733	True	20	Male		Not Hispanic or Latino	['White']	Some college	
@@ -801,9 +991,12 @@ y15fx57tsqewb18w4fx8fx0f	[1080, 1920]	443.11	True	22	Female		Not Hispanic or Lat
 y1wjcsezpvmmsuytboyo2ksr	[768, 1366]	510.515	True	38	Male		Not Hispanic or Latino	['White']	Master degree or higher	no
 y2pzf1haszw0kq1gqtowdjon	[900, 1440]	452.702	True	18	Female		Not Hispanic or Latino	['White']	High school	
 y4qhqox9ynmp15x759a60vl4	[864, 1536]	301.521	True	18	Female		Not Hispanic or Latino	['White']	Some college	no comment
+y4r1uehu7zfgcf7u1xb7429l	[720, 1280]	516.078	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+y5bi7syebsgo23c0g0u8rynf	[900, 1440]	465.671	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	Maybe a little more time? Felt rushed but maybe that was the point :)
 y6zsv7qbm4oryfaxeorguusk	[900, 1440]	257.077	True	19	Female		Not Hispanic or Latino	['Black or African American']	Some college	
 y9w8lbj9c158wpcmqvtrxg6p	[900, 1600]	441.68	True	39	Female		Not Hispanic or Latino	['Black or African American']	Bachelor degree	
 yag706wo0vab4v6cleo4hpwg	[775, 1600]	248.275	True	49	Female		Not Hispanic or Latino	['White']	Master degree or higher	I was really enjoyed this study.
+ybbgtxot1jvnl7g70oq8pt21	[864, 1536]	267.004	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 ybnburmqp65m5j8hhjhwvztg	[768, 1366]	209.423	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 ycny2wigcwbd0kdnnwmqfhxv	[900, 1440]	593.752	True	18	Male		Not Hispanic or Latino	['Black or African American']	High school	
 ydkwzjz5kc9k1a7ssyq5l51j	[864, 1536]	646.46	True	29	Female		Not Hispanic or Latino	['White']	Associate degree	Timing was fast
@@ -822,6 +1015,7 @@ yqkvwhyb2wgye7goj0ktkpbf	[900, 1440]	393.382	True	21	Female		Not Hispanic or Lat
 yqqvu6tjcmeu45n5yoco4hem	[1080, 1920]	422.204	True	40	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 yt5l5183flms09hs4qg4epp8	[900, 1440]	382.378	True	22	Female		Hispanic or Latino	['Rather not say']	Bachelor degree	
 yxfptabbb9w73ayp02yu8pri	[900, 1440]	242.178	True	20	Female		Not Hispanic or Latino	['White']	Some college	
+yzejf0nyn2kgk2edseayi2h5	[900, 1440]	441.08	True	20	Rather not say		Not Hispanic or Latino	['Asian', 'White']	High school	
 yzh5qr3lpicc84br7kh0qsdu	[1080, 1920]	436.25	True	30	Male		Not Hispanic or Latino	['White']	Bachelor degree	
 z2sgrx5cta3p5efi42r5uew1	[900, 1440]	396.0	True	28	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 z4dyii6xg0gbnkt0gteo93lf	[720, 1280]	249.249	True	53	Male		Not Hispanic or Latino	['White']	Master degree or higher	NA
@@ -830,16 +1024,21 @@ z5glanq69n2ayamlclysb9bi	[900, 1440]	341.755	True	28	Male		Not Hispanic or Latin
 z65bmeqo9vgvq5hyi48l1lcf	[900, 1440]	468.925	True	19	Female		Not Hispanic or Latino	['White']	Some college	images could've been a little bigger
 z6w1gmiohlbpy5ceuvdjb88g	[960, 1440]	469.181	True	29	Male		Not Hispanic or Latino	['White']	Associate degree	
 z884874by6a1ovcqbbhdsbvb	[1080, 1920]	308.745	True	25	Female		Not Hispanic or Latino	['White']	Bachelor degree	
+zauhv1k6wjnqgq2wf7ipvdnv	[900, 1440]	388.813	True	18	Female		Not Hispanic or Latino	['Asian', 'White']	Some college	
 zbe6gfptq8ae6ron22rgoa69	[720, 1280]	420.88	True	19	Female		Not Hispanic or Latino	['White']	High school	
 zgq38xwnwa8ymzbvjvlodnrj	[940, 1410]	422.563	True	21	Female		Not Hispanic or Latino	['White']	Associate degree	No comment.
+ziznl8hkwc547ybq4w27fy6b	[720, 1280]	338.249	True	19	Female		Not Hispanic or Latino	['White']	Some college	The last levels were extremely difficult and seemed to have no correct answer that I could reasonably reach within thirty seconds
 zjpua5vmv2j1dpi7ku0gekkt	[800, 1280]	429.819	True	29	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 zkiz6zpdlkbevdh6q2rsnqsi	[900, 1440]	356.881	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 zl07u2r964jotrsjbetcejql	[775, 1600]	498.68	True	21	Female		Not Hispanic or Latino	['White']	Master degree or higher	I was really liked this study.
+zlafgfc84nl6ngjjb96c46tg	[768, 1366]	299.736	True	19	Female		Not Hispanic or Latino	['Black or African American']	High school	
 zlm9eznh9b6q9k0j0iph68gc	[900, 1440]	331.965	True	19	Male		Not Hispanic or Latino	['White']	Some college	
 zlmgusf7atsmc5tx1w8pbhq4	[1440, 2560]	349.603	True	19	Male		Not Hispanic or Latino	['Asian', 'White']	Some college	
 zmpsj7cxjgi2jcr01s59151u	[900, 1440]	324.554	True	22	Female		Not Hispanic or Latino	['White']	Bachelor degree	
 zn6d6b7s0jtnba78llxwvc99	[864, 1536]	333.211	True	18	Male		Not Hispanic or Latino	['White']	High school	
+znbaog079zl6grjqbyu415q5	[900, 1440]	422.809	True	24	Female		Not Hispanic or Latino	['Native Hawaiian or other Pacific Islander', 'White']	Bachelor degree	
 zremxsqdmph82tck817u93xq	[800, 1280]	700.748	True	31	Male		Rather not say	['White']	Master degree or higher	WOW THE COLOURS AND PLACINGS ARE CHALLENGING
 ztldu143n3d2lp81riqc7pph	[1440, 2560]	234.994	True	20	Male		Not Hispanic or Latino	['Asian']	Bachelor degree	
+zvkr8ebxgqwq9v53x2pf9sx9	[768, 1366]	332.201	True	27	Female		Not Hispanic or Latino	['Black or African American', 'White']	Some college	
 zvqf3ssyoifsnjlsq0h6huha	[900, 1440]	349.826	True	20	Female		Not Hispanic or Latino	['White']	Some college	
 zzo9v1zukcxpw6j68690fmxk	[768, 1360]	601.368	True	24	Female		Not Hispanic or Latino	['White']	Bachelor degree	full 30 second countdown instead of the last 5 seconds
