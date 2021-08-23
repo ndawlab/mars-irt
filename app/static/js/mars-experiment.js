@@ -48,7 +48,8 @@ var MARS = [];
 
 // Define image constants.
 const img_path = `../static/img/is${item_set}/`;
-const form_order = (workerNo % 2 == 0) ? [1,2] : [2,1];
+// const form_order = (workerNo % 2 == 0) ? [1,2] : [2,1];
+const form_order = [3,3];
 
 // Iteratively construct trials.
 items.forEach((j, i) => {
