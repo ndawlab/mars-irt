@@ -48,14 +48,13 @@ var MARS = [];
 
 // Define image constants.
 const img_path = `../static/img/is${item_set}/`;
-// const form_order = (workerNo % 2 == 0) ? [1,2] : [2,1];
-const form_order = [3,3];
+const form_order = jsPsych.randomization.sampleWithReplacement([1,2,3], items.length);
 
 // Iteratively construct trials.
 items.forEach((j, i) => {
 
   // Define image metadata.
-  const test_form  = form_order[i % 2];
+  const test_form  = form_order[i];
   const distractor = (Math.random() < 0.5 ? 'md' : 'pd');
 
   // Define puzzle set order.

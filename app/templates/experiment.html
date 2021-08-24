@@ -10,12 +10,6 @@
   <!-- Load NivTurk plug-ins -->
   <script src="../static/js/nivturk-plugins.js" type="text/javascript"></script>
 
-  <!-- Copy & store subject number -->
-  <script type="text/javascript">
-    var workerNo = parseInt("{{seed}}");    // Try to retrieve worker number from Flask.
-    if (isNaN(workerNo)) {workerNo = 0;}    // If fail, set to zero.
-  </script>
-
   <!-- Load experiment -->
   <script src="../static/js/mars-experiment.js"></script>
   <script src="../static/js/mars-instructions.js"></script>
