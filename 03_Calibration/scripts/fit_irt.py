@@ -1,7 +1,7 @@
 import os, sys
 import numpy as np
 from os.path import dirname
-from pandas import read_csv, get_dummies
+from pandas import read_csv
 from cmdstanpy import CmdStanModel
 ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
 
@@ -16,7 +16,7 @@ stan_model = sys.argv[1]
 contrast = int(sys.argv[2])
 
 ## Sampling parameters.
-iter_warmup   = 2500
+iter_warmup   = 5000
 iter_sampling = 2500
 chains = 4
 thin = 1
@@ -36,15 +36,16 @@ data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 ## Drop missing data.
 data = data.dropna()
 
-## Dummy-code distractors.
-data = data.replace({'md':0, 'pd':1})
-
-## Dummy-code shape set.
-shape_set = get_dummies(data.shape_set).rename(columns={i:f'ss{i}' for i in [1,2,3]})
-data = data.merge(shape_set, left_index=True, right_index=True)
-
-## Add intercept.
-data['intercept'] = 1
+## Define type indicator.
+if contrast == 1:
+    data['M'] = 0
+elif contrast == 2:
+    data['M'] = np.unique(data.distractor, return_inverse=True)[-1]
+elif contrast == 3:
+    data['M'] = np.unique(data.shape_set, return_inverse=True)[-1]
+elif contrast == 4:
+    data['M'] = data.apply(lambda x: str(x.distractor) + str(x.shape_set), axis=1)
+    data['M'] = np.unique(data.M, return_inverse=True)[-1]
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -52,24 +53,19 @@ data['intercept'] = 1
 
 ## Define response data.
 Y = data.accuracy.values.astype(int)
-
-## Define design matrix.
-cols = ['intercept']
-if contrast >= 2: cols += ['distractor']
-if contrast >= 3: cols += ['ss1','ss3']
-X = np.atleast_2d(data[cols].values.astype(float))
     
 ## Define metadata.
-N, M = X.shape
+N = int(Y.size)
 J = np.unique(data.subject, return_inverse=True)[-1] + 1
 K = np.unique(data.item, return_inverse=True)[-1] + 1
+M = data.M.values.astype(int) + 1
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Fit Stan Model.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Assemble data.
-dd = dict(N=N, J=J, K=K, M=M, Y=Y, X=X)
+dd = dict(N=N, J=J, K=K, M=M, Y=Y)
 
 ## Load StanModel
 StanModel = CmdStanModel(stan_file=os.path.join('stan_models',f'{stan_model}.stan'))

@@ -22,3 +22,4 @@ sci-hub.se/10.1037/a0027830: 3PL average discrimination = 1.13 [0.62 and 1.63]
 
 #### model comparison
 https://discourse.mc-stan.org/t/loo-comparison-in-reference-to-standard-error/4009
+https://mc-stan.org/loo/reference/loo-glossary

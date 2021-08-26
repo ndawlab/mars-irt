@@ -34,15 +34,16 @@ data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 ## Drop missing data.
 data = data.dropna()
 
-## Dummy-code distractors.
-data = data.replace({'md':0, 'pd':1})
-
-## Dummy-code shape set.
-shape_set = get_dummies(data.shape_set).rename(columns={i:f'ss{i}' for i in [1,2,3]})
-data = data.merge(shape_set, left_index=True, right_index=True)
-
-## Add intercept.
-data['intercept'] = 1
+## Define type indicator.
+if contrast == 1:
+    data['M'] = 0
+elif contrast == 2:
+    data['M'] = np.unique(data.distractor, return_inverse=True)[-1]
+elif contrast == 3:
+    data['M'] = np.unique(data.shape_set, return_inverse=True)[-1]
+elif contrast == 4:
+    data['M'] = data.apply(lambda x: str(x.distractor) + str(x.shape_set), axis=1)
+    data['M'] = np.unique(data.M, return_inverse=True)[-1]
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -50,17 +51,12 @@ data['intercept'] = 1
 
 ## Define response data.
 Y = data.accuracy.values.astype(int)
-
-## Define design matrix.
-cols = ['intercept']
-if contrast >= 2: cols += ['distractor']
-if contrast >= 3: cols += ['ss1','ss3']
-X = np.atleast_2d(data[cols].values.astype(float))
     
 ## Define metadata.
-N, M = X.shape
+N = int(Y.size)
 J = np.unique(data.subject, return_inverse=True)[-1]
 K = np.unique(data.item, return_inverse=True)[-1]
+M = data.M.values.astype(int)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Extract parameters.
@@ -74,7 +70,7 @@ theta = StanFit.filter(regex='theta').values
 beta  = StanFit.filter(regex='beta\[').values
 
 ## Reshape parameters.
-beta = beta.reshape(-1,K.max()+1,M).swapaxes(1,2)
+beta = beta.reshape(-1,M.max()+1,K.max()+1).swapaxes(1,2)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Posterior predictive check.
@@ -90,7 +86,7 @@ n_iter = len(StanFit)
 
 ## Compute linear predictor.
 mu = np.zeros((n_iter, N))
-for n in tqdm(range(N)): mu[:,n] = theta[:,J[n]] - np.einsum('i,ji',X[n],beta[...,K[n]])
+for n in tqdm(range(N)): mu[:,n] = theta[:,J[n]] - beta[:,K[n],M[n]]
     
 ## Compute p(correct | theta).
 p = inv_logit(mu)
@@ -144,7 +140,7 @@ for j in tqdm(range(J.max()+1)):
                   norm(0,sd_i).logpdf(adapt_nodes) + std_log_weights
 
     ## Evaluate marginal log-likelihood with adaptive quadrature. 
-    mu = theta[:,j,np.newaxis] - np.einsum('kj,ijk->ik', X[J==j], beta[...,K[J==j]])
+    mu = theta[:,j,np.newaxis] - beta[:,K[J==j],M[J==j]]
     p = inv_logit(np.add.outer(adapt_nodes, mu))
     loglik_by_node = np.log(np.where(Y[J==j], p, 1-p)).sum(axis=-1)
     weighted_loglik_by_node = loglik_by_node.T + log_weights
