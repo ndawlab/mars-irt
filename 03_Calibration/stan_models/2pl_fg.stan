@@ -49,7 +49,7 @@ model {
     // Construct predictor terms
     vector[N] mu;
     for (n in 1:N) {
-        mu[n] = inv_logit(alpha[K[n],M[n]] * theta[J[n]] - beta[K[n],M[n]]);
+        mu[n] = 0.25 + (1-0.25) * inv_logit(alpha[K[n],M[n]] * theta[J[n]] - beta[K[n],M[n]]);
     }
     
     // Accuracy likelihood

@@ -7,7 +7,7 @@ data {
     int<lower=1>  M[N];                // Type-indicator per observation
     
     // Response data
-    int        Y[N];                   // Response accuracy
+    int           Y[N];                // Response accuracy
 
 }
 transformed data {
