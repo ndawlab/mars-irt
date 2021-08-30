@@ -85,7 +85,12 @@ dimension = dimension.rename(columns={'Item':'item','Dimensionality Score':'dime
 DATA = DATA.merge(dimension, on='item').sort_values(['subject','trial']).reset_index(drop=True)
 DATA = DATA[['subject','trial','item_set','item','dimension','test_form','shape_set','distractor','choice',
              'accuracy','rt','minimum_resolution','browser_interactions']]
-                     
+   
+## Insert item id.
+f = lambda x: '_'.join(['%0.2d' %x[col] if col=='item' else str(x[col]) for col in ['item','distractor','shape_set']])
+DATA.insert(3, 'item_id', DATA.apply(f, 1))
+DATA['item_id'] = np.unique(DATA.item_id, return_inverse=True)[-1] + 1
+    
 ## Save data.
 METADATA.to_csv(os.path.join(DATA_DIR, 'metadata.tsv'), sep='\t', index=False)
 DATA.to_csv(os.path.join(DATA_DIR , 'data.csv'), index=False)
