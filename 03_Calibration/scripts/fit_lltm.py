@@ -12,8 +12,11 @@ ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
 ## I/O parameters.
 stan_model = sys.argv[1]
 
-## Model parameters.
-contrast = int(sys.argv[2])
+## Model parameters (design matrix 1).
+d1 = int(sys.argv[2])
+
+## Model parameters (design matrix 2).
+d2 = int(sys.argv[3]) if len(sys.argv) > 2 else -1
 
 ## Sampling parameters.
 iter_warmup   = 5000
@@ -37,97 +40,22 @@ data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 data = data.dropna()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-### Load and prepare item feature matrix.
+### Load and prepare item feature matrices.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-## Load item features.
-features = read_csv(os.path.join(ROOT_DIR, 'data', 'features.csv'), index_col='item')
+## Load design matrix 1.
+X1 = np.loadtxt(os.path.join('designs', f'x{d1}.txt'), delimiter=',')
+if np.ndim(X1) == 1: X1 = X1.reshape(-1,1)
 
-## Contrast 0: intercept only.
-if contrast == 0:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-## Contrast 1: number of total rules.
-elif contrast == 1:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-    ## Define rule-based regressors.
-    features['x1'] = np.where(features.filter(regex='f[1-4]') > 0, 1, 0).sum(axis=1)
-        
-## Contrast 2: number of total rules (by type).
-elif contrast == 2:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-    ## Define rule-based regressors.
-    features['x1'] = np.where(features.filter(regex='f[1-4]') == 1, 1, 0).sum(axis=1)
-    features['x2'] = np.where(features.filter(regex='f[1-4]') == 2, 1, 0).sum(axis=1)
-    
-## Contrast 3: number of total rules (by feature).
-elif contrast == 3:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-    ## Define rule-based regressors.
-    for i, col in enumerate(['color$','shape$','tri$','pos_[r,c]','size$']):
-        features[f'x{i+1}'] = np.where(features.filter(regex=col) > 0, 1, 0).sum(axis=1)
-    
-## Contrast 4: number of total rules (by type & feature).
-elif contrast == 4:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-    ## Define rule-based regressors.
-    for i, col in enumerate(['color$','shape$','tri$','pos_[r,c]','size$']):
-        features[f'x{2*i+1}'] = np.where(features.filter(regex=col) == 1, 1, 0).sum(axis=1)
-        features[f'x{2*i+2}'] = np.where(features.filter(regex=col) == 2, 1, 0).sum(axis=1)
-    
-## Contrast 5: number of total rules (by type & feature) + distractor.
-elif contrast == 5:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-    ## Define rule-based regressors.
-    for i, col in enumerate(['color$','shape$','tri$','pos_[r,c]','size$']):
-        features[f'x{2*i+1}'] = np.where(features.filter(regex=col) == 1, 1, 0).sum(axis=1)
-        features[f'x{2*i+2}'] = np.where(features.filter(regex=col) == 2, 1, 0).sum(axis=1)
-        
-    ## Define distractor-based regressors.
-    features['x11'] = np.where(features.distractor == 'md', 1, 0) 
-    
-## Contrast 6: number of total rules (by type & feature) + distractor + perceptual elements.
-elif contrast == 6:
-    
-    ## Define intercept.
-    features['x0'] = 1
-    
-    ## Define rule-based regressors.
-    for i, col in enumerate(['color$','shape$','tri$','pos_[r,c]','size$']):
-        features[f'x{2*i+1}'] = np.where(features.filter(regex=col) == 1, 1, 0).sum(axis=1)
-        features[f'x{2*i+2}'] = np.where(features.filter(regex=col) == 2, 1, 0).sum(axis=1)
-        
-    ## Define distractor-based regressors.
-    features['x11'] = np.where(features.distractor == 'md', 1, 0)
-    
-    ## Define percept-based regressors.
-    for i, j in enumerate(range(2,10)): 
-        features[f'x{12+i}'] = np.where(features.shape_subset == j, 1, 0)
-    
-else:
-    
-    raise ValueError(f'contrast type "{contrast}" not available.')
+## Load design matrix 2.
+if d2 >= 0: X2 = np.loadtxt(os.path.join('designs', f'x{d2}.txt'), delimiter=',')
+else: X2 = np.random.normal(size=X1.shape)
+if np.ndim(X2) == 1: X2 = X2.reshape(-1,1)
     
 ## Standardize regressors.
 zscore = lambda x: (x - x.mean()) / x.std()
-features[features.filter(regex='x[1-9]').columns] = features.filter(regex='x[1-9]').apply(zscore)
+if X1.shape[1] > 1: X1[:,1:] = np.apply_along_axis(zscore, 0, X1[:,1:])
+if X2.shape[1] > 1: X2[:,1:] = np.apply_along_axis(zscore, 0, X2[:,1:])
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -136,21 +64,19 @@ features[features.filter(regex='x[1-9]').columns] = features.filter(regex='x[1-9
 ## Define response data.
 Y = data.accuracy.values.astype(int)
     
-## Define design matrix.
-X = features.filter(regex='x[0-9]').values
-    
 ## Define metadata.
-N = len(Y)
-M = len(X.T)
-J = np.unique(data.subject, return_inverse=True)[-1] + 1
-K = np.unique(data.item_id, return_inverse=True)[-1] + 1
+N  = len(Y)
+M1 = len(X1.T)
+M2 = len(X2.T)
+J  = np.unique(data.subject, return_inverse=True)[-1] + 1
+K  = np.unique(data.item_id, return_inverse=True)[-1] + 1
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Fit Stan Model.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Assemble data.
-dd = dict(N=N, J=J, K=K, M=M, Y=Y, X=X)
+dd = dict(N=N, J=J, K=K, M1=M1, M2=M2, Y=Y, X1=X1, X2=X2)
 
 ## Load StanModel
 StanModel = CmdStanModel(stan_file=os.path.join('stan_models',f'{stan_model}.stan'))
@@ -164,7 +90,8 @@ StanFit = StanModel.sample(data=dd, chains=chains, iter_warmup=iter_warmup, iter
 print('Saving data.')
     
 ## Define fout.
-fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_m{contrast}')
+fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_m{d1}')
+if d2 >= 0: fout += str(d2)
     
 ## Extract and save Stan summary.
 summary = StanFit.summary()

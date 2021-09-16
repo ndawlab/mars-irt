@@ -2,7 +2,7 @@ data {
 
     // Metadata
     int<lower=1>  N;                   // Number of total observations
-    int<lower=1>  M;                   // Number of item features
+    int<lower=1>  M1;                  // Number of item features
     int<lower=1>  J[N];                // Subject-indicator per observation
     int<lower=1>  K[N];                // Item-indicator per observation
     
@@ -10,7 +10,7 @@ data {
     int           Y[N];                // Response accuracy
     
     // Design matrix
-    matrix[max(K), M]  X;              // Item feature matrix
+    matrix[max(K), M1]  X1;            // Item feature matrix
 
 }
 transformed data {
@@ -25,7 +25,7 @@ parameters {
     vector[NJ]  theta;                 // Subject abilities
     
     // Item difficulties
-    vector[M]   beta_mu_pr;            // Population-level effects
+    vector[M1]  beta_mu_pr;            // Population-level effects
     vector[NK]  beta_pr;               // Standardized item-level effects     
     
     // Item variances
@@ -34,7 +34,7 @@ parameters {
 }
 transformed parameters {
 
-    vector[NK] beta = X * beta_mu_pr + sigma * beta_pr;
+    vector[NK] beta = X1 * beta_mu_pr + sigma * beta_pr;
     
 }
 model {
