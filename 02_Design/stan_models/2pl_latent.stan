@@ -36,13 +36,16 @@ parameters {
     vector[NK]  alpha_pr;              // Standardized item-level effects
     
     // Item variances
-    vector<lower=0>[2] sigma;          // Item-level standard deviations
+    vector<lower=0>[2] sigma;          // Standard deviations
     
 }
 transformed parameters {
 
+    // Compute partial correlations
+    vector[M1] rho = Phi_approx(theta_mu) / sqrt(M1);
+
     // Construct subject abilities
-    vector[NJ] theta = X1 * theta_mu + theta_pr;
+    vector[NJ] theta = X1 * rho + sqrt(1 - sum(square(rho))) * theta_pr;
     
     // Construct item difficulties
     vector[NK] beta = X2 * beta_mu + sigma[1] * beta_pr;
