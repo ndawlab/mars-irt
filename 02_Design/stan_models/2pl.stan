@@ -5,56 +5,49 @@ data {
     int<lower=1>  J[N];                // Subject-indicator per observation
     int<lower=1>  K[N];                // Item-indicator per observation
     
-    // Data
-    int  Y[N];                         // Response variable
+    // Response data
+    int<lower=0>  Y[N];                // Response choice
+
+}
+transformed data {
+
+    int  NJ = max(J);                  // Number of total subjects
+    int  NK = max(K);                  // Number of total items
 
 }
 parameters {
 
     // Subject abilities
-    vector[max(J)]  theta;             // Subject abilities
+    vector[NJ]  theta;                 // Standardized subject-level effects
     
-    // Item parameters
-    vector[2]         xi_mu;           // Population-level effects
-    matrix[2,max(K)]  xi_pr;           // Standardized item-level effects
+    // Item difficulties
+    vector[NK]  beta;                  // Standardized item-level effects
     
-    // Item variances
-    cholesky_factor_corr[2] L;         // Cholesky factor of correlation matrix
-    vector<lower=0>[2] sigma;          // Item-level standard deviations
+    // Item discriminations
+    vector[NK]  alpha_pr;              // Standardized item-level effects
     
 }
 transformed parameters {
 
-    vector[max(K)]  beta;              // Item difficulties
-    vector[max(K)]  alpha;             // Item discriminations
-    
-    // Construction block
-    {
-    
-    // Rotate random effects
-    matrix[max(K),2] xi = transpose(diag_pre_multiply(sigma, L) * xi_pr);
-    
-    // Construct random effects
-    beta = xi_mu[1] + xi[,1];
-    alpha = exp(xi_mu[2] + xi[,2]);
-    
-    }
+    // Construct item discriminations
+    // vector[NK] alpha = exp(alpha_pr);
+    vector[NK] alpha = Phi_approx(alpha_pr) * 2;
     
 }
 model {
     
-    // Construct predictor terms
-    vector[N] mu = inv_logit( alpha[K] .* theta[J] - beta[K] );
+    // Compute log-likelihood
+    vector[N] mu;
+    for (n in 1:N) {
+        mu[n] = inv_logit(alpha[K[n]] * theta[J[n]] - beta[K[n]]);
+    }
     
-    // Likelihood
-    target += bernoulli_lpmf( Y | mu );
+    // Accuracy likelihood
+    target += bernoulli_lpmf(Y | mu);
     
     // Priors
     target += std_normal_lpdf(theta);
-    target += std_normal_lpdf(to_vector(xi_pr));
-    target += normal_lpdf(xi_mu[1] | 0, 2);
-    target += normal_lpdf(xi_mu[2] | 0, 1);
-    target += student_t_lpdf(sigma | 3, 0, 1);
-    target += lkj_corr_cholesky_lpdf(L | 2);
+    target += normal_lpdf(beta | 0, 2.5);
+    target += normal_lpdf(alpha_pr | 0, 0.5);
 
 }
