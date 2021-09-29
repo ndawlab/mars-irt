@@ -12,12 +12,9 @@ ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
 ## I/O parameters.
 stan_model = sys.argv[1]
 
-## Censor parameters.
-thresh = int(sys.argv[2])
-
 ## Sampling parameters.
-iter_warmup   = 2000
-iter_sampling = 1000
+iter_warmup   = 5000
+iter_sampling = 2500
 chains = 4
 thin = 1
 parallel_chains = 4
@@ -33,17 +30,11 @@ data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
 reject = read_csv(os.path.join(ROOT_DIR, 'data', 'reject.csv'))
 data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 
-## Re-index subjects / items.
-data['subject'] = np.unique(data.subject, return_inverse=True)[-1]
+## Re-index items.
 data['item_id'] = data.apply(lambda x: '%0.2d' %x['item'] + '_' + x['distractor'], 1)
 
-## Drop missing data.
-data = data.dropna().reset_index(drop=True)
-
-## Drop censored data.
-censor = read_csv(os.path.join(ROOT_DIR, 'designs', 'censor.csv'))
-if thresh: data = data.loc[censor[f'c{thresh}'] == 0]
-data = data.groupby('subject').filter(lambda x: x.trial.count() >= 8)
+## Score missing data.
+data['accuracy'] = data['accuracy'].fillna(0)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
@@ -63,7 +54,6 @@ zscore = lambda x: (x - np.nanmean(x)) / np.nanstd(x)
 ## Define subject feature matrix.
 X1 = read_csv(os.path.join(ROOT_DIR, 'designs', 'X1.csv'))
 X1 = X1.apply(zscore, 0).values
-X1 = X1[np.unique(data.subject)]
 _, M1 = X1.shape
     
 ## Define item feature matrix.
@@ -90,7 +80,7 @@ StanFit = StanModel.sample(data=dd, chains=chains, iter_warmup=iter_warmup, iter
 print('Saving data.')
     
 ## Define fout.
-fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_c{censor}')
+fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}')
     
 ## Extract and save Stan summary.
 summary = StanFit.summary()

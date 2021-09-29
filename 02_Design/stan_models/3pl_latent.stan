@@ -42,7 +42,7 @@ parameters {
 transformed parameters {
 
     // Compute partial correlations
-    vector[M1] rho = Phi_approx(theta_mu) / sqrt(M1);
+    vector[M1] rho = tanh(theta_mu) / sqrt(M1);
 
     // Construct subject abilities
     vector[NJ] theta = X1 * rho + sqrt(1 - sum(square(rho))) * theta_pr;

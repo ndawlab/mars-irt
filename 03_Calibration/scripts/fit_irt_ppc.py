@@ -2,7 +2,7 @@ import os, sys
 import numpy as np
 from os.path import dirname
 from numba import njit
-from pandas import read_csv, get_dummies
+from pandas import read_csv
 from psis import psisloo
 from tqdm import tqdm
 from scipy.stats import norm
@@ -17,9 +17,6 @@ np.random.seed(47404)
 ## I/O parameters.
 stan_model = sys.argv[1]
 
-## Model parameters.
-contrast = int(sys.argv[2])
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Load and prepare data.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -31,53 +28,41 @@ data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
 reject = read_csv(os.path.join(ROOT_DIR, 'data', 'reject.csv'))
 data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 
-## Drop missing data.
-data = data.dropna()
+## Re-index items.
+data['item_id'] = data.apply(lambda x: '%0.2d' %x['item'] + '_' + x['distractor'], 1)
 
-## Dummy-code distractors.
-data = data.replace({'md':0, 'pd':1})
-
-## Dummy-code shape set.
-shape_set = get_dummies(data.shape_set).rename(columns={i:f'ss{i}' for i in [1,2,3]})
-data = data.merge(shape_set, left_index=True, right_index=True)
-
-## Add intercept.
-data['intercept'] = 1
+## Score missing data.
+data['accuracy'] = data['accuracy'].fillna(0)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Assemble data for Stan.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
+## Define metadata.
+N = len(data)
+J = np.unique(data.subject, return_inverse=True)[-1]
+K = np.unique(data.item_id, return_inverse=True)[-1]
+
 ## Define response data.
 Y = data.accuracy.values.astype(int)
-
-## Define design matrix.
-cols = ['intercept']
-if contrast >= 2: cols += ['distractor']
-if contrast >= 3: cols += ['ss1','ss3']
-X = np.atleast_2d(data[cols].values.astype(float))
-    
-## Define metadata.
-N, M = X.shape
-J = np.unique(data.subject, return_inverse=True)[-1]
-K = np.unique(data.item, return_inverse=True)[-1]
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Extract parameters.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Load DataFrame.
-StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_m{contrast}.tsv.gz'), sep='\t', compression='gzip')
+StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}.tsv.gz'), sep='\t', compression='gzip')
 
 ## Extract parameters.
-theta = StanFit.filter(regex='theta').values
+theta = StanFit.filter(regex='theta\[').values
 beta  = StanFit.filter(regex='beta\[').values
 alpha = StanFit.filter(regex='alpha\[').values
+if not np.any(alpha): alpha = np.ones_like(beta)
 
-## Reshape parameters.
-beta = beta.reshape(-1,K.max()+1,M).swapaxes(1,2)
-alpha = alpha.reshape(-1,K.max()+1,M).swapaxes(1,2)
-
+## Define guessing rate.
+if '3pl' in stan_model: gamma = 0.25
+else: gamma = 0.00
+    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Posterior predictive check.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -92,13 +77,10 @@ n_iter = len(StanFit)
 
 ## Compute linear predictor.
 mu = np.zeros((n_iter, N))
-for n in tqdm(range(N)): 
-    a = np.exp(np.einsum('i,ji',X[n],alpha[...,K[n]]))
-    b = np.einsum('i,ji',X[n],beta[...,K[n]])
-    mu[:,n] = a * theta[:,J[n]] - b
+for n in tqdm(range(N)): mu[:,n] = alpha[:,K[n]] * theta[:,J[n]] - beta[:,K[n]]
     
 ## Compute p(correct | theta).
-p = inv_logit(mu)
+p = gamma + (1-gamma) * inv_logit(mu)
 
 ## Simulate accuracy.
 y_hat = np.random.binomial(1, p).mean(axis=0)
@@ -149,10 +131,8 @@ for j in tqdm(range(J.max()+1)):
                   norm(0,sd_i).logpdf(adapt_nodes) + std_log_weights
 
     ## Evaluate marginal log-likelihood with adaptive quadrature. 
-    a = np.exp(np.einsum('kj,ijk->ik', X[J==j], alpha[...,K[J==j]]))
-    b = np.einsum('kj,ijk->ik', X[J==j], beta[...,K[J==j]])
-    mu = a * theta[:,j,np.newaxis] - b 
-    p = inv_logit(np.add.outer(adapt_nodes, mu))
+    mu = alpha[:,K[J==j]] * theta[:,j,np.newaxis] - beta[:,K[J==j]]
+    p = gamma + (1-gamma) * inv_logit(np.add.outer(adapt_nodes, mu))
     loglik_by_node = np.log(np.where(Y[J==j], p, 1-p)).sum(axis=-1)
     weighted_loglik_by_node = loglik_by_node.T + log_weights
     mll[:,j] = logsumexp(weighted_loglik_by_node, axis=1)
@@ -186,12 +166,12 @@ data['k_u'] = ku
 data['k_c'] = kc[J]
 
 ## Restrict DataFrame to columns of interest.
-cols = ['subject','trial','item','dimension','test_form','shape_set','distractor','choice','accuracy',
+cols = ['subject','trial','item_id','item','dimension','test_form','shape_set','distractor','choice','accuracy',
         'y_hat','y_pred','pwaic_u','pwaic_c','louo','loco','k_u','k_c']
 data = data[cols]
 
 ## Define fout.
-fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_m{contrast}')
+fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}')
 
 ## Save.
 data.to_csv(f'{fout}_ppc.csv', index=False)

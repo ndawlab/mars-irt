@@ -8,7 +8,7 @@ data {
     int<lower=1>  K[N];                // Item-indicator per observation
     
     // Response data
-    int<lower=0>  Y[N];                // Response choice
+    int<lower=0>  Y[N];                // Response accuracy
     
     // Explanatory data
     matrix[max(J), M1]  X1;            // Subject feature matrix
@@ -32,13 +32,16 @@ parameters {
     vector[NK]  beta_pr;               // Standardized item-level effects
     
     // Item variances
-    vector<lower=0>[1] sigma;          // Item-level standard deviations
+    vector<lower=0>[1] sigma;          // Standard deviations
     
 }
 transformed parameters {
 
+    // Compute partial correlations
+    vector[M1] rho = tanh(theta_mu) / sqrt(M1);
+
     // Construct subject abilities
-    vector[NJ] theta = X1 * theta_mu + theta_pr;
+    vector[NJ] theta = X1 * rho + sqrt(1 - sum(square(rho))) * theta_pr;
     
     // Construct item difficulties
     vector[NK] beta = X2 * beta_mu + sigma[1] * beta_pr;
@@ -49,7 +52,7 @@ model {
     // Compute log-likelihood
     vector[N] mu;
     for (n in 1:N) {
-        mu[n] = inv_logit(theta[J[n]] - beta[K[n]]);
+        mu[n] = inv_logit(alpha[K[n]] * theta[J[n]] - beta[K[n]]);
     }
     
     // Accuracy likelihood
@@ -58,7 +61,7 @@ model {
     // Priors
     target += std_normal_lpdf(theta_mu);
     target += std_normal_lpdf(theta_pr);
-    target += normal_lpdf(beta_mu | 0, 2.5);
+    target += std_normal_lpdf(beta_mu);
     target += std_normal_lpdf(beta_pr);
     target += student_t_lpdf(sigma | 3, 0, 1);
 
