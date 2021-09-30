@@ -67,8 +67,17 @@ features['n_rules'] = np.where(features.filter(regex='f[1-3]'), 1, 0).sum(axis=1
 ## Prepare distractor variable.
 features['distractor'] = features['distractor'].replace({'md':1, 'pd':0})
 
+## Re-index items.
+data['item_id'] = data.apply(lambda x: '%0.2d' %x['item'] + '_' + x['distractor'], 1)
+
+## Prepare RT regressor.
+rt = data.groupby('item_id').rt.apply(lambda x: np.mean(np.log(x))).values
+X = features[['intercept','n_features','n_rules','distractor']].values
+b, _, _, _ = np.linalg.lstsq(X, rt, rcond=-1)
+features['rt'] = zscore(rt - X @ b)
+
 ## Define item feature matrix.
-X2 = features[['intercept','n_features','n_rules','distractor']].astype(int).copy()
+X2 = features[['intercept','n_features','n_rules','distractor','rt']].copy()
 X2.to_csv(os.path.join(ROOT_DIR, 'designs', f'X2.csv'), index=False)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#

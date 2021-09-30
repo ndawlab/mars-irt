@@ -52,7 +52,7 @@ model {
     // Compute log-likelihood
     vector[N] mu;
     for (n in 1:N) {
-        mu[n] = inv_logit(alpha[K[n]] * theta[J[n]] - beta[K[n]]);
+        mu[n] = inv_logit(theta[J[n]] - beta[K[n]]);
     }
     
     // Accuracy likelihood
