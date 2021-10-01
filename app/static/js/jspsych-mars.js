@@ -270,6 +270,10 @@ jsPsych.plugins["mars"] = (function() {
       // kill any remaining setTimeout handlers
       jsPsych.pluginAPI.clearAllTimeouts();
 
+      // confirm image loading
+      const loaded = Array.from(document.getElementsByTagName('img')).map(x => (x.complete) && (x.naturalWidth != 0));
+      const all_loaded = loaded.every(x => x);
+
       // gather the data to store for the trial
       var trial_data = {
         item: trial.item,
@@ -281,7 +285,8 @@ jsPsych.plugins["mars"] = (function() {
         accuracy: response.accuracy,
         rt: response.rt,
         screen_resolution: screen_resolution,
-        minimum_resolution: minimum_resolution
+        minimum_resolution: minimum_resolution,
+        all_loaded: all_loaded
       };
 
       // clear the display
