@@ -1,12 +1,12 @@
 /**
- * jspsych-mars
- * Sam Zorowitz
- *
- * plugin for one trial of the matrix reasoning item bank (MaRs-IB)
- *
- * documentation: http://dx.doi.org/10.1098/rsos.190232
- *
- **/
+* jspsych-mars
+* Sam Zorowitz
+*
+* plugin for one trial of the matrix reasoning item bank (MaRs-IB)
+*
+* documentation: http://dx.doi.org/10.1098/rsos.190232
+*
+**/
 
 jsPsych.plugins["mars"] = (function() {
 
@@ -16,20 +16,25 @@ jsPsych.plugins["mars"] = (function() {
     name: 'mars',
     description: '',
     parameters: {
-      puzzle: {
-        type: jsPsych.plugins.parameterType.HTML_STRING,
-        pretty_name: 'Puzzle',
-        description: 'The HTML string to be displayed'
+      item: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Item',
+        description: 'Item number.'
       },
-      choices: {
-        type: jsPsych.plugins.parameterType.STRING,
-        pretty_name: 'Choices',
-        array: true,
-        description: 'The labels for the buttons.'
+      shape_set: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Shape set',
+        description: 'Item shape set (1, 2, 3).'
+      },
+      distractor: {
+        type: jsPsych.plugins.parameterType.HTML_STRING,
+        pretty_name: 'Distractor',
+        description: 'Item distractor type (md, pd).'
       },
       correct: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Correct',
+        default: 0,
         description: 'The index of the correct response.'
       },
       countdown: {
@@ -73,6 +78,12 @@ jsPsych.plugins["mars"] = (function() {
         pretty_name: 'Randomize choice order',
         default: false,
         description: 'If true, the order of the choices will be randomized.'
+      },
+      img_path: {
+        type: jsPsych.plugins.parameterType.HTML_STRING,
+        pretty_name: 'Image directory',
+        default: '../static/img/is3',
+        description: 'Path to image files.'
       }
     }
   }
@@ -88,126 +99,94 @@ jsPsych.plugins["mars"] = (function() {
 
     // Insert CSS.
     new_html += `<style>
-    body {
-      height: 100vh;
-      max-height: 100vh;
-      position: fixed;
+    .jspsych-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     p {
       margin-block-start: 0px;
       margin-block-end: 0px;
     }
-    .mars-container {
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-    }
-    .mars-grid {
-
-      /* Grid position */
-      position: relative;
-      left: 50%;
-      top: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-
-      /* Grid size */
-      width: 640px;
-      height: 620px;
-
-      /* Grid parameters */
-      display: grid;
-      grid-template-columns: 160px 160px 160px 160px;
-      grid-template-rows: 370px 80px 126px;
-      grid-template-areas:
-        "item item item item"
-        "feedback feedback feedback feedback"
-        "choice-0 choice-1 choice-2 choice-3";
-      justify-content: center;
-
-    }
     .mars-item {
-      grid-area: item;
-    }
-    .mars-item img {
-
-      /* puzzle size */
-      width:  auto;
-      height: auto;
-      max-width: 100%;
+      position: relative;
       max-height: 360px;
-
-      /* puzzle aesthetics */
+      max-width: 360px;
       border: 5px solid #777777;
       border-radius: 2px;
-
     }
-    .mars-choice-0 {
-      grid-area: choice-0
+    .mars-item img {
+      max-height: 360px;
+      max-width: 360px;
     }
-    .mars-choice-1 {
-      grid-area: choice-1
+    .mars-choice-row {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      gap: 25px;
     }
-    .mars-choice-2 {
-      grid-area: choice-2
-    }
-    .mars-choice-3 {
-      grid-area: choice-3
-    }
-    .mars-choice-0 img, .mars-choice-1 img, .mars-choice-2 img, .mars-choice-3 img {
-
-      /* puzzle size */
-      width:  auto;
-      height: auto;
-      max-width: 100%;
+    .mars-choice {
+      position: relative;
       max-height: 125px;
-
-      /* puzzle aesthetics */
-      box-sizing: border-box;
+      max-width: 125px;
       border: 2px solid #777777;
       border-radius: 4px;
-
     }
-    .mars-choice-0 img:hover, .mars-choice-1 img:hover,
-    .mars-choice-2 img:hover, .mars-choice-3 img:hover {
+    .mars-choice:hover {
       border: 2px solid #222222;
     }
+    .mars-choice img {
+      max-height: 125px;
+      max-width: 125px;
+    }
     .mars-feedback {
-      grid-area: feedback;
+      position: relative;
+      height: 75px;
       display: flex;
-      vertical-align: middle;
       justify-content: center;
       align-items: center;
     }
     </style>`;
 
-    // Initialize container.
-    new_html += '<div class="mars-container">';
-    new_html += '<div class="mars-grid">';
+    // Define item path.
+    const isrc = trial.img_path + '/mars_' + trial.item + '_M_ss' + trial.shape_set;
 
-    // Display puzzle.
+    // Display item.
     new_html += '<div class="mars-item">';
-    new_html += `<img src="${trial.puzzle}">`;
+    new_html += '<picture>';
+    new_html += '<source srcset="' + isrc + '.webp" type="image/webp">';
+    new_html += '<source srcset="' + isrc + '.jpeg" type="image/jpeg">';
+    new_html += '<img src="' + isrc + '.jpeg">';
+    new_html += '</picture>';
     new_html += '</div>';
-
-    // Randomize choice order.
-    var item_order = [...Array(trial.choices.length).keys()];
-    if (trial.randomize_choice_order) {
-       item_order = jsPsych.randomization.shuffle(item_order);
-    }
 
     // Display feedback.
     new_html += '<div class="mars-feedback" id="feedback"></div>';
 
-    // Display responses.
-    item_order.forEach((j, i) => {
-      new_html += `<div class="mars-choice-${i}" id="jspsych-mars-choice-${i}" choice="${j}">`;
-      new_html += `<img src="${trial.choices[j]}">`;
-      new_html += '</div>';
-    })
+    // Randomize response order.
+    var item_order = [...Array(4).keys()];
+    if (trial.randomize_choice_order) {
+      item_order = jsPsych.randomization.shuffle(item_order);
+    }
 
-    // Close containers.
-    new_html += '</div>';
+    // Iterate over choices
+    new_html += '<div class="mars-choice-row">';
+    item_order.forEach((j, i) => {
+
+      // Define distractor path.
+      const dsrc = trial.img_path + '/mars_' + trial.item + '_T' + (j+1) + '_ss' + trial.shape_set + '_' + trial.distractor;
+
+      // Display choices.
+      new_html += '<div class="mars-choice" id="jspsych-mars-choice-' + i + '" choice="' + j +'"</div>';
+      new_html += '<picture>';
+      new_html += '<source srcset="' + dsrc + '.webp" type="image/webp">';
+      new_html += '<source srcset="' + dsrc + '.jpeg" type="image/jpeg">';
+      new_html += '<img src="' + dsrc + '.jpeg">';
+      new_html += '</picture>';
+      new_html += '</div>';
+
+    })
     new_html += '</div>';
 
     display_element.innerHTML = new_html;
@@ -217,8 +196,8 @@ jsPsych.plugins["mars"] = (function() {
     //---------------------------------------//
 
     // confirm screen resolution
-    const screen_resolution = [window.innerHeight, window.innerWidth];
-    if (screen_resolution[0] < 620 || screen_resolution[1] < 640) {
+    const screen_resolution = [window.innerWidth, window.innerHeight];
+    if (screen_resolution[0] < 580 || screen_resolution[1] < 600) {
       var minimum_resolution = 0;
     } else {
       var minimum_resolution = 1;
@@ -228,7 +207,7 @@ jsPsych.plugins["mars"] = (function() {
     var start_time = performance.now();
 
     // add event listeners to buttons
-    for (var i = 0; i < trial.choices.length; i++) {
+    for (var i = 0; i < 4; i++) {
       display_element.querySelector('#jspsych-mars-choice-' + i).addEventListener('click', function(e){
         var choice = e.currentTarget.getAttribute('choice');
         after_response(choice);
@@ -293,8 +272,10 @@ jsPsych.plugins["mars"] = (function() {
 
       // gather the data to store for the trial
       var trial_data = {
-        puzzle: trial.puzzle,
-        item_order: item_order,
+        item: trial.item,
+        shape_set: trial.shape_set,
+        distractor: trial.distractor,
+        choice_order: item_order,
         correct: trial.correct,
         choice: response.choice,
         accuracy: response.accuracy,

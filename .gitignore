@@ -22,4 +22,5 @@ metadata/**
 reject/**
 *.jpeg
 *.png
+*.webp
 *.tar.gz

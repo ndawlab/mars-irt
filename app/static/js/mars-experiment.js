@@ -13,71 +13,29 @@ const max_threshold = 10;
 const rg_threshold = 3000;       // 3 seconds
 
 // Define screen size parameters.
-var min_width = 640;
+var min_width = 580;
 var min_height = 600;
 
 //---------------------------------------//
 // Define puzzle set.
 //---------------------------------------//
 
-var items = [];
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([ 6, 19, 20, 22], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([25, 28, 39, 47], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([49, 50, 51, 61], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([65, 70, 71, 10], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([15, 11, 18, 13], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([27, 31, 34, 37], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([56, 58, 62, 69], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([77, 16, 17, 12], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([23, 40, 42, 53], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([60, 72, 73, 79], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([80, 14, 26, 52], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([59, 63, 67, 74], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([76, 36, 44, 46], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([54, 55, 64, 75], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([21, 24, 29, 30], 1));
-items = items.concat(jsPsych.randomization.sampleWithoutReplacement([45, 78, 35, 66], 1));
+var items = [1,2,3,4,5,6,7,8,9,10,11,12];
+var shape_set = 1;
+var distractor = 'pd';
 
 //---------------------------------------//
 // Define MARS task.
 //---------------------------------------//
 
 // Preallocate space.
-var preload_mars = [];
 var MARS = [];
 
 // Define image constants.
 const img_path = `../static/img/is${item_set}/`;
-const form_order = jsPsych.randomization.sampleWithReplacement([1,2,3], items.length);
 
 // Iteratively construct trials.
 items.forEach((j, i) => {
-
-  // Define image metadata.
-  const test_form  = form_order[i];
-  const distractor = (Math.random() < 0.5 ? 'md' : 'pd');
-
-  // Define puzzle set order.
-  if ( test_form == 1 ) {
-    var ss = [3,1,2];
-  } else if ( test_form == 2 ) {
-    var ss = [2,3,1];
-  } else if ( test_form == 3 ) {
-    var ss = [1,2,3];
-  }
-
-  // Define images.
-  const puzzle = img_path + `tf${test_form}/` + `tf${test_form}_${j}_M_ss${ss[(j-1)%3]}.jpeg`;
-  const choices = [
-    img_path + `tf${test_form}/` + `tf${test_form}_${j}_T1_ss${ss[(j-1)%3]}_${distractor}.jpeg`,
-    img_path + `tf${test_form}/` + `tf${test_form}_${j}_T2_ss${ss[(j-1)%3]}_${distractor}.jpeg`,
-    img_path + `tf${test_form}/` + `tf${test_form}_${j}_T3_ss${ss[(j-1)%3]}_${distractor}.jpeg`,
-    img_path + `tf${test_form}/` + `tf${test_form}_${j}_T4_ss${ss[(j-1)%3]}_${distractor}.jpeg`,
-  ];
-
-  // Append to preload cache.
-  preload_mars = preload_mars.concat(puzzle);
-  preload_mars = preload_mars.concat(choices);
 
   // Define screen check.
   const screen_check = {
@@ -102,22 +60,24 @@ items.forEach((j, i) => {
     choices: jsPsych.NO_KEYS,
     trial_duration: 1200,
     on_start: function(trial) {
-      const k = jsPsych.data.get().filter({trial_type:'mars', item_set: 3}).count();
-      trial.stimulus = `<div style="font-size:24px;">Loading puzzle:<br>${k+1} / 16</div>`;
+      const k = jsPsych.data.get().filter({trial_type: 'mars', item_set: item_set}).count();
+      trial.stimulus = `<div style="font-size:24px;">Loading puzzle:<br>${k+1} / 12</div>`;
     }
   }
 
   // Define trial.
   const trial = {
     type: 'mars',
-    puzzle: puzzle,
-    choices: choices,
+    item: j,
+    shape_set: shape_set,
+    distractor: distractor,
     correct: 0,
     countdown: true,
     feedback: false,
     trial_duration: trial_duration,
     randomize_choice_order: true,
-    data: {item_set: item_set, item: j, test_form: test_form, distractor: distractor},
+    img_path: img_path,
+    data: {item_set: item_set},
     on_finish: function(data) {
 
       // Store number of browser interactions
@@ -135,18 +95,6 @@ items.forEach((j, i) => {
   // Push trial.
   MARS.push(trial_node);
 
-});
-
-// Randomize position order within each pair of items.
-function swapElement(array, indexA, indexB) {
-  var tmp = array[indexA];
-  array[indexA] = array[indexB];
-  array[indexB] = tmp;
-}
-
-const indices = [0,2,4,6,8,10,12,14]
-indices.forEach((j, i) => {
-  if (Math.random() < 0.5) { swapElement(MARS, j, j+1); }
 });
 
 //---------------------------------------//
@@ -204,7 +152,7 @@ var FEEDBACK = {
 
     // Define feedback page.
     trial.pages = [
-      `<p>You got ${k} of 16 puzzles correct.</p><p>Click the "next" button below to continue.`
+      `<p>You got ${k} of 12 puzzles correct.</p><p>Click the "next" button below to continue.`
     ];
 
   }
