@@ -174,13 +174,6 @@ jsPsych.plugins['survey-demo'] = (function() {
     html += '<label><input type="radio" name="education" value="Rather not say" required>Rather not say</label>';
     html += '</div></div>';
 
-    // Item 6: Free response
-    html += '<div class="survey-demo-row">';
-    html += '<div class="survey-demo-prompt"><label for="free-response">Any comments or feedback for us?<br><small>(e.g. were the images too small?)</label></div>';
-    html += '<div class="survey-demo-response">';
-    html += '<input type="text" name="free-response" style="width: 80%; height: 70%; padding: 0.1em 0.2em;" placeholder="e.g. no comment"></label>';
-    html += '</div></div>';
-
     // Close container.
     html += '</div>';
 
