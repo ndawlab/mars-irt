@@ -31,7 +31,6 @@ items.forEach(i => {
   images_task.push(`../static/img/is3/mars_${i}_T4_ss${shape_set}_${distractor}.webp`)
 });
 
-
 //---------------------------------------//
 // Define MARS task.
 //---------------------------------------//

@@ -14,6 +14,38 @@ function pass_message(msg) {
 
 }
 
+// Successful completion of surveys: redirect to mars.
+function redirect_mars() {
+
+  $.ajax({
+    url: "/redirect_mars",
+    method: 'POST',
+    data: JSON.stringify(jsPsych.data.get().json()),
+    contentType: "application/json; charset=utf-8",
+  }).done(function(data, textStatus, jqXHR) {
+    window.location.replace('/mars');
+  }).fail(function(error) {
+    console.log(error);
+  });
+
+}
+
+// Successful completion of mars: redirect to rpm.
+function redirect_rpm() {
+
+  $.ajax({
+    url: "/redirect_rpm",
+    method: 'POST',
+    data: JSON.stringify(jsPsych.data.get().json()),
+    contentType: "application/json; charset=utf-8",
+  }).done(function(data, textStatus, jqXHR) {
+    window.location.replace('/rpm');
+  }).fail(function(error) {
+    console.log(error);
+  });
+
+}
+
 // Successful completion of experiment: redirect with completion code.
 function redirect_success(workerId, assignmentId, hitId, code_success) {
 

@@ -38,7 +38,7 @@ def consent():
         write_metadata(session, ['WARNING'], 'a')
 
         ## Redirect participant to error (unusual activity).
-        return redirect(url_for('error.error', errornum=1005))
+        return redirect(url_for('complete.complete'))
 
     ## Case 4: repeat visit, previous non-consent.
     elif session['consent'] == False:
@@ -57,8 +57,8 @@ def consent():
         session['WARNING'] = "Revisited consent form."
         write_metadata(session, ['WARNING'], 'a')
 
-        ## Redirect participant to alert page.
-        return redirect(url_for('alert.alert'))
+        ## Redirect participant to experiment page.
+        return redirect(url_for('mars.mars'))
 
 @bp.route('/consent', methods=['POST'])
 def consent_post():
@@ -73,12 +73,11 @@ def consent_post():
 
         ## Update participant metadata.
         session['consent'] = 'BOT'
-        session['experiment'] = False    # Prevents incognito users
-        session['complete'] = 'error'
+        session['complete'] = 'reject'
         write_metadata(session, ['consent','experiment','complete'], 'a')
 
         ## Redirect participant to error (unusual activity).
-        return redirect(url_for('error.error', errornum=1005))
+        return redirect(url_for('complete.complete'))
 
     ## Check participant response.
     elif subj_consent:
@@ -87,8 +86,8 @@ def consent_post():
         session['consent'] = True
         write_metadata(session, ['consent'], 'a')
 
-        ## Redirect participant to alert page.
-        return redirect(url_for('alert.alert'))
+        ## Redirect participant to experiment page.
+        return redirect(url_for('surveys.surveys'))
 
     else:
 

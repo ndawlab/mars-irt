@@ -70,12 +70,6 @@
 
   // Initialize timeline.
   var timeline = [];
-  timeline = timeline.concat(PRELOAD);
-  timeline = timeline.concat(FULLSCREEN);
-  timeline = timeline.concat(INSTRUCTIONS);
-  timeline = timeline.concat(MARS);
-  timeline = timeline.concat(QUALITY_CHECK);
-  timeline = timeline.concat(FEEDBACK);
   timeline = timeline.concat(DEMO);
 
   // Define global variables.
@@ -104,7 +98,7 @@
       } else {
 
         // Save complete dataset to disk.
-        redirect_success("{{workerId}}", "{{assignmentId}}", "{{hitId}}", "{{code_success}}");
+        redirect_mars("{{workerId}}", "{{assignmentId}}", "{{hitId}}", "{{code_success}}");
 
       }
 

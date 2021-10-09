@@ -1,11 +1,12 @@
+import os
 from flask import (Blueprint, redirect, render_template, request, session, url_for)
 from .io import write_data, write_metadata
 
 ## Initialize blueprint.
-bp = Blueprint('experiment', __name__)
+bp = Blueprint('mars', __name__)
 
-@bp.route('/experiment')
-def experiment():
+@bp.route('/mars')
+def mars():
     """Present jsPsych experiment to participant."""
 
     ## Error-catching: screen for missing session.
@@ -17,36 +18,27 @@ def experiment():
     ## Case 1: previously completed experiment.
     elif 'complete' in session:
 
-        ## Update metadata.
-        session['WARNING'] = "Revisited experiment page."
-        write_metadata(session, ['WARNING'], 'a')
-
         ## Redirect participant to complete page.
         return redirect(url_for('complete.complete'))
 
-    ## Case 2: repeat visit.
-    elif 'mars' in session:
+    ## Case 2: previous completion of mars.
+    elif (f'%s_mars.json' %session['subId'] in os.listdir(session['data'])) or \
+         ('mars' in session and session['mars'] == 'complete'):
 
-        ## Update participant metadata.
-        session['ERROR'] = "1004: Revisited experiment."
-        session['complete'] = 'error'
-        write_metadata(session, ['ERROR','complete'], 'a')
+        ## Redirect participant to complete page.
+        return redirect(url_for('rpm.rpm'))
 
-        ## Redirect participant to error (previous participation).
-        return redirect(url_for('error.error', errornum=1004))
-
-    ## Case 3: first visit.
+    ## Case 3: first or repeat visit.
     else:
 
         ## Update participant metadata.
-        session['experiment'] = True
-        write_metadata(session, ['experiment'], 'a')
+        session['mars'] = 'start'
+        write_metadata(session, ['mars'], 'a')
 
         ## Present experiment.
-        return render_template('experiment.html', workerId=session['workerId'], assignmentId=session['assignmentId'], hitId=session['hitId'], code_success=session['code_success'], code_reject=session['code_reject'],
-        seed=session['seed'])
+        return render_template('mars.html', workerId=session['workerId'], assignmentId=session['assignmentId'], hitId=session['hitId'], code_success=session['code_success'], code_reject=session['code_reject'])
 
-@bp.route('/experiment', methods=['POST'])
+@bp.route('/mars', methods=['POST'])
 def pass_message():
     """Write jsPsych message to metadata."""
 
@@ -59,10 +51,6 @@ def pass_message():
         session['MESSAGE'] = msg
         write_metadata(session, ['MESSAGE'], 'a')
 
-        ## Update status of progress.
-        if 'mars' in msg:
-            session['mars'] = True
-
     ## DEV NOTE:
     ## This function returns the HTTP response status code: 200
     ## Code 200 signifies the POST request has succeeded.
@@ -70,8 +58,8 @@ def pass_message():
     ## https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
     return ('', 200)
 
-@bp.route('/redirect_success', methods = ['POST'])
-def redirect_success():
+@bp.route('/redirect_rpm', methods = ['POST'])
+def redirect_mars():
     """Save complete jsPsych dataset to disk."""
 
     if request.is_json:
@@ -80,11 +68,12 @@ def redirect_success():
         JSON = request.get_json()
 
         ## Save jsPsch data to disk.
+        session['stage'] = 'mars'
         write_data(session, JSON, method='pass')
 
     ## Flag experiment as complete.
-    session['complete'] = 'success'
-    write_metadata(session, ['complete','code_success'], 'a')
+    session['mars'] = 'complete'
+    write_metadata(session, ['mars'], 'a')
 
     ## DEV NOTE:
     ## This function returns the HTTP response status code: 200
@@ -104,6 +93,7 @@ def redirect_reject():
         JSON = request.get_json()
 
         ## Save jsPsch data to disk.
+        session['stage'] = 'mars'
         write_data(session, JSON, method='reject')
 
     ## Flag experiment as complete.

@@ -1,9 +1,9 @@
 import os, sys, configparser, warnings
 from flask import (Flask, redirect, render_template, request, session, url_for)
-from app import consent, alert, experiment, complete, error
+from app import consent, surveys, mars, rpm, complete, error
 from .io import write_metadata
 from .utils import gen_code
-__version__ = '1.1'
+__version__ = 'mars-irt-validation'
 
 ## Define root directory.
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -36,8 +36,9 @@ app.secret_key = secret_key
 
 ## Apply blueprints to the application.
 app.register_blueprint(consent.bp)
-app.register_blueprint(alert.bp)
-app.register_blueprint(experiment.bp)
+app.register_blueprint(surveys.bp)
+app.register_blueprint(mars.bp)
+app.register_blueprint(rpm.bp)
 app.register_blueprint(complete.bp)
 app.register_blueprint(error.bp)
 
@@ -65,9 +66,21 @@ def index():
         platform     = request.user_agent.platform,         # User metadata
         version      = request.user_agent.version,          # User metadata
         code_success = cfg['PROLIFIC'].get('CODE_SUCCESS', gen_code(8).upper()),
-        code_reject  = cfg['PROLIFIC'].get('CODE_REJECT', gen_code(8).upper()),
-        seed = len(os.listdir(session['metadata']))
+        code_reject  = cfg['PROLIFIC'].get('CODE_REJECT', gen_code(8).upper())
     )
+
+    ## Error-catching: incognito users.
+    if not 'workerId' in session and info['workerId'] in os.listdir(meta_dir):
+
+        ## Find and grab subId from log file.
+        with open(os.path.join(session['metadata'], info['workerId']),'r') as f:
+            for line in f.readlines():
+                if 'subId' in line:
+                    info['subId'] = line.strip().split('\t')[-1]
+                    break
+
+        ## Update metadata.
+        session['WARNING'] = 'Suspected incognito user.'
 
     ## Case 1: workerId absent.
     if info['workerId'] is None:
@@ -81,63 +94,50 @@ def index():
         ## Redirect participant to error (platform error).
         return redirect(url_for('error.error', errornum=1001))
 
-    ## Case 3: repeat visit, preexisting log but no session data.
-    elif not 'workerId' in session and info['workerId'] in os.listdir(meta_dir):
-
-        ## Consult log file.
-        with open(os.path.join(session['metadata'], info['workerId']),'r') as f:
-            logs = f.read()
-
-        ## Case 3a: previously started experiment.
-        if 'mars' in logs:
-
-            ## Update metadata.
-            session['workerId'] = info['workerId']
-            session['ERROR'] = '1004: Suspected incognito user.'
-            session['complete'] = 'error'
-            write_metadata(session, ['ERROR','complete'], 'a')
-
-            ## Redirect participant to error (previous participation).
-            return redirect(url_for('error.error', errornum=1004))
-
-        ## Case 3b: no previous experiment starts.
-        else:
-
-            ## Update metadata.
-            for k, v in info.items(): session[k] = v
-            session['WARNING'] = "Assigned new subId."
-            write_metadata(session, ['subId','WARNING'], 'a')
-
-            ## Redirect participant to consent form.
-            return redirect(url_for('consent.consent'))
-
-    ## Case 4: repeat visit, manually changed workerId.
-    elif 'workerId' in session and session['workerId'] != info['workerId']:
+    ## Case 3: repeat visit, previous reject.
+    elif (f'%s_surveys.json' %info['subId'] in os.listdir(reject_dir)) or \
+         (f'%s_mars.json' %info['subId'] in os.listdir(reject_dir)) or \
+         (f'%s_rpm.json' %info['subId'] in os.listdir(reject_dir)) or \
+         ('complete' in session and session['complete'] == 'reject'):
 
         ## Update metadata.
-        session['ERROR'] = '1005: workerId tampering detected.'
-        session['complete'] = 'error'
-        write_metadata(session, ['ERROR','complete'], 'a')
-
-        ## Redirect participant to error (unusual activity).
-        return redirect(url_for('error.error', errornum=1005))
-
-    ## Case 5: repeat visit, previously completed experiment.
-    elif 'complete' in session:
-
-        ## Update metadata.
-        session['WARNING'] = "Revisited home."
-        write_metadata(session, ['WARNING'], 'a')
+        for k, v in info.items(): session[k] = v
+        session['complete'] = 'reject'
 
         ## Redirect participant to complete page.
         return redirect(url_for('complete.complete'))
 
-    ## Case 6: repeat visit, preexisting activity.
-    elif 'workerId' in session:
+    ## Case 4: repeat visit, previous success.
+    elif (f'%s_rpm.json' %info['subId'] in os.listdir(data_dir)) or \
+         ('complete' in session and session['complete'] == 'success'):
 
         ## Update metadata.
-        session['WARNING'] = "Revisited home."
-        write_metadata(session, ['WARNING'], 'a')
+        for k, v in info.items(): session[k] = v
+        session['complete'] = 'success'
+
+        ## Redirect participant to complete page.
+        return redirect(url_for('complete.complete'))
+
+    ## Case 5: repeat visit, previously completed MARS experiment.
+    elif f'%s_mars.json' %info['subId'] in os.listdir(data_dir):
+
+        ## Update metadata.
+        for k, v in info.items(): session[k] = v
+
+        ## Redirect participant to complete page.
+        return redirect(url_for('rpm.rpm'))
+
+    ## Case 6: repeat visit, previously completed surveys.
+    elif f'%s_surveys.json' %info['subId'] in os.listdir(data_dir):
+
+        ## Update metadata.
+        for k, v in info.items(): session[k] = v
+
+        ## Redirect participant to complete page.
+        return redirect(url_for('mars.mars'))
+
+    ## Case 7: repeat visit, preexisting activity.
+    elif 'workerId' in session:
 
         ## Redirect participant to consent form.
         return redirect(url_for('consent.consent'))
@@ -148,6 +148,10 @@ def index():
         ## Update metadata.
         for k, v in info.items(): session[k] = v
         write_metadata(session, ['workerId','hitId','assignmentId','subId','address','browser','platform','version'], 'w')
+
+        ## Flag incognito users.
+        if 'WARNING' in session:
+             write_metadata(session, ['WARNING'], 'a')
 
         ## Redirect participant to consent form.
         return redirect(url_for('consent.consent'))
