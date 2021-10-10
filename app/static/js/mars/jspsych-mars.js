@@ -154,11 +154,7 @@ jsPsych.plugins["mars"] = (function() {
 
     // Display item.
     new_html += '<div class="mars-item">';
-    new_html += '<picture>';
-    new_html += '<source srcset="' + isrc + '.webp" type="image/webp">';
-    new_html += '<source srcset="' + isrc + '.jpeg" type="image/jpeg">';
     new_html += '<img src="' + isrc + '.jpeg">';
-    new_html += '</picture>';
     new_html += '</div>';
 
     // Display feedback.
@@ -179,11 +175,7 @@ jsPsych.plugins["mars"] = (function() {
 
       // Display choices.
       new_html += '<div class="mars-choice" id="jspsych-mars-choice-' + i + '" choice="' + j +'"</div>';
-      new_html += '<picture>';
-      new_html += '<source srcset="' + dsrc + '.webp" type="image/webp">';
-      new_html += '<source srcset="' + dsrc + '.jpeg" type="image/jpeg">';
       new_html += '<img src="' + dsrc + '.jpeg">';
-      new_html += '</picture>';
       new_html += '</div>';
 
     })

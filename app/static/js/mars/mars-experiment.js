@@ -12,7 +12,7 @@ const trial_duration = 30000;     // 30 seconds
 
 // Define quality assurance parameters.
 const max_threshold = 10;
-const rg_threshold = 3000;       // 3 seconds
+const rg_threshold = 3000;        // 3 seconds
 
 // Define screen size parameters.
 var min_width = 600;
@@ -24,11 +24,11 @@ var min_height = 600;
 
 var images_task = [];
 items.forEach(i => {
-  images_task.push(`../static/img/is3/mars_${i}_M_ss${shape_set}.webp`)
-  images_task.push(`../static/img/is3/mars_${i}_T1_ss${shape_set}_${distractor}.webp`)
-  images_task.push(`../static/img/is3/mars_${i}_T2_ss${shape_set}_${distractor}.webp`)
-  images_task.push(`../static/img/is3/mars_${i}_T3_ss${shape_set}_${distractor}.webp`)
-  images_task.push(`../static/img/is3/mars_${i}_T4_ss${shape_set}_${distractor}.webp`)
+  images_task.push(`../static/img/is3/mars_${i}_M_ss${shape_set}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${i}_T1_ss${shape_set}_${distractor}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${i}_T2_ss${shape_set}_${distractor}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${i}_T3_ss${shape_set}_${distractor}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${i}_T4_ss${shape_set}_${distractor}.jpeg`)
 });
 
 //---------------------------------------//
