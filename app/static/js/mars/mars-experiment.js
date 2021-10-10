@@ -11,7 +11,7 @@ var distractor = 'pd';
 const trial_duration = 30000;     // 30 seconds
 
 // Define quality assurance parameters.
-const max_threshold = 10;
+const max_threshold = 8;
 const rg_threshold = 3000;        // 3 seconds
 
 // Define screen size parameters.
