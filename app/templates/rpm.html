@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Puzzle Game</title>
+  <title>Puzzle Game (part 2)</title>
 
   <!-- Load libraries -->
   <script src="../static/lib/jquery-3.3.1/jquery.min.js"></script>
@@ -11,8 +11,7 @@
   <script src="../static/js/nivturk-plugins.js" type="text/javascript"></script>
 
   <!-- Load experiment -->
-  <script src="../static/js/rpm/rpm-experiment.js"></script>
-  <script src="../static/js/rpm/rpm-instructions.js"></script>
+  <script src="../static/js/rpm/rpm-tfa.js"></script>
 
   <!-- Load jsPsych plug-ins -->
   <script src="../static/js/jspsych-screen-check.js"></script>
@@ -48,9 +47,9 @@
   // Define image preloading.
   var PRELOAD = {
     type: 'preload',
-    images: [images_task],
+    images: [preload_rpm_tfa],
     message: 'Loading images. This may take a moment depending on your internet connection.',
-    error_message: '<p>The experiment failed to load. Please try restarting your browser.</p><p>If this error persists after 2-3 tries, please contact the experimenter.</p>',
+    error_message: '<p>The experiment failed to load. Please try restarting your browser.</p><p>If this error persists after 3-4 restarts, please contact the experimenter.</p>',
     continue_after_error: false,
     show_progress_bar: true,
     max_load_time: 30000
@@ -60,6 +59,38 @@
   var FULLSCREEN = {
     type: 'fullscreen',
     fullscreen_mode: true
+  }
+
+  // Define instructions
+  var INSTRUCTIONS = {
+    type: 'instructions',
+    pages: [
+      "<p>We are now beginning the second puzzle task.</p><p>In this task, you will be shown a series of puzzles. For each puzzle, your goal is to<br>identify the missing piece from the options appearing below the puzzle.</p>",
+      '<p>There are 9 puzzles in total. You will have <b>30 seconds</b> for each puzzle.</p><p>At the end of the study, your total number of correct answers will be converted<br>into a <b>performance bonus</b>. So try your hardest to solve the puzzles!</p><p>If you cannot solve the puzzle before time runs out, then you should guess.</p><p>Press the "next" button to get started.</p>'
+    ],
+    show_clickable_nav: true,
+    button_label_previous: 'Prev',
+    button_label_next: 'Next'
+  }
+
+  // Define feedback
+  var FEEDBACK = {
+    type: 'instructions',
+    pages: [],
+    show_clickable_nav: true,
+    button_label_previous: 'Prev',
+    button_label_next: 'Next',
+    on_start: function(trial) {
+
+      // Determine number of correct responses.
+      const k = jsPsych.data.get().filter({trial_type: 'rpm', accuracy: 1}).count();
+
+      // Define feedback page.
+      trial.pages = [
+        `<p>You got ${k} of 9 puzzles correct.</p><p>Click the "next" button below to finish the study.`
+      ];
+
+    }
   }
 
   // Initialize timeline.

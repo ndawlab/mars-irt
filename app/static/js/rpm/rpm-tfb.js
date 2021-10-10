@@ -15,24 +15,24 @@ var min_height = 600;
 
 // Define images to preload
 var preload_rpm_tfb = [
-  './img/b10.png',
-  './img/b16.png',
-  './img/b21.png',
-  './img/b30.png',
-  './img/b34.png',
-  './img/b44.png',
-  './img/b50.png',
-  './img/b52.png',
-  './img/b57.png',
-  [...Array(6).keys()].map(i => './img/b10_' + (i+1) + '.png'),
-  [...Array(6).keys()].map(i => './img/b16_' + (i+1) + '.png'),
-  [...Array(6).keys()].map(i => './img/b21_' + (i+1) + '.png'),
-  [...Array(8).keys()].map(i => './img/b30_' + (i+1) + '.png'),
-  [...Array(8).keys()].map(i => './img/b34_' + (i+1) + '.png'),
-  [...Array(8).keys()].map(i => './img/b44_' + (i+1) + '.png'),
-  [...Array(8).keys()].map(i => './img/b50_' + (i+1) + '.png'),
-  [...Array(8).keys()].map(i => './img/b52_' + (i+1) + '.png'),
-  [...Array(8).keys()].map(i => './img/b57_' + (i+1) + '.png'),
+  '../static/img/rpm/b10.png',
+  '../static/img/rpm/b16.png',
+  '../static/img/rpm/b21.png',
+  '../static/img/rpm/b30.png',
+  '../static/img/rpm/b34.png',
+  '../static/img/rpm/b44.png',
+  '../static/img/rpm/b50.png',
+  '../static/img/rpm/b52.png',
+  '../static/img/rpm/b57.png',
+  [...Array(6).keys()].map(i => '../static/img/rpm/b10_' + (i+1) + '.png'),
+  [...Array(6).keys()].map(i => '../static/img/rpm/b16_' + (i+1) + '.png'),
+  [...Array(6).keys()].map(i => '../static/img/rpm/b21_' + (i+1) + '.png'),
+  [...Array(8).keys()].map(i => '../static/img/rpm/b30_' + (i+1) + '.png'),
+  [...Array(8).keys()].map(i => '../static/img/rpm/b34_' + (i+1) + '.png'),
+  [...Array(8).keys()].map(i => '../static/img/rpm/b44_' + (i+1) + '.png'),
+  [...Array(8).keys()].map(i => '../static/img/rpm/b50_' + (i+1) + '.png'),
+  [...Array(8).keys()].map(i => '../static/img/rpm/b52_' + (i+1) + '.png'),
+  [...Array(8).keys()].map(i => '../static/img/rpm/b57_' + (i+1) + '.png'),
 ];
 
 //------------------------------------//
@@ -42,56 +42,56 @@ var preload_rpm_tfb = [
 // Define task timeline
 var timeline_variables_tfb = [
   {
-    stimulus: './img/b10.png',
-    choices: [...Array(6).keys()].map(i => './img/b10_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b10.png',
+    choices: [...Array(6).keys()].map(i => '../static/img/rpm/b10_' + (i+1) + '.png'),
     correct: 2,
     col_wrap: 3
   },
   {
-    stimulus: './img/b16.png',
-    choices: [...Array(6).keys()].map(i => './img/b16_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b16.png',
+    choices: [...Array(6).keys()].map(i => '../static/img/rpm/b16_' + (i+1) + '.png'),
     correct: 1,
     col_wrap: 3
   },
   {
-    stimulus: './img/b21.png',
-    choices: [...Array(6).keys()].map(i => './img/b21_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b21.png',
+    choices: [...Array(6).keys()].map(i => '../static/img/rpm/b21_' + (i+1) + '.png'),
     correct: 3,
     col_wrap: 3
   },
   {
-    stimulus: './img/b30.png',
-    choices: [...Array(8).keys()].map(i => './img/b30_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b30.png',
+    choices: [...Array(8).keys()].map(i => '../static/img/rpm/b30_' + (i+1) + '.png'),
     correct: 3,
     col_wrap: 4
   },
   {
-    stimulus: './img/b34.png',
-    choices: [...Array(8).keys()].map(i => './img/b34_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b34.png',
+    choices: [...Array(8).keys()].map(i => '../static/img/rpm/b34_' + (i+1) + '.png'),
     correct: 5,
     col_wrap: 4
   },
   {
-    stimulus: './img/b44.png',
-    choices: [...Array(8).keys()].map(i => './img/b44_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b44.png',
+    choices: [...Array(8).keys()].map(i => '../static/img/rpm/b44_' + (i+1) + '.png'),
     correct: 3,
     col_wrap: 4
   },
   {
-    stimulus: './img/b50.png',
-    choices: [...Array(8).keys()].map(i => './img/b50_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b50.png',
+    choices: [...Array(8).keys()].map(i => '../static/img/rpm/b50_' + (i+1) + '.png'),
     correct: 5,
     col_wrap: 4
   },
   {
-    stimulus: './img/b52.png',
-    choices: [...Array(8).keys()].map(i => './img/b52_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b52.png',
+    choices: [...Array(8).keys()].map(i => '../static/img/rpm/b52_' + (i+1) + '.png'),
     correct: 1,
     col_wrap: 4
   },
   {
-    stimulus: './img/b57.png',
-    choices: [...Array(8).keys()].map(i => './img/b57_' + (i+1) + '.png'),
+    stimulus: '../static/img/rpm/b57.png',
+    choices: [...Array(8).keys()].map(i => '../static/img/rpm/b57_' + (i+1) + '.png'),
     correct: 0,
     col_wrap: 4
   },
