@@ -3,9 +3,10 @@
 //---------------------------------------//
 
 // Define puzzle set.
-var items = [1,2,3,4,5,6,7,8,9,10,11,12];
-var shape_set = 1;
-var distractor = 'pd';
+const items = [71, 55, 30, 45, 11, 29, 16, 17, 23, 58, 35, 76];
+const shape_set = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
+const distractor = ['pd', 'pd', 'pd', 'pd', 'pd', 'pd',
+                    'md', 'pd', 'md', 'md', 'pd', 'pd'];
 
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
@@ -23,13 +24,13 @@ var min_height = 600;
 //---------------------------------------//
 
 var images_task = [];
-items.forEach(i => {
-  images_task.push(`../static/img/is3/mars_${i}_M_ss${shape_set}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${i}_T1_ss${shape_set}_${distractor}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${i}_T2_ss${shape_set}_${distractor}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${i}_T3_ss${shape_set}_${distractor}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${i}_T4_ss${shape_set}_${distractor}.jpeg`)
-});
+for (let i = 0; i < 12; i++) {
+  images_task.push(`../static/img/is3/mars_${items[i]}_M_ss${shape_set[i]}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${items[i]}_T1_ss${shape_set[i]}_${distractor[i]}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${items[i]}_T2_ss${shape_set[i]}_${distractor[i]}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${items[i]}_T3_ss${shape_set[i]}_${distractor[i]}.jpeg`)
+  images_task.push(`../static/img/is3/mars_${items[i]}_T4_ss${shape_set[i]}_${distractor[i]}.jpeg`)
+};
 
 //---------------------------------------//
 // Define MARS task.
@@ -42,7 +43,7 @@ var MARS = [];
 const img_path = `../static/img/is3/`;
 
 // Iteratively construct trials.
-items.forEach((j, i) => {
+for (let i = 0; i < 12; i++) {
 
   // Define screen check.
   const screen_check = {
@@ -75,9 +76,9 @@ items.forEach((j, i) => {
   // Define trial.
   const trial = {
     type: 'mars',
-    item: j,
-    shape_set: shape_set,
-    distractor: distractor,
+    item: items[i],
+    shape_set: shape_set[i],
+    distractor: distractor[i],
     correct: 0,
     countdown: true,
     feedback: false,
@@ -102,7 +103,7 @@ items.forEach((j, i) => {
   // Push trial.
   MARS.push(trial_node);
 
-});
+}
 
 //---------------------------------------//
 // Define data quality check.
