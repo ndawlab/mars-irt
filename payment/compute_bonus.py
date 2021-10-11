@@ -41,17 +41,19 @@ for f in files:
     with open(os.path.join(DATA_DIR, f), 'r') as f:
         JSON = json.load(f)
 
-    ## Locate FCP trials.
-    data = DataFrame([dd for dd in JSON if dd['trial_type'] == 'mars'])
+    ## Locate MARS trials.
+    mars = DataFrame([dd for dd in JSON if dd['trial_type'] == 'mars'])
+    mars = mars.query('item_set==3').fillna(0)
 
-    ## Restrict to learning trials.
-    data = data.query('item_set==3')
+    ## Locate RPM trials.
+    rpm = DataFrame([dd for dd in JSON if dd['trial_type'] == 'rpm'])
+    rpm = rpm.fillna(0)
 
     ## Compute total points earned.
-    accuracy = data.accuracy.mean()
+    score = (mars.accuracy.sum() + rpm.accuracy.sum()) / 21
 
     ## Store.
-    DATA.append( dict(subId=subject, accuracy=accuracy) )
+    DATA.append( dict(subId=subject, score=score) )
 
 ## Convert to DataFrame.
 DATA = DataFrame(DATA)
@@ -62,11 +64,11 @@ DATA = DataFrame(DATA)
 
 ## Define maximum bonus.
 completion_bonus = 0
-max_bonus = 0.50
+max_bonus = 0.75
 
 ## Merge DataFrames.
 BONUS = METADATA.merge(DATA, on='subId', how='inner')
-BONUS['bonus'] = np.round(BONUS['accuracy'] * max_bonus + completion_bonus, 2)
+BONUS['bonus'] = np.round(BONUS['score'] * max_bonus + completion_bonus, 2)
 print(BONUS.bonus.sum())
 
 ## Save.

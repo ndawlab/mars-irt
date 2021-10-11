@@ -4,9 +4,17 @@
 
 // Define puzzle set.
 const items = [71, 55, 30, 45, 11, 29, 16, 17, 23, 58, 35, 76];
-const shape_set = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
 const distractor = ['pd', 'pd', 'pd', 'pd', 'pd', 'pd',
                     'md', 'pd', 'md', 'md', 'pd', 'pd'];
+
+// Randomize shape set order
+if (Math.random() < 0.333) {
+  var shape_set = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
+} else if (Math.random() < 0.666) {
+  var shape_set = [2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1];
+} else {
+  var shape_set = [3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1];
+}
 
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
