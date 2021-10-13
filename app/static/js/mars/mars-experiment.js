@@ -10,8 +10,6 @@ const distractor = ['pd', 'pd', 'pd', 'pd', 'pd', 'pd',
 // Randomize shape set order
 if (Math.random() < 0.333) {
   var shape_set = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
-} else if (Math.random() < 0.666) {
-  var shape_set = [2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1];
 } else {
   var shape_set = [3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2];
 }
