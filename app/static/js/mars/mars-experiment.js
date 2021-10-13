@@ -13,7 +13,7 @@ if (Math.random() < 0.333) {
 } else if (Math.random() < 0.666) {
   var shape_set = [2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1];
 } else {
-  var shape_set = [3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1];
+  var shape_set = [3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2];
 }
 
 // Define timing parameters.
