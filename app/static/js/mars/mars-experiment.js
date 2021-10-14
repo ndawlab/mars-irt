@@ -8,11 +8,7 @@ const distractor = ['pd', 'pd', 'pd', 'pd', 'pd', 'pd',
                     'md', 'pd', 'md', 'md', 'pd', 'pd'];
 
 // Randomize shape set order
-if (Math.random() < 0.333) {
-  var shape_set = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3];
-} else {
-  var shape_set = [3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2];
-}
+var shape_set = [3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2];
 
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
