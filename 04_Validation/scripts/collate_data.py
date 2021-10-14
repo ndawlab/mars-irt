@@ -171,7 +171,8 @@ for f in files:
     
     ## Format columns.
     rpm['test_form'] = rpm['test_form'].replace({'a':0, 'b':1})
-    rpm['stimulus'] = [s.split('/')[-1].replace('.png','') for s in rpm.stimulus]
+    try: rpm['stimulus'] = [s.split('/')[-1].replace('.png','') for s in rpm.stimulus]
+    except: raise ValueError(f) 
     rpm['rt'] = np.round(rpm['rt'] * 1e-3, 3)
     rpm['all_loaded'] = mars['all_loaded'].astype(int)
     rpm.insert(0, 'subject', subject)
