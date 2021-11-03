@@ -1,7 +1,7 @@
 import os, sys
 import numpy as np
 from os.path import dirname
-from pandas import read_csv
+from pandas import read_csv, get_dummies
 ROOT_DIR = dirname(dirname(os.path.realpath(__file__)))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -54,10 +54,6 @@ X1.to_csv(os.path.join(ROOT_DIR, 'designs', f'X1.csv'), index=False)
 ## Load features DataFrame.
 features = read_csv(os.path.join(ROOT_DIR, 'designs', 'features.csv'))
 
-## Reduce to item / distractor type. 
-features = features.groupby(['item','distractor']).mean().reset_index()
-features = features.sort_values(['item','distractor']).reset_index(drop=True)
-
 ## Prepare intercept variable.
 features['intercept'] = 1
 
@@ -65,35 +61,22 @@ features['intercept'] = 1
 features['n_rules'] = np.where(features.filter(regex='f[1-3]'), 1, 0).sum(axis=1)
 
 ## Prepare distractor variable.
-features['distractor'] = features['distractor'].replace({'md':1, 'pd':0})
-
-## Re-index items.
-data['item_id'] = data.apply(lambda x: '%0.2d' %x['item'] + '_' + x['distractor'], 1)
+features['distractor'] = features['distractor'].replace({'md':0.5, 'pd':-0.5})
 
 ## Prepare RT regressor.
 rt = data.groupby('item_id').rt.apply(lambda x: np.mean(np.log(x))).values
 X = features[['intercept','n_features','n_rules','distractor']].values
 b, _, _, _ = np.linalg.lstsq(X, rt, rcond=-1)
-features['rt'] = zscore(rt - X @ b)
+features['rt'] = zscore(rt - X @ b).round(6)
 
 ## Define item feature matrix.
 X2 = features[['intercept','n_features','n_rules','distractor','rt']].copy()
 X2.to_csv(os.path.join(ROOT_DIR, 'designs', f'X2.csv'), index=False)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-### Construct distractor feature matrix.
+### Construct item family matrix.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-## Load distractors DataFrame.
-distractors = read_csv(os.path.join(ROOT_DIR, 'designs', 'distractors.csv'))
-
-## Reduce to item / distractor type. 
-distractors = distractors.sort_values(['item','distractor']).reset_index(drop=True)
-distractors = distractors.set_index(['item','distractor'])
-
-## Prepare relative distractor variables.
-distractors = distractors.apply(lambda x: x - x.min(), axis=1)
-
-## Define distractor feature matrix.
-X3 = distractors.copy()
+## Define item family matrix.
+X3 = get_dummies(features.item)
 X3.to_csv(os.path.join(ROOT_DIR, 'designs', f'X3.csv'), index=False)

@@ -30,9 +30,6 @@ data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
 reject = read_csv(os.path.join(ROOT_DIR, 'data', 'reject.csv'))
 data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 
-## Re-index items.
-data['item_id'] = data.apply(lambda x: '%0.2d' %x['item'] + '_' + x['distractor'], 1)
-
 ## Score missing data.
 data['accuracy'] = data['accuracy'].fillna(0)
 
@@ -58,15 +55,21 @@ _, M1 = X1.shape
     
 ## Define item feature matrix.
 X2 = read_csv(os.path.join(ROOT_DIR, 'designs', 'X2.csv'))
+if 'm1' in stan_model or 'm2' in stan_model: X2 = X2[['intercept','n_features','n_rules']]
 X2 = X2.apply(zscore, 0).fillna(1).values
 _, M2 = X2.shape
+
+## Define item family matrix.
+X3 = read_csv(os.path.join(ROOT_DIR, 'designs', 'X3.csv'))
+X3 = X3.values.astype(float)
+_, M3 = X3.shape
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Fit Stan Model.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Assemble data.
-dd = dict(N=N, J=J, K=K, M1=M1, M2=M2, Y=Y, X1=X1, X2=X2)
+dd = dict(N=N, J=J, K=K, M1=M1, M2=M2, M3=M3, Y=Y, X1=X1, X2=X2, X3=X3)
 
 ## Load StanModel
 StanModel = CmdStanModel(stan_file=os.path.join('stan_models',f'{stan_model}.stan'))
