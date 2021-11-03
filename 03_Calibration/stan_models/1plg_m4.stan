@@ -23,7 +23,6 @@ transformed data {
     int  NK = max(K);                  // Number of total items
     
     real gamma = 0.25;                 // Guessing rate
-    real c = inv(1-gamma);             // Adjustment for guessing
 
 }
 parameters {

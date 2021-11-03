@@ -28,9 +28,6 @@ data = read_csv(os.path.join(ROOT_DIR, 'data', 'data.csv'))
 reject = read_csv(os.path.join(ROOT_DIR, 'data', 'reject.csv'))
 data = data.loc[data.subject.isin(reject.query('reject==0').subject)]
 
-## Re-index items.
-data['item_id'] = data.apply(lambda x: '%0.2d' %x['item'] + '_' + x['distractor'], 1)
-
 ## Score missing data.
 data['accuracy'] = data['accuracy'].fillna(0)
 
@@ -60,7 +57,7 @@ alpha = StanFit.filter(regex='alpha\[').values
 if not np.any(alpha): alpha = np.ones_like(beta)
 
 ## Define guessing rate.
-if '3pl' in stan_model: gamma = 0.25
+if '1plg' or '3pl' in stan_model: gamma = 0.25
 else: gamma = 0.00
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
