@@ -163,8 +163,8 @@ data['k_u'] = ku
 data['k_c'] = kc[J]
 
 ## Restrict DataFrame to columns of interest.
-cols = ['subject','trial','item_id','item','dimension','test_form','shape_set','distractor','choice','accuracy',
-        'y_hat','y_pred','pwaic_u','pwaic_c','louo','loco','k_u','k_c']
+cols = ['subject', 'trial', 'item_id', 'item', 'dimension', 'test_form', 'shape_set', 'distractor', 
+        'choice', 'accuracy', 'y_hat', 'y_pred', 'pwaic_u', 'pwaic_c', 'louo', 'loco', 'k_u', 'k_c']
 data = data[cols]
 
 ## Define fout.
