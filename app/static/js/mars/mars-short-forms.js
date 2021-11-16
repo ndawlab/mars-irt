@@ -47,5 +47,5 @@ var test_form_3 = [
   {item: 35, distractor: 'pd', shape_set: 2, 'form': 3},
   {item: 64, distractor: 'pd', shape_set: 2, 'form': 3},
   {item: 66, distractor: 'pd', shape_set: 3, 'form': 3},
-  {item: 24, distractor: 'pd', shape_set: 2, 'form': 3}}
+  {item: 24, distractor: 'pd', shape_set: 2, 'form': 3}
 ]

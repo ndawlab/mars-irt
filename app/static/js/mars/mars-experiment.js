@@ -2,26 +2,8 @@
 // Define parameters.
 //---------------------------------------//
 
-// Define puzzle set.
-const items = [71, 55, 30, 45, 11, 29, 16, 17, 23, 58, 35, 76];
-const distractor = ['pd', 'pd', 'pd', 'pd', 'pd', 'pd',
-                    'md', 'pd', 'md', 'md', 'pd', 'pd'];
-
-// Randomize shape set order
-var shape_set = [
-  2,
-  Math.random() < 0.5 ? 1 : 3,
-  2,
-  2,
-  Math.random() < 0.5 ? 1 : 3,
-  2,
-  2,
-  Math.random() < 0.5 ? 1 : 3,
-  2,
-  2,
-  Math.random() < 0.5 ? 1 : 3,
-  2
-];
+// Define short form.
+const short_form = [test_form_1, test_form_2, test_form_3][workerNo % 3];
 
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
@@ -39,12 +21,12 @@ var min_height = 600;
 //---------------------------------------//
 
 var images_task = [];
-for (let i = 0; i < 12; i++) {
-  images_task.push(`../static/img/is3/mars_${items[i]}_M_ss${shape_set[i]}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${items[i]}_T1_ss${shape_set[i]}_${distractor[i]}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${items[i]}_T2_ss${shape_set[i]}_${distractor[i]}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${items[i]}_T3_ss${shape_set[i]}_${distractor[i]}.jpeg`)
-  images_task.push(`../static/img/is3/mars_${items[i]}_T4_ss${shape_set[i]}_${distractor[i]}.jpeg`)
+for (let i = 0; i < short_form.length; i++) {
+  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_M_ss' + short_form[i].shape_set + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T1_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T2_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T3_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T4_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
 };
 
 //---------------------------------------//
@@ -58,7 +40,7 @@ var MARS = [];
 const img_path = `../static/img/is3/`;
 
 // Iteratively construct trials.
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < short_form.length; i++) {
 
   // Define screen check.
   const screen_check = {
@@ -91,16 +73,16 @@ for (let i = 0; i < 12; i++) {
   // Define trial.
   const trial = {
     type: 'mars',
-    item: items[i],
-    shape_set: shape_set[i],
-    distractor: distractor[i],
+    item: short_form[i].item,
+    shape_set: short_form[i].shape_set,
+    distractor: short_form[i].distractor,
     correct: 0,
     countdown: true,
     feedback: false,
     trial_duration: trial_duration,
     randomize_choice_order: true,
     img_path: img_path,
-    data: {item_set: 3},
+    data: {item_set: 3, short_form: short_form[i].form},
     on_finish: function(data) {
 
       // Store number of browser interactions
