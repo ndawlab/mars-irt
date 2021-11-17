@@ -12,8 +12,8 @@
 
   <!-- Copy & store subject number -->
   <script type="text/javascript">
-    var workerNo = parseInt("{{seed}}");    // Try to retrieve worker number from Flask.
-    if (isNaN(workerNo)) {workerNo = 0;}    // If fail, set to zero.
+    var workerNo = parseInt("{{workerNo}}");    // Try to retrieve worker number from Flask.
+    if (isNaN(workerNo)) {workerNo = 0;}        // If fail, set to zero.
   </script>
 
   <!-- Load experiment -->

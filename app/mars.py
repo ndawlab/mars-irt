@@ -36,7 +36,7 @@ def mars():
         write_metadata(session, ['mars'], 'a')
 
         ## Present experiment.
-        return render_template('mars.html', workerId=session['workerId'], assignmentId=session['assignmentId'], hitId=session['hitId'], code_success=session['code_success'], code_reject=session['code_reject'])
+        return render_template('mars.html', workerId=session['workerId'], assignmentId=session['assignmentId'], hitId=session['hitId'], code_success=session['code_success'], code_reject=session['code_reject'], workerNo=session['workerNo'])
 
 @bp.route('/mars', methods=['POST'])
 def pass_message():

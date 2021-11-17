@@ -66,7 +66,8 @@ def index():
         platform     = request.user_agent.platform,         # User metadata
         version      = request.user_agent.version,          # User metadata
         code_success = cfg['PROLIFIC'].get('CODE_SUCCESS', gen_code(8).upper()),
-        code_reject  = cfg['PROLIFIC'].get('CODE_REJECT', gen_code(8).upper())
+        code_reject  = cfg['PROLIFIC'].get('CODE_REJECT', gen_code(8).upper()),
+        workerNo     = len(os.listdir(session['metadata']))
     )
 
     ## Error-catching: incognito users.
