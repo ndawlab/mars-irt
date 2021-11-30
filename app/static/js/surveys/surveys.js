@@ -192,7 +192,7 @@ var infrequency_check = {
   type: 'call-function',
   func: score_infrequency_items,
   on_finish: function(trial) {
-    if (jsPsych.data.getLastTrialData().values()[0].value[0] >= 2) {
+    if (jsPsych.data.getLastTrialData().values()[0].value >= 2) {
       low_quality = true;
       jsPsych.endExperiment();
     }
