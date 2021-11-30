@@ -69,7 +69,7 @@ var nfc10 = {
   }
 }
 
-// PROMIS cognitive function - short form
+// PROMIS cognitive function - short form 8a
 var pcf = {
   type: 'survey-template',
   items: [
