@@ -24,7 +24,7 @@ var DEMO = {
 };
 
 // Need for cognition (abbreviated)
-var nfc6 = {
+var nfc10 = {
   type: 'survey-template',
   items: [
 
@@ -33,11 +33,15 @@ var nfc6 = {
     "I like to have the responsibility of handling a situation that requires a lot of thinking.",
     "Thinking is not my idea of fun.",
     "I would rather do something that requires little thought than something that is sure to challenge my thinking abilities.",
+    "I try to anticipate and avoid situations where there is a likely chance I will have to think in depth about something.",
+    "I find satisfaction in deliberating hard and for long hours.",
+    "The idea of relying on thought to make my way to the top appeals to me.",
     "I really enjoy a task that involves coming up with new solutions to problems.",
-    "I would prefer a task that is intellectual, difficult, and important to one that is important but does not require much thought.",
+    "I prefer my life to be filled with puzzles I must solve.",
+    "I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.",
 
     // Infrequency item
-    'Please select "uncertain" as your response for this statement.'
+    "I am able to stop breathing entirely for weeks without the aid of medical equipment."
 
   ],
   scale: [
@@ -48,115 +52,127 @@ var nfc6 = {
     "Extremely<br>characteristic<br>of me"
   ],
   reverse: [
-    false, false, true, true, false, false, false
+    false, false, true, true, true, false, false, false, false, false, false
   ],
   instructions: 'For each of the statements below, please indicate whether or not the statement is characteristic of you or of what you believe.',
-  survey_width: 950,
-  item_width: 40,
-  infrequency_items: [6],
-  data: {survey: 'nfc6'},
-  on_finish: function(data) {
-
-    // Score response on infrequncy item.
-    const scores = [1,1,0,1,1];
-    data.infrequency = scores[data.responses['Q07']];
-
-  }
-}
-
-// IPIP NEO-PI-R Neuroticism
-var neuroticism = {
-  type: 'survey-template',
-  items: [
-
-    // Neuroticism beliefs (forward-scored)
-    "Often feel blue.",
-    "Dislike myself.",
-    "Am often down in the dumps.",
-    "Have frequent mood swings.",
-    "Panic easily.",
-
-    // Neuroticism beliefs (reverse-scored)
-    "Rarely get irritated.",
-    "Rarely feel blue.",
-    "Feel comfortable with myself.",
-    "Am not easily bothered by things.",
-    "Am very pleased with myself.",
-
-    // Infrequency item
-    "Can remember my own name."
-
-  ],
-  scale: [
-    "Disagree",
-    "Slightly disagree",
-    "Neutral",
-    "Slightly agree",
-    "Agree"
-  ],
-  reverse: [
-    false, false, false, false, false, true, true, true, true, true, false
-  ],
-  instructions: "The following are some phrases describing people's behaviors. Please use the rating scale to describe how accurately each statement describes you.",
   scale_repeat: 6,
   survey_width: 950,
   item_width: 40,
   infrequency_items: [10],
-  data: {survey: 'neuroticism'},
+  data: {survey: 'nfc10'},
   on_finish: function(data) {
 
     // Score response on infrequncy item.
-    const scores = [1,1,1,0,0];
+    const scores = [0,0.5,1,1,1];
     data.infrequency = scores[data.responses['Q11']];
+
+  }
+}
+
+// PROMIS cognitive function - short form
+var pcf = {
+  type: 'survey-template',
+  items: [
+
+    // Cognitive functioning
+    "My thinking has been slow.",
+    "It has seemed like my brain was not working as well as usual.",
+    "I have had to work harder than usual to keep track of what I was doing.",
+    "I have had trouble shifting back and forth between different activities that require thinking.",
+    "I have had trouble concentrating.",
+    "I have had to work really hard to pay attention or I would make a mistake.",
+    "I have had trouble forming thoughts.",
+    "I have had trouble adding or subtracting numbers in my head.",
+
+    // Infrequency item
+    "I was able to remember my own name."
+
+  ],
+  scale: [
+    "Never",
+    "Rarely",
+    "Sometimes",
+    "Often",
+    "Very often"
+  ],
+  reverse: [
+    true, true, true, true, true, true, true, true, false
+  ],
+  instructions: 'For each of the statements below, please indicate how much the statement has applied to you <b>over the last 7 days</b>.',
+  scale_repeat: 5,
+  survey_width: 950,
+  item_width: 40,
+  infrequency_items: [9],
+  data: {survey: 'pcf'},
+  on_finish: function(data) {
+
+    // Score response on infrequncy item.
+    const scores = [1,1,1,0.5,0];
+    data.infrequency = scores[data.responses['Q09']];
 
   }
 
 }
 
-// IPIP NEO-PI-R Openness to Experience
-var openness = {
-  type: 'survey-template',
-  items: [
-
-    // Openness beliefs (forward-scored)
-    "Believe in the importance of art.",
-    "Have a vivid imagination.",
-    "Tend to vote for liberal political candidates.",
-    "Carry the conversation to a higher level.",
-    "Enjoy hearing new ideas.",
-
-    // Openness beliefs (reverse-scored)
-    "Am not interested in abstract ideas.",
-    "Do not like art.",
-    "Avoid philosophical discussions.",
-    "Do not enjoy going to art museums.",
-    "Tend to vote for conservative political candidates.",
-
-    // Infrequency item
-    "Can live for months without oxygen."
-
+// Subjective numeracy scale
+var sns = {
+  type: 'survey-likert',
+  questions: [
+    {
+      prompt: "How good are you at working with fractions?",
+      labels: ["Not at all<br>good", "", "", "", "", "Extremely<br>good"],
+      required: true
+    },
+    {
+      prompt: "How good are you at working with percentages?",
+      labels: ["Not at all<br>good", "", "", "", "", "Extremely<br>good"],
+      required: true
+    },
+    {
+      prompt: "How good are you at calculating a 15% tip?",
+      labels: ["Not at all<br>good", "", "", "", "", "Extremely<br>good"],
+      required: true
+    },
+    {
+      prompt: "How good are you at figuring out how much a shirt will cost if it is 25% off?",
+      labels: ["Not at all<br>good", "", "", "", "", "Extremely<br>good"],
+      required: true
+    },
+    {
+      prompt: "When reading the newspaper, how helpful do you find tables and graphs that are parts of a story?",
+      labels: ["Not at all<br>helpful", "", "", "", "", "Extremely<br>helpful"],
+      required: true
+    },
+    {
+      prompt: `When people tell you the chance of something happening, do you prefer that they<br> use words ("it rarely happens") or numbers ("there's a 1% chance")?`,
+      labels: ["Always Prefer<br>Words", "", "", "", "", "Always Prefer<br>Numbers"],
+      required: true
+    },
+    {
+      prompt: `When you hear a weather forecast, do you prefer predictions using percentages (e.g., "there will<br>be a 20% chance of rain today") or predictions using only words (e.g., "there is a small chance<br>of rain today")?`,
+      labels: ["Always Prefer<br>Percentages", "", "", "", "", "Always Prefer<br>Words"],
+      required: true
+    },
+    {
+      prompt: "How often do you find numerical information to be useful?",
+      labels: ["Never", "", "", "", "", "Very Often"],
+      required: true
+    },
+    {
+      prompt: 'Please select "Never" as your response for this statement.',
+      labels: ["Never", "", "", "", "", "Very Often"],
+      required: true
+    },
   ],
-  scale: [
-    "Disagree",
-    "Slightly disagree",
-    "Neutral",
-    "Slightly agree",
-    "Agree"
-  ],
-  reverse: [
-    false, false, false, true, true, true, true, true, true, true, false
-  ],
-  instructions: "The following are some phrases describing people's behaviors. Please use the rating scale to describe how accurately each statement describes you.",
-  scale_repeat: 6,
-  survey_width: 950,
-  item_width: 40,
-  infrequency_items: [10],
-  data: {survey: 'openness'},
+  scale_width: 700,
+  autocomplete: false,
+  randomize_question_order: true,
+  data: {survey: 'sns'},
   on_finish: function(data) {
 
     // Score response on infrequncy item.
-    const scores = [0,0,1,1,1];
-    data.infrequency = scores[data.responses['Q11']];
+    const scores = [0,1,1,1,1,1];
+    data.infrequency = scores[data.response['Q8']];
 
   }
 }
@@ -169,13 +185,7 @@ var openness = {
 
 // Define infrequency item check.
 var score_infrequency_items = function() {
-
-  // Score infrequency items.
-  const infreq = jsPsych.data.get().select('infrequency').sum();
-  const sl = jsPsych.data.get().select('straightlining').sum();
-  const zz = jsPsych.data.get().select('zigzagging').sum();
-  return [infreq, sl, zz];
-
+  return jsPsych.data.get().select('infrequency').sum();
 }
 
 var infrequency_check = {
@@ -194,5 +204,5 @@ var infrequency_check = {
 //------------------------------------//
 
 // Define survey block
-var SURVEYS = jsPsych.randomization.shuffle([nfc6, neuroticism, openness]);
+var SURVEYS = jsPsych.randomization.shuffle([nfc10, pcf, sns]);
 SURVEYS = SURVEYS.concat(infrequency_check)

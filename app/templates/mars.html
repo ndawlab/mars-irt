@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Puzzle Game (part 1)</title>
+  <title>Brain Teasers (part 2)</title>
 
   <!-- Load libraries -->
   <script src="../static/lib/jquery-3.3.1/jquery.min.js"></script>
@@ -67,6 +67,17 @@
   var FULLSCREEN = {
     type: 'fullscreen',
     fullscreen_mode: true
+  }
+
+  // Welcome screen
+  var WELCOME = {
+    type: 'instructions',
+    pages: [
+      "<b>Welcome to the study!</b><br><br>We will now get started with some surveys.<br>Please read each survey carefully and respond truthfully."
+    ],
+    show_clickable_nav: true,
+    button_label_previous: 'Prev',
+    button_label_next: 'Next'
   }
 
   // Initialize timeline.
