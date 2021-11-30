@@ -12,7 +12,7 @@ const style = "width:auto; height:auto; max-width:100%; max-height:200px;";
 var instructions_01 = {
   type: 'instructions',
   pages: [
-    '<p>Great job! We are now starting the first puzzle task.</p>',
+    '<p>Great job! We are now starting the first set of brain teasers.</p>',
     `<p>In this task, you will be shown a 3x3 grid of patterns. The last one, in the bottom right-hand corner, <b>will be missing:</b></p><img src="../static/img/practice/p1_M1.png" style="${style}"</img><p>You will need to select <b>which of the four possible patterns</b> along the bottom <b>fits into the gap</b>:</p><img src="../static/img/practice/p1_T1.png" style="${style}"</img>`,
     '<p>The task contains a mix of easy, medium, and hard puzzles.</p><p>You will have <b>30 seconds</b> to complete each puzzle.</p><p>Try to be as accurate as you can be.</p><p>If you cannot solve the puzzle before time runs out, then you should guess.</p>',
     '<p>Now, we will practice on three puzzles.</p><p>Press the "next" button to get started.</p>'
