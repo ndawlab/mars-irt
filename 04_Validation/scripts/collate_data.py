@@ -194,3 +194,66 @@ for f in files:
 ## Concatenate and save data.
 RPM = concat(RPM).sort_values(['subject','trial'])
 RPM.to_csv(os.path.join(DATA_DIR, 'rpm.csv'), index=False)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+### Assemble timing data.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+## Locate files.
+files = sorted([f for f in os.listdir(RAW_DIR) if f.endswith('surveys.json')])
+
+## Main loop.
+TIMING = []
+for f in files:
+    
+    ## Define subject
+    subject = f.replace('_surveys.json','')
+        
+    ## Initialize dictionary.
+    dd = dict(subject=subject, mars_total=np.nan, mars_task=np.nan, mars_interactions=np.nan,
+              rpm_total=np.nan, rpm_task=np.nan, rpm_interactions=np.nan)
+    
+    ## Process MARS data.
+    fdat = os.path.join(RAW_DIR, f'{subject}_mars.json')
+    
+    if os.path.isfile(fdat):
+        
+        ## Load JSON.
+        with open(fdat, 'r') as tmp:
+            JSON = json.load(tmp)
+            
+        ## Extract total time.
+        dd['mars_total'] = JSON[-1]['time_elapsed'] * 1e-3
+        
+        ## Extract task time.
+        f = lambda d: d['rt'] if d['rt'] is not None else 3e4  
+        dd['mars_task'] = sum([f(d) for d in JSON if 'short_form' in d]) * 1e-3
+        
+        ## Extract browser interactions.
+        dd['mars_interactions'] = len(eval(JSON[-1]['interactions']))
+        
+    ## Process RPM data.
+    fdat = os.path.join(RAW_DIR, f'{subject}_rpm.json')
+    
+    if os.path.isfile(fdat):
+        
+        ## Load JSON.
+        with open(fdat, 'r') as tmp:
+            JSON = json.load(tmp)
+            
+        ## Extract total time.
+        dd['rpm_total'] = JSON[-1]['time_elapsed'] * 1e-3
+        
+        ## Extract task time.
+        f = lambda d: d['rt'] if d['rt'] is not None else 3e4  
+        dd['rpm_task'] = sum([f(d) for d in JSON if d['trial_type'] == 'rpm']) * 1e-3
+        
+        ## Extract browser interactions.
+        dd['rpm_interactions'] = len(eval(JSON[-1]['interactions']))
+        
+    ## Append.
+    TIMING.append(dd)
+    
+## Concatenate and save data.
+TIMING = DataFrame(TIMING).sort_values(['subject'])
+TIMING.to_csv(os.path.join(DATA_DIR, 'timing.csv'), index=False)
