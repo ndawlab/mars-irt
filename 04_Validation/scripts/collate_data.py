@@ -98,6 +98,9 @@ for f in files:
 ## Concatenate data.
 SURVEYS = DataFrame(SURVEYS).sort_values(['subject'])
 
+## Reverse-score SNS item.
+SURVEYS['sns_q07'] = 6 - SURVEYS['sns_q07']
+
 ## Score SNS infrequency item.
 SURVEYS['sns_infreq'] = np.where(SURVEYS['sns_q09'] == 0, 0, 1)
 
