@@ -151,8 +151,18 @@ for f in files:
     ## Append.
     MARS.append(mars)
     
-## Concatenate and save data.
-MARS = concat(MARS).sort_values(['subject','trial'])
+## Concatenate data.
+MARS = concat(MARS)
+
+## Store item_id.
+cols = ['subject', 'trial', 'item_set', 'short_form', 'item_id', 'item', 'distractor',
+       'shape_set', 'choice', 'accuracy', 'rt', 'all_loaded',
+       'minimum_resolution', 'browser_interactions']
+features = read_csv(os.path.join('data','features.csv'))
+MARS = MARS.merge(features[['item','shape_set','item_id','distractor']], on=['item','shape_set','distractor'])
+MARS = MARS[cols].sort_values(['subject','trial'])
+
+## Save data.
 MARS.to_csv(os.path.join(DATA_DIR, 'mars.csv'), index=False)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -213,8 +223,21 @@ for f in files:
     subject = f.replace('_surveys.json','')
         
     ## Initialize dictionary.
-    dd = dict(subject=subject, mars_total=np.nan, mars_task=np.nan, mars_interactions=np.nan,
+    dd = dict(subject=subject, total=np.nan, surveys_total=np.nan, 
+              mars_total=np.nan, mars_task=np.nan, mars_interactions=np.nan,
               rpm_total=np.nan, rpm_task=np.nan, rpm_interactions=np.nan)
+    
+    ## Process survey data.
+    fdat = os.path.join(RAW_DIR, f)
+    
+    if os.path.isfile(fdat):
+
+        ## Load JSON.
+        with open(fdat, 'r') as tmp:
+            JSON = json.load(tmp)
+
+        ## Extract total time.
+        dd['surveys_total'] = np.round(JSON[-1]['time_elapsed'] * 1e-3, 3)
     
     ## Process MARS data.
     fdat = os.path.join(RAW_DIR, f'{subject}_mars.json')
@@ -226,11 +249,11 @@ for f in files:
             JSON = json.load(tmp)
             
         ## Extract total time.
-        dd['mars_total'] = JSON[-1]['time_elapsed'] * 1e-3
+        dd['mars_total'] = np.round(JSON[-1]['time_elapsed'] * 1e-3, 3)
         
         ## Extract task time.
         f = lambda d: d['rt'] if d['rt'] is not None else 3e4  
-        dd['mars_task'] = sum([f(d) for d in JSON if 'short_form' in d]) * 1e-3
+        dd['mars_task'] = np.round(sum([f(d) for d in JSON if 'short_form' in d]) * 1e-3, 3)
         
         ## Extract browser interactions.
         dd['mars_interactions'] = len(eval(JSON[-1]['interactions']))
@@ -245,11 +268,11 @@ for f in files:
             JSON = json.load(tmp)
             
         ## Extract total time.
-        dd['rpm_total'] = JSON[-1]['time_elapsed'] * 1e-3
+        dd['rpm_total'] = np.round(JSON[-1]['time_elapsed'] * 1e-3, 3)
         
         ## Extract task time.
         f = lambda d: d['rt'] if d['rt'] is not None else 3e4  
-        dd['rpm_task'] = sum([f(d) for d in JSON if d['trial_type'] == 'rpm']) * 1e-3
+        dd['rpm_task'] = np.round(sum([f(d) for d in JSON if d['trial_type'] == 'rpm']) * 1e-3, 3)
         
         ## Extract browser interactions.
         dd['rpm_interactions'] = len(eval(JSON[-1]['interactions']))
@@ -257,6 +280,11 @@ for f in files:
     ## Append.
     TIMING.append(dd)
     
-## Concatenate and save data.
+## Concatenate data.
 TIMING = DataFrame(TIMING).sort_values(['subject'])
+
+## Compute total time.
+TIMING['total'] = np.round(TIMING.filter(regex='_total').sum(axis=1), 3)
+
+## Save data.
 TIMING.to_csv(os.path.join(DATA_DIR, 'timing.csv'), index=False)
