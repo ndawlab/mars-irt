@@ -182,25 +182,31 @@ summary sentence here saying that the MaRs-IB has many desirable properties. We 
 
 \section{Test assembly}
 
-With 64 items, each with six clones, there is a vast universe of possible test forms we could construct. Beginning with our motivating problem -- abbreviated measures of nonverbal reasoning with the potential for retest -- we opted to construct three parallel short form measures. To do so, we used mixed integer programming \citep{der2005wj} to maximize the test information function (TIF) of each short form subject to the following constraints:
+With 64 item templates, with 6 variants each, there is a vast number of possible test forms we could construct using the MaRs-IB. Returning to our motivating problem -- the availability of abbreviated matrix reasoning measures with the potential for retest -- we opted to construct three parallel short form measures. To do so, we used mixed integer programming \citep{der2005wj} to maximize the test information function (TIF) of each short form subject to the following constraints:
 
 \begin{enumerate}
 
-    \item Each short form was required to contain 12 items. This was chosen to minimize administration time of a form (2-4 minutes on average) and to achieve sufficient  reliability (Cronbach's $\alpha \geq 0.8$ in piloting).
+    \item Each short form was required to contain 12 items. This was chosen to minimize the administration time of a given form (2-4 minutes on average) and to achieve good score reliability (Cronbach's $\alpha \geq 0.8$).
     
-    \item All short forms were required to be comprised of clones from the same item families. This was chosen to maximize the similarity of the short forms.
+    \item All short forms were required to be comprised of variants from the same item families. This was chosen to maximize the similarity of the short forms.
     
-    \item Assigned clones could be of the MD or PD distractor type, but not both. This was chosen to prevent item overlap, as sometimes the MD and PD distractor strategies generate identical distractors.
+    \item Variants could be of the MD or PD distractor type, but not both. This chosen to prevent item redundancy (i.e. including the same puzzle twice in one short form).
     
-    \item The difference in TIFs across short forms was required to be minimized. This was chosen to ensure that each short form had similar psychometric properties. 
+    \item The difference in TIFs between short forms was required to be minimized. This was chosen to ensure that each short form had similar psychometric properties (i.e. equivalent reliability across ability levels). 
     
 \end{enumerate}
 
 \noindent The TIF was maximized at five ability levels ($\theta = -1.0, -0.5, 0.0, 0.5, 1.0$). Previous simulation studies have shown that target values at three to five well-chosen $\theta$s generally suffice \citep{der2005wj}. Solutions to the mixed integer programming problem were found using the \textit{mip} python package (v1.13.0) \citep{santos2020mixed}.
 
-The test information functions (TIFs) and test characteristic curves (TCCs) for the three short forms are shown in Figure XX. As can be readily observed, the TIFs for each short form are remarkably similar reflecting the constraints of the MIP problem. Thus, the short forms should have similar levels of precision across ability levels. Similarly, the TCCs for each short form are similar, which was by no means guaranteed \citep{ali2016evaluation}. Thus, the short forms are expected to have similar total score distributions.
+The results of the test assembly are presented in Figure \ref{fig:fig02}. As expected, the MIP solver selected for items that were more discriminating on average (Figure \ref{fig:fig02}a).Though this was not explicit constraint, the test characteristic curves (TCCs) of the three short forms are markedly similar, each with an expected total score of 7.7 out of 12 items. Note that, because low ability participants are expected to guess an item correctly 25\% of time, the lower asymptote of the expected score distribution is 3 and the total score distribution is left-skewed. Finally, the TIFs across the three short forms are remarkably similar \ref{fig:fig02}b) as would be expected given the assembly constraints. As such, the short forms are predicted to have similar levels of precision across ability levels. Indeed, the expected marginal score reliability for each test form are similar (short form 1: $\alpha = 0.794$; short form 2: $\alpha = 0.795$; short form 3: $\alpha = 0.792$). 
 
-Thus we proceeded to test each short form. blah blah blah.
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/fig02.png}
+\caption{\label{fig:fig02}This is a figure caption.}
+\end{figure}
+
+Next, we proceeded to test each short form in a new sample of participants. The goals for this study were twofold. First, we sought to confirm that each short form would have the properties predicted above. Second, we sought to establish the convergent validity of the short forms by correlating total scores with performance on an abbreviated version of the Raven's progressive matrices.
 
 \section{Validation Study}
 
