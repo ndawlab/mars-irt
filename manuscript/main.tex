@@ -78,7 +78,7 @@ Summary paragraph?
 
 To measure the psychometric properties of each item, we used item response models. Given the hierarchical nature of the MaRs-IB -- 64 items with six variants each -- we specifically modeled participants' response data using item using a series of item cloning models \citep{geerlings2011modeling, cho2014additive, lathrop2017item}. In item cloning models, the variants of an item (or "clones") are explicitly model as having been generated from the same template item (or "family"). The basis of all of the models used here is the three-parameter logistic (3PL) item response model, where the probability of a correct response ($y_{ijk} = 1$) for person $i$ on item clone $k$ belonging to item family $j$ is:
 
-\begin{equation}
+\begin{equation} \label{eq:1}
 p(y_{ijk} = 1) = \gamma_{jk} + (1-\gamma_{jk}) \cdot \text{logit}^{-1} \left( \alpha_{jk} \cdot \theta_i - \beta_{jk} \right)
 \end{equation}
 
@@ -136,7 +136,7 @@ The resulting model fits are then compared as a test of the hypotheses above. Fo
 
 Finally, we estimated person-level abilities following an explanatory item response modeling approach \citep{wilson2008explanatory}:   
 
-\begin{equation}
+\begin{equation} \label{eq:4}
 \theta_i = \sum_{p=1}^P X_{ip} \rho_p + \epsilon_i    
 \end{equation}
 
@@ -180,7 +180,9 @@ Moreover, using item cloning models we were able to test several important prope
 
 summary sentence here saying that the MaRs-IB has many desirable properties. We next move onto test construction.
 
-\section{Test assembly}
+\section{Validation Study}
+
+\subsection{Test assembly}
 
 With 64 item templates, with 6 variants each, there is a vast number of possible test forms we could construct using the MaRs-IB. Returning to our motivating problem -- the availability of abbreviated matrix reasoning measures with the potential for retest -- we opted to construct three parallel short form measures. To do so, we used mixed integer programming \citep{der2005wj} to maximize the test information function (TIF) of each short form subject to the following constraints:
 
@@ -208,8 +210,6 @@ The results of the test assembly are presented in Figure \ref{fig:fig02}. As exp
 
 Next, we proceeded to test each short form in a new sample of participants. The goals for this study were twofold. First, we sought to confirm that each short form would have the properties predicted above. Second, we sought to establish the convergent validity of the short forms by correlating total scores with performance on an abbreviated version of the Raven's progressive matrices.
 
-\section{Validation Study}
-
 \subsection{Data Collection}
 
 A total of N=347 participants were recruited from the Prolific Academic platform (https://www.prolific.co) to participate in an online behavioral experiment in November, 2021. Participants were eligible if they currently resided in the United States and had not participated in the calibration study. This study was approved by the Institutional Review Board of Princeton University (\#7392), and all participants provided informed consent. Total study duration was approximately 10.8 minutes (4.6 sd) per participant. Participants received monetary compensation for their time (rate USD \$10/hr), plus an incentive-compatible bonus up to \$0.75 based on task performance (average payment: mean = \$2.10 [\$0.18 sd]). 
@@ -226,17 +226,35 @@ The distribution of scores on the three MaRs-IB short-forms are summarized in Ta
 
 The distribution of scores on the abbreviated Raven's progressive matrices is also summarized in Table \ref{table:2}. On average, participants responded correctly on 4.5 of 9 items (sd = 2.0, IQR = 3 - 9). Scores on the RPM were significantly lower on the RPM than the MaRs-IB ($t = 25.598, p < 1e^{-6}$), indicating either that the RPM items are more difficult or less susceptible to guessing (consistent with these items having 6 or 8 distractors). The marginal score reliability for the RPM was similar to that of the MaRs-IB forms (Table \ref{table:2}). 
 
+\begin{table}
+    \centering
+    \begin{tabular}{c|c|c|c}
+    Measure & Mean (sd) & IQR & Reliability \\
+    \hline
+    MaRs-IB SF-1 & 7.9 (2.4) & 7 - 10 & 0.761 \\
+    MaRs-IB SF-2 & 8.2 (2.6) & 7 - 10 & 0.810 \\
+    MaRs-IB SF-3 & 7.9 (2.7) & 6 - 10 & 0.829 \\
+    RPM SF-A & 4.5 (2.0) & 3 - 9 & 0.791 \\
+    \end{tabular}
+    \caption{Caption}
+    \label{table:2}
+\end{table}
+
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/fig03.png}
 \caption{\label{fig:fig03}This is a figure caption.}
 \end{figure}
 
-\subsection{Convergent validity}
+To measure the convergent validity between the MaRs-IB and RPM measures, we again utilized an explanatory item response model framework. Specifically we modeled participants' ability on the MaRs-IB short forms as in Eq \ref{eq:4}, this time entering participants gender, age, and total score on the RPM as covariates. Participants' individual responses were again modeled using the 3PL model (eq \ref{eq:1}), where the difficulty and discrimination parameters for each item were fixed to the posterior average as estimated in the item cloning models.
 
-To measure convergent validity, blah blah blah. Need to write model here. Or should we write above?
+The partial correlation between total scores on the RPM and ability on the MaRs-IB was $\rho = 0.527$ (95\% HDI = 0.457 - 0.577). Given the reliability of both measures, we should not expect correlations much larger than $\rho = 0.624$ (or $0.79^2$). As such, this result indicates good convergent validity between the two matrix reasoning measures. Finally, in this smaller sample, neither age nor gender was credibly associated with performance on the MaRs-IB short forms (age: $\rho$ = -0.123, 95\% HDI = -0.253 - 0.013; gender: $\rho$ = -0.025, 95\% HDI = -0.160 - 0.108). 
+
+Would a paragraph on MaRs-IB administration time be helpful? To briefly say that participants spent, on average, 3 minutes on the MaRs-IB items making it a short and valid measure.
 
 \subsection{Discussion}
+
+Do we need a short discussion here or is it sufficient to simply move to general discussion? 
 
 \section{General Discussion}
 
@@ -293,20 +311,6 @@ Paragraph XX: model more features as future direction. Carpenter taxonomy. Model
     \end{tabular}
     \caption{\label{tab:1} Goodness of fit of item response models to MaRs-IB data. Pareto-smoothed importance sampling}
     \label{table:1}
-\end{table}
-
-\begin{table}
-    \centering
-    \begin{tabular}{c|c|c|c}
-    Measure & Mean (sd) & IQR & Reliability \\
-    \hline
-    MaRs-IB SF-1 & 7.9 (2.4) & 7 - 10 & 0.761 \\
-    MaRs-IB SF-2 & 8.2 (2.6) & 7 - 10 & 0.810 \\
-    MaRs-IB SF-3 & 7.9 (2.7) & 6 - 10 & 0.829 \\
-    RPM SF-A & 4.5 (2.0) & 3 - 9 & 0.791 \\
-    \end{tabular}
-    \caption{Caption}
-    \label{table:2}
 \end{table}
 
 \end{document}
