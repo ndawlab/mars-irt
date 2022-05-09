@@ -15,6 +15,9 @@ np.random.seed(47404)
 ## I/O parameters.
 stan_model = sys.argv[1]
 
+## SGDDM paramers.
+thin = 5
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Load and prepare data.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -47,6 +50,7 @@ Y = data.accuracy.values.astype(int)
 
 ## Load DataFrame.
 StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}.tsv.gz'), sep='\t', compression='gzip')
+n_samp = len(StanFit)
 
 ## Extract parameters.
 theta = StanFit.filter(regex='theta\[').values
@@ -57,89 +61,101 @@ if not np.any(alpha): alpha = np.ones_like(beta)
 ## Define guessing rate.
 if '1plg' or '3pl' in stan_model: gamma = 0.25
 else: gamma = 0.00
-    
+   
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Posterior predictive check.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+np.random.seed(47404)
 
 @njit
 def inv_logit(x):
     return 1. / (1 + np.exp(-x))
 
-## Define number of posterior samples.
-n_iter = len(StanFit)
+## Preallocate space.
+R_obs = np.zeros((n_samp, N))
+R_hat = np.zeros((n_samp, N))
 
-## Compute linear predictor.
-mu = np.zeros((n_iter, N))
-for n in tqdm(range(N)): mu[:,n] = alpha[:,K[n]] * theta[:,J[n]] - beta[:,K[n]]
+## Iterate over samples.
+for n in tqdm(range(N)):
     
-## Compute p(correct | theta).
-p = gamma + (1-gamma) * inv_logit(mu)
-
-## Simulate accuracy.
-y_hat = np.random.binomial(1, p)
-
-## Precompute residuals.
-R = Y - p
-R_hat = y_hat - p
-
-## Clear memory.
-del y_hat, p, theta, beta, alpha
-
+    ## Compute linear predictor.
+    mu = mu = alpha[:,K[n]] * theta[:,J[n]] - beta[:,K[n]]
+    
+    ## Compute p(response).
+    p = inv_logit(mu)
+    
+    ## Compute expectation.
+    expected = p.mean()
+    
+    ## Simulate data.
+    y_hat = np.random.binomial(1, p)
+    
+    ## Compute residuals (observed).
+    R_obs[:,n] = Y[n] - expected
+    
+    ## Compute residuals (simulated).
+    R_hat[:,n] = y_hat - expected
+    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-### Unidimensionality check.
+### Discrepancy measure: SGDDM.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+print('Computing discrepancy (sgddm).')
 
-## Define all pairs of items.
-K = np.unique(data.item, return_inverse=True)[-1]
-all_pairs = list(combinations(np.sort(np.unique(K)), 2))
+@njit
+def smbc(u, v):
+    return (u @ v) / (np.sqrt(u @ u) * np.sqrt(v @ v))
+
+## Define indices.
+indices = np.tril_indices(data.item.nunique(), k=-1)
+n_pairs = len(indices[0])
 
 ## Preallocate space.
-gddm, gddm_hat = np.zeros((2,n_iter))
+summary = np.zeros((n_pairs, 3))
+sgddm = np.zeros(3)
 
-## Main loop.
-info = []
-c = 0
+## Iteratively compute SGGDM.
+for i in tqdm(range(0, n_samp, thin)):
+    
+    ## Compute SMBC (observed).
+    data['r'] = R_obs[i]
+    obs = data.pivot_table('r','subject','item').corr(smbc).values[indices]
+    summary[:,0] += obs
 
-for k1, k2 in tqdm(all_pairs):
+    ## Compute SMBC (simulated).
+    data['r'] = R_hat[i]
+    hat = data.pivot_table('r','subject','item').corr(smbc).values[indices]
+    summary[:,1] += hat
+        
+    ## Compute ppp-values.
+    summary[:,2] += (obs < hat).astype(int)
+        
+    ## Compute SGDDM (observed). 
+    obs = np.nanmean(np.abs(obs))
+    sgddm[0] += obs
     
-    ## Define indicies.
-    match_1, = np.where(K==k1)                        # Find all subjects w/ item A
-    match_2, = np.where(K==k2)                        # Find all subjects w/ item B
-    ix1 = match_1[np.in1d(J[match_1], J[match_2])]    # Restrict to subjects w/ A+B
-    ix2 = match_2[np.in1d(J[match_2], J[match_1])]    # Restrict to subjects w/ A+B
-    N = ix1.size
+    ## Compute SGDDM (simulated). 
+    hat = np.nanmean(np.abs(hat))
+    sgddm[1] += hat
     
-    ## Error-catching.
-    if N == 0: continue
-        
-    ## Compute MBC (observed).
-    mbc = np.mean(R[:,ix1] * R[:,ix2], axis=1)
-    gddm += np.abs(mbc)
-        
-    ## Compute MBC (predicted).
-    mbc_hat = np.mean(R_hat[:,ix1] * R_hat[:,ix2], axis=1)
-    gddm_hat += np.abs(mbc_hat)
-        
-    ## Store info.
-    info.append(dict(A=k1, B=k2, mbc=np.mean(mbc), pval=np.mean(mbc > mbc_hat)))
-        
-    ## Increment counter.
-    c += 1
+    ## Compute ppp-values.
+    sgddm[2] += (obs < hat).astype(int)
     
-## Compute and store generalized dimensionality discrepancy measure. 
-gddm /= c; gddm_hat /= c
-info.append(dict(A=-1, B=-1, mbc=np.mean(gddm), pval=np.mean(gddm > gddm_hat)))
+## Normalize values.
+summary /= n_samp
+sgddm /= n_samp
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Store and save data.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ## Convert to DataFrame.
-info = DataFrame(info)
+df = DataFrame(np.row_stack([sgddm, summary]), columns=['obs', 'pred', 'pval']).round(6)
+df.insert(0, 'k2', np.append(0, indices[1]))
+df.insert(0, 'k1', np.append(0, indices[0]))
+df = df.dropna()
 
 ## Define fout.
 fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}')
 
 ## Save.
-info.to_csv(f'{fout}_gddm.csv', index=False)
+df.to_csv(f'{fout}_sgddm.csv', index=False)

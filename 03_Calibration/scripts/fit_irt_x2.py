@@ -134,4 +134,4 @@ info = DataFrame(info)
 fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}')
 
 ## Save.
-info.to_csv(f'{fout}_ifdm.csv', index=False)
+info.to_csv(f'{fout}_x2.csv', index=False)
