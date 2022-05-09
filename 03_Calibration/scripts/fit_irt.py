@@ -53,15 +53,9 @@ X1 = read_csv(os.path.join(ROOT_DIR, 'designs', 'X1.csv'))
 X1 = X1.apply(zscore, 0).values
 _, M1 = X1.shape
     
-## Define variables of interest.
-if stan_model in ['1pl_m1', '1plg_m1', '1pl_m2', '1plg_m2']:
-    cols = ['intercept','n_features','n_rules']
-else:
-    cols = ['intercept','n_features','n_rules','distractor','rt']
-    
 ## Define item feature matrix.
 X2 = read_csv(os.path.join(ROOT_DIR, 'designs', 'X2.csv'))
-X2 = X2[cols].apply(zscore, 0).fillna(1).values
+X2 = X2.apply(zscore, 0).fillna(1).values
 _, M2 = X2.shape
 
 ## Define item family matrix.

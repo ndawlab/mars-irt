@@ -34,9 +34,10 @@ parameters {
     // Item difficulties
     vector[M2]  beta_mu;               // Population-level effects
     vector[M3]  beta_1_pr;             // Standardized level-1 effects
+    vector[NK]  beta_2_pr;             // Standardized level-2 effects
     
     // Item variances
-    vector<lower=0>[1] sigma;          // Standard deviations
+    vector<lower=0>[2] sigma;          // Standard deviations
     
 }
 transformed parameters {
@@ -48,7 +49,7 @@ transformed parameters {
     vector[NJ] theta = X1 * rho + sqrt(1 - sum(square(rho))) * theta_pr;
     
     // Construct item difficulties
-    vector[NK] beta = (X2 * beta_mu) + (sigma[1] * X3 * beta_1_pr);
+    vector[NK] beta = (X2 * beta_mu) + (sigma[1] * X3 * beta_1_pr) + (sigma[2] * beta_2_pr);
     
 }
 model {
@@ -67,6 +68,7 @@ model {
     target += std_normal_lpdf(theta_pr);
     target += std_normal_lpdf(beta_mu);
     target += std_normal_lpdf(beta_1_pr);
+    target += std_normal_lpdf(beta_2_pr);
     target += student_t_lpdf(sigma | 3, 0, 1);
 
 }
