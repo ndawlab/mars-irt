@@ -82,7 +82,7 @@ for n in tqdm(range(N)):
     mu = mu = alpha[:,K[n]] * theta[:,J[n]] - beta[:,K[n]]
     
     ## Compute p(response).
-    p = inv_logit(mu)
+    p = gamma + (1-gamma) * inv_logit(mu)
     
     ## Compute expectation.
     expected = p.mean()

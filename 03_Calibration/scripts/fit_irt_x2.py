@@ -15,6 +15,9 @@ np.random.seed(47404)
 ## I/O parameters.
 stan_model = sys.argv[1]
 
+## Define X2 parameters.
+minlength = 17
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Load and prepare data.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -47,7 +50,7 @@ Y = data.accuracy.values.astype(int)
 
 ## Load DataFrame.
 StanFit = read_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}.tsv.gz'), sep='\t', compression='gzip')
-# StanFit = StanFit.loc[::10]
+n_samp = len(StanFit)
 
 ## Extract parameters.
 theta = StanFit.filter(regex='theta\[').values
@@ -58,80 +61,55 @@ if not np.any(alpha): alpha = np.ones_like(beta)
 ## Define guessing rate.
 if '1plg' or '3pl' in stan_model: gamma = 0.25
 else: gamma = 0.00
-    
+   
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 ### Posterior predictive check.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-print('Performing posterior predictive check.')
+np.random.seed(47404)
 
 @njit
 def inv_logit(x):
     return 1. / (1 + np.exp(-x))
 
-## Define number of posterior samples.
-n_iter = len(StanFit)
+## Preallocate space.
+Y_hat = np.zeros((n_samp, N))
 
-## Compute linear predictor.
-mu = np.zeros((n_iter, N))
-for n in tqdm(range(N)): mu[:,n] = alpha[:,K[n]] * theta[:,J[n]] - beta[:,K[n]]
+## Iterate over samples.
+for n in tqdm(range(N)):
     
-## Compute p(correct | theta).
-p = gamma + (1-gamma) * inv_logit(mu)
-
-## Simulate accuracy.
-y_hat = np.random.binomial(1, p)
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-### Discrepancy measure.
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
-## Update item indices.
-K = np.unique(data.item_id, return_inverse=True)[-1]
-
-## Compute raw scores.
-S = data.groupby('subject').accuracy.transform(np.sum).values
-
-info = []
-for k in tqdm(np.unique(K)):
+    ## Compute linear predictor.
+    mu = alpha[:,K[n]] * theta[:,J[n]] - beta[:,K[n]]
     
-    ## Initialize discrepancy metrics.
-    sx, sx_hat = np.zeros((2,n_iter))
+    ## Compute p(response).
+    p = gamma + (1-gamma) * inv_logit(mu)
     
-    ## Iterate raw scores.
-    for s in np.unique(S):
-        
-        ## Define indices.
-        ix, = np.where(np.logical_and(K==k, S==s))
-        n = ix.size
-
-        ## Error-catching.
-        if not n: continue
-        
-        ## Compute Orlando & Thissen metric (observed).
-        observed = np.mean(Y[ix])
-        expected = np.mean(p[:,ix], axis=1)
-        sx += n * np.square(observed - expected) / (expected * (1-expected))
-        
-        ## Compute Orlando & Thissen metric (predicted).
-        observed = np.mean(y_hat[:,ix], axis=1)
-        expected = np.mean(p[:,ix], axis=1)
-        sx_hat += n * np.square(observed - expected) / (expected * (1-expected))
-        
-    ## Compute pval.
-    pval = np.mean(sx > sx_hat)
-        
-    ## Append info.
-    info.append(dict(item=k, discrepancy=np.mean(sx), pval=pval))
-
+    ## Compute expectation.
+    expected = p.mean()
+    
+    ## Simulate data.
+    Y_hat[:,n] = np.random.binomial(1, p)
+    
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-### Store and save data.
+### Discrepancy measure: observed scores.
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+print('Computing discrepancy (x2).')
+
+## Compute observed scores.
+S = data.groupby('subject').accuracy.sum()
+
+## Compute observed counts.
+NC = np.bincount(S, minlength=minlength) 
+
+## Compute simulated scores.
+S_hat = np.zeros((n_samp, J.max() + 1), dtype=int)
+for j in np.unique(J): S_hat[:,j] = Y_hat[:,J==j].sum(axis=1)
+
+## Compute simulated counts.
+NCr = np.apply_along_axis(np.bincount, 1, S_hat, minlength=minlength)
 
 ## Convert to DataFrame.
-info = DataFrame(info)
-
-## Define fout.
-fout = os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}')
+NC = DataFrame(np.row_stack([NC, NCr]))
 
 ## Save.
-info.to_csv(f'{fout}_x2.csv', index=False)
+NC.index = NC.index.rename('sample')
+NC.to_csv(os.path.join(ROOT_DIR, 'stan_results', f'{stan_model}_x2.csv'))
