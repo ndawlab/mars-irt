@@ -61,16 +61,21 @@ To define a threshold for rapid guessing, we found the corresponding response ti
 
 \begin{table}
     \centering
-    \begin{tabular*}{\textwidth}{clcr}
+    \begin{tabular*}{0.45\textwidth}{ccr}
     \toprule
-    Model & Description & psis-loco & $\Delta$ psis-loco (se) \\
+    Model & psis-loco & $\Delta$ psis-loco (se) \\
     \midrule
-    7 & TK  & 27741.4 & 635.3 (29.7) \\
-    8 & TK  & 26962.1 & 665.6 (32.2) \\
-    9 & TK & 26585.5 & 633.1 (33.9) \\
+    1r & 28376.7 & 635.3 (29.7) \\
+    1 & 27741.4 & \multicolumn{1}{c}{-} \\
+    \midrule
+    2r & 27627.6 & 665.6 (32.2) \\
+    2 & 26962.1 & \multicolumn{1}{c}{-} \\
+    \midrule
+    3r & 27218.7 & 633.1 (33.9) \\
+    3 & 26585.5 & \multicolumn{1}{c}{-} \\
     \bottomrule
     \end{tabular*}
-    \caption{\label{tab:2}\normalfont Goodness-of-fit of item response models to MaRs-IB data. LOCO values are presented in deviance scale (i.e. smaller numbers indicate better fit). Abbreviations: PSIS = Pareto-smoothed importance sampling; LOCO = leave-one-cluster-out.}
+    \caption{\label{tab:2}\normalfont Comparison of the first wave of item response models to their equivalents without a guessing parameter ($\gamma = 0$). LOO-CV values are presented in deviance scale (i.e. smaller values indicate better fit). Abbreviations: PSIS = Pareto-smoothed importance sampling; LOCO = leave-one-cluster-out.}
     \label{table:2}
 \end{table}
 
