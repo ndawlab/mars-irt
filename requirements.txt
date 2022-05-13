@@ -1,0 +1,18 @@
+## Numerical computing libraries
+numpy
+scipy
+pandas
+statsmodels
+numba
+tqdm
+
+## Probabilistic programming libraries
+cmdstanpy
+arviz
+
+## Mixed integer programming libaries
+mip
+
+## Visualization libraries
+matplotlib
+seaborn >= 0.11.1
