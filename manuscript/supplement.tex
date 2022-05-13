@@ -26,9 +26,11 @@
 \begin{document}
 \maketitle
 
-\section*{Speed-accuracy trade-offs in Chierchia et al. (2019)}
+\section*{Speed-accuracy trade-offs in \cite{chierchia2019matrix}}
 
-To investigate the possibility of speed-accuracy trade-offs in the original MaRs-IB data, we looked at the proportion of correct responses to the easiest items (dimension 1/2 items) as a function of the number of participants having reached that item. In all partitions of these data, we found robust positive correlations between proportion correct and number reached (dimension 1 items: $\rho$ = 0.514, p = 0.050; dimension 2 items: $\rho$ = 0.767, p < 0.001; combined: $\rho$ = 0.695, p < 0.001). This result suggests that the participants that did reach items later in the sequence were able to do by sacrificing accuracy for speed. As such, the item-level performance summary released as part of \cite{chierchia2019matrix} are likely biased indicators of item functioning.
+To investigate the possibility of speed-accuracy trade-offs in the MaRs-IB response data collected by \cite{chierchia2019matrix}, we looked at the proportion of correct responses to the easiest items (dimension 1 \& 2 items) as a function of the number of participants having reached that item. The logic is that, if items that appeared later in the fixed-order test were disproportionately reached by participants sacrificing accuracy for speed, then we should observe a positive correlation between the total number of available responses and proportion correct amongst the easiest items. 
+
+We detected strong positive correlations between proportion correct and number reached (dimension 1 items: $\rho$ = 0.514, p = 0.050; dimension 2 items: $\rho$ = 0.767, p < 0.001; combined: $\rho$ = 0.695, p < 0.001). This result supports the hypothesis that participants that did reach items later in the test did so by prioritizing speed at the expense of accuracy. This suggests that the item summary statistics released as part of \cite{chierchia2019matrix} are likely biased indicators of item difficulty.
 
 \section{Defining a threshold for rapid guessing}
 
@@ -87,14 +89,14 @@ To define a threshold for rapid guessing, we found the corresponding response ti
 \cmidrule(lr){7-10}
 Measure & & Mean (SD) & & IQR & &  NFC-10 & PCF-8a & SNS & MaRs-SF \\
 \midrule
-NFC-10 & & 25.03 (8.27) & & 20.00 -- 31.00 & & - &  &  & \\
-PCF-8a   &  & 22.17 (6.29) & & 18.75 -- 26.25 & & 0.27** &  - &  &  \\
-SNS   &  & 29.07 (7.48) & & 25.00 -- 35.00 & & 0.46** &  0.29** &  - &   \\
-MaRs-SF & &   8.00 (2.53) & &   6.00 -- 10.00 & & -0.04 &  0.04 &  0.14* &  - \\
+NFC-10 & & 25.03 (8.27) & & 20.00 -- 31.00 & & \multicolumn{1}{c}{-} &  &  & \\
+PCF-8a   &  & 22.17 (6.29) & & 18.75 -- 26.25 & & 0.27** &  \multicolumn{1}{c}{-} &  &  \\
+SNS   &  & 29.07 (7.48) & & 25.00 -- 35.00 & & 0.46** &  0.29** &  \multicolumn{1}{c}{-} &   \\
+MaRs-SF & &   8.00 (2.53) & &   6.00 -- 10.00 & & -0.04 &  0.04 &  0.14* &  \multicolumn{1}{c}{-} \\
 \bottomrule
 \end{tabular*}
 \captionsetup{width=1.\textwidth}
-\caption{\normalfont Correlations between performance on the MaRs-IB short forms and self-report measures. Abbreviations: IQR = interquartile range; NFC-10 = need for cognition (10-item) scale; PCF = PROMIS cognitive functioning scale (8a); SNS = subjective numeracy scale. \\ ** p < 0.001,  * p < 0.05 (not corrected for multiple comparisons)}
+\caption{\normalfont Correlations between performance on the MaRs-IB short forms and self-report measures. Abbreviations: IQR = interquartile range; NFC-10 = need for cognition (10-item) scale \citep{chiesi2018applying}; PCF = PROMIS cognitive functioning scale (8a; \citealt{iverson2021normative}); SNS = subjective numeracy scale \citep{fagerlin2007measuring}. ** p < 0.001,  * p < 0.05 (not corrected for multiple comparisons)}
 \end{table}
 
 \begin{figure}
