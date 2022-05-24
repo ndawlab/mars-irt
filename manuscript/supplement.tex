@@ -54,9 +54,13 @@ Here we defined the rapid guessing weight as a function of participant's respons
 
 We fit this model to data collected from a total of N=180 participants recruited from the Prolific Academic platform during piloting. Each participant completed one of two sets of eight items from the MaRs-IB. The EM-IRT model estimated within a Bayesian framework using Hamiltonian Monte Carlo as implemented in Stan (v2.22) \citep{carpenter2017stan}. Four separate chains with randomised start values each took 3,000 samples from the posterior. The first 2,000 samples from each chain were discarded. As such, 4,000 post-warmup samples from the joint posterior were retained. The $\hat{R}$ values for all parameters were equal to or less than 1.01, indicating acceptable convergence between chains, and there were no divergent transitions in any chain.  
 
-The estimated weights ($w_{ij}$) across all subjects and items are plotted as a function of their corresponding response time in Figure S2. As can be observed, the weights quickly approach 1 for response times faster than 5 seconds. Interestingly, weights begin to rise again for responses after 20 seconds suggesting that participants have an internal awareness of the amount of time that has elapsed.
+The estimated weights ($w_{ij}$) across all subjects and items are plotted as a function of their corresponding response time in Figure S3. As can be observed, the weights quickly approach 1 for response times faster than 5 seconds. Interestingly, weights begin to rise again for responses after 20 seconds suggesting that participants have an internal awareness of the amount of time that has elapsed.
 
 To define a threshold for rapid guessing, we found the corresponding response time for which $w = 0.5$. This was at approximately 3 seconds. Thus, in the main experiments we defined rapid guessing as responses taking fewer than 3 seconds. 
+
+\section{Organization of geometric stimuli in the MaRs-IB}
+
+Every item template in the MaRs-IB has three unique versions that differ only in the geometric shapes populating its cells. There are 45 unique geometric shapes in total, organized into nine stimulus sets, where each item clone draws a subset of shapes from one of the nine sets (Figure S2). As such, shape set --- indicating whether a clone is the 1st, 2nd, or 3rd version of an item template --- is not a meaningful nominal variable. Furthermore, item clones drawing from the same shape set are not always populated by the same geometric shapes, making complicated the possibility of modeling the nine stimulus sets instead. The most rigorous way of modeling the presence or absence of a given geometric shape on item functioning would be to include each as a binary attribute predicting item difficulty and discrimination. In order to keep our models simple, we elected to leave shape set unmodeled and accounted for by the residual variability terms instead. 
 
 
 \bibliography{supplement}
@@ -101,14 +105,20 @@ MaRs-SF & &   8.00 (2.53) & &   6.00 -- 10.00 & & -0.04 &  0.04 &  0.14* &  \mul
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/figS01.png}
-\caption{\label{fig:figS01} An example item clone from each of the nine stimulus sets. In each row are three clones of one item template. Though some elementary shapes (e.g. circles, squares) are shared across stimulus sets, the majority of stimuli in each set are unique.}
+\includegraphics[width=\textwidth]{figures/figS01.png}
+\caption{\label{fig:figS01} Item parameter estimates for the best-fitting model (Model 5) with and without including mean response time as a clone-level attribute.}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/figS02.png}
-\caption{\label{fig:figS02} Estimates of the rapid guessing weights ($w_{ij}$) and their corresponding responses times from the effort-moderated item response theory (EM-IRT) model fit to response data from N=180 pilot participants. The dashed line indicates the chosen rapid guessing threshold, i.e. where $w = 0.5$.}
+\includegraphics[width=1.0\textwidth]{figures/figS02.png}
+\caption{\label{fig:figS02} An example item clone from each of the nine stimulus sets. In each row are three clones of one item template. Though some elementary shapes (e.g. circles, squares) are shared across stimulus sets, the majority of stimuli in each set are unique.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{figures/figS03.png}
+\caption{\label{fig:figS03} Estimates of the rapid guessing weights ($w_{ij}$) and their corresponding responses times from the effort-moderated item response theory (EM-IRT) model fit to response data from N=180 pilot participants. The dashed line indicates the chosen rapid guessing threshold, i.e. where $w = 0.5$.}
 \end{figure}
 
 \end{document}
