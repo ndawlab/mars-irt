@@ -18,3 +18,7 @@ The organization of the main branch (current branch) is as follows:
     ├── 05_Figures                  <- Figures for presentations & manuscript.
     ├── manuscript                  <- LaTeX code for the manuscript.
     ├── tutorials                   <- MaRs-IB item parameters, short forms, and optimal assembly tutorials.
+
+## Acknowledgements
+
+This project was made possible with support from the National Center for Advancing Translational Sciences (NCATS), a component of the National Institute of Health (NIH), under award number UL1TR003017.
