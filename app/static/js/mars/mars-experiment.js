@@ -3,7 +3,7 @@
 //---------------------------------------//
 
 // Define short form.
-const short_form = [test_form_1, test_form_2, test_form_3][workerNo % 3];
+const long_form = test_form_1
 
 // Define timing parameters.
 const trial_duration = 30000;     // 30 seconds
@@ -21,12 +21,12 @@ var min_height = 600;
 //---------------------------------------//
 
 var images_task = [];
-for (let i = 0; i < short_form.length; i++) {
-  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_M_ss' + short_form[i].shape_set + '.jpeg');
-  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T1_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
-  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T2_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
-  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T3_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
-  images_task.push('../static/img/is3/mars_' + short_form[i].item + '_T4_ss' + short_form[i].shape_set + '_' + short_form[i].distractor + '.jpeg');
+for (let i = 0; i < long_form.length; i++) {
+  images_task.push('../static/img/is3/mars_' + long_form[i].item + '_M_ss' + long_form[i].shape_set + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + long_form[i].item + '_T1_ss' + long_form[i].shape_set + '_' + long_form[i].distractor + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + long_form[i].item + '_T2_ss' + long_form[i].shape_set + '_' + long_form[i].distractor + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + long_form[i].item + '_T3_ss' + long_form[i].shape_set + '_' + long_form[i].distractor + '.jpeg');
+  images_task.push('../static/img/is3/mars_' + long_form[i].item + '_T4_ss' + long_form[i].shape_set + '_' + long_form[i].distractor + '.jpeg');
 };
 
 //---------------------------------------//
@@ -40,7 +40,7 @@ var MARS = [];
 const img_path = `../static/img/is3/`;
 
 // Iteratively construct trials.
-for (let i = 0; i < short_form.length; i++) {
+for (let i = 0; i < long_form.length; i++) {
 
   // Define screen check.
   const screen_check = {
@@ -73,16 +73,16 @@ for (let i = 0; i < short_form.length; i++) {
   // Define trial.
   const trial = {
     type: 'mars',
-    item: short_form[i].item,
-    shape_set: short_form[i].shape_set,
-    distractor: short_form[i].distractor,
+    item: long_form[i].item,
+    shape_set: long_form[i].shape_set,
+    distractor: long_form[i].distractor,
     correct: 0,
     countdown: true,
     feedback: false,
     trial_duration: trial_duration,
     randomize_choice_order: true,
     img_path: img_path,
-    data: {item_set: 3, short_form: short_form[i].form},
+    data: {item_set: 3, long_form: long_form[i].form},
     on_finish: function(data) {
 
       // Store number of browser interactions
@@ -157,7 +157,7 @@ var FEEDBACK = {
 
     // Define feedback page.
     trial.pages = [
-      `<p>You got ${k} of 12 puzzles correct.</p><p>Click the "next" button below to continue.`
+      `<p>You got ${k} of 24 puzzles correct.</p><p>Click the "next" button below to continue.`
     ];
 
   }
