@@ -9,7 +9,7 @@ const long_form = test_form_1
 const trial_duration = 30000;     // 30 seconds
 
 // Define quality assurance parameters.
-const max_threshold = 8;
+const max_threshold = 12;
 const rg_threshold = 3000;        // 3 seconds
 
 // Define screen size parameters.
@@ -66,7 +66,7 @@ for (let i = 0; i < long_form.length; i++) {
     trial_duration: 1200,
     on_start: function(trial) {
       const k = jsPsych.data.get().filter({trial_type: 'mars', item_set: 3}).count();
-      trial.stimulus = `<div style="font-size:24px;">Loading puzzle:<br>${k+1} / 12</div>`;
+      trial.stimulus = `<div style="font-size:24px;">Loading puzzle:<br>${k+1} / 24</div>`;
     }
   }
 

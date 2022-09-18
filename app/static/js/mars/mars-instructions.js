@@ -26,7 +26,7 @@ var instructions_02 = {
   type: 'instructions',
   pages: [
     '<p>Great job! Now you understand what to do.</p>',
-    '<p>Now, we will move onto the real puzzles.</p><p>There are 12 puzzles in total. You will have <b>30 seconds</b> to complete each one.<br>For these puzzles, you will <u>not</u> receive feedback after you make your choice.</p><p>At the end of the study, your total number of correct answers will be converted<br>into a <b>performance bonus</b>. So try your hardest to solve the puzzles!</p><p>If you cannot solve the puzzle before time runs out, then you should guess.</p><p>Press the "next" button to get started.</p>'
+    '<p>Now, we will move onto the real puzzles.</p><p>There are 24 puzzles in total. You will have <b>30 seconds</b> to complete each one.<br>For these puzzles, you will <u>not</u> receive feedback after you make your choice.</p><p>At the end of the study, your total number of correct answers will be converted<br>into a <b>performance bonus</b>. So try your hardest to solve the puzzles!</p><p>If you cannot solve the puzzle before time runs out, then you should guess.</p><p>Press the "next" button to get started.</p>'
   ],
   show_clickable_nav: true,
   button_label_previous: 'Prev',
