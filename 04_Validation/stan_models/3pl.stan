@@ -1,59 +1,53 @@
 data {
 
     // Metadata
-    int<lower=1>  N;                   // Number of total observations
-    int<lower=1>  M;                   // Number of subject features
-    int<lower=1>  J[N];                // Subject-indicator per observation
-    int<lower=1>  K[N];                // Item-indicator per observation
+    int<lower=1>  N;                      // Number of total observations
+    array[N] int<lower=1>  J;             // Subject-indicator per observation
+    array[N] int<lower=1>  K;             // Item-indicator per observation
     
     // Response data
-    int<lower=0>  Y[N];                // Response accuracy
-    
-    // Explanatory data
-    matrix[max(J), M]  X;              // Subject feature matrix
+    array[N] int<lower=0, upper=1>  Y;    // Response accuracy
     
     // Item parameters
-    vector[max(K)]  beta;              // Item difficulties
-    vector[max(K)]  alpha;             // Item discriminations
+    vector[max(K)]  gamma;                // Item guessing
 
 }
 transformed data {
 
-    int  NJ = max(J);                  // Number of total subjects
-    int  NK = max(K);                  // Number of total items
-    
-    real gamma = 0.25;                 // Guessing rate
+    int  NJ = max(J);                     // Number of total subjects
+    int  NK = max(K);                     // Number of total items  
+    real c = -0.841;                      // Adjustment for guessing 
 
 }
 parameters {
 
     // Subject abilities
-    vector[M]   theta_mu;              // Population-level effects
-    vector[NJ]  theta_pr;              // Standardized subject-level effects
+    vector[NJ]   theta;                   // Standardized subject-level effects
+    
+    // Item parameters
+    vector[NK]  beta;                     // Item difficulties
+    vector[NK]  alpha_pr;                 // Item discriminations
     
 }
 transformed parameters {
 
-    // Compute partial correlations
-    vector[M] rho = tanh(theta_mu) / sqrt(M);
+    // Compute item discriminations
+    vector[NK] alpha = Phi_approx(c + alpha_pr) * 5;
 
-    // Construct subject abilities
-    vector[NJ] theta = X * rho + sqrt(1 - sum(square(rho))) * theta_pr;
-    
 }
 model {
     
     // Compute log-likelihood
     vector[N] mu;
-    for (n in 1:N) {
-        mu[n] = gamma + (1-gamma) * inv_logit(alpha[K[n]] * theta[J[n]] - beta[K[n]]);
-    }
+    for (n in 1:N)
+        mu[n] = gamma[K[n]] + (1-gamma[K[n]]) * inv_logit(alpha[K[n]] * theta[J[n]] - beta[K[n]]);
     
     // Accuracy likelihood
     target += bernoulli_lpmf(Y | mu);
     
     // Priors
-    target += std_normal_lpdf(theta_mu);
-    target += std_normal_lpdf(theta_pr);
+    target += std_normal_lpdf(theta);
+    target += normal_lpdf(beta | 0, 2.5);
+    target += std_normal_lpdf(alpha_pr);
 
 }
