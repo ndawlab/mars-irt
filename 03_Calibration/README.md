@@ -14,4 +14,3 @@ Data and code for the MaRs-IB calibration study.
     ├── 01_Screening.ipynb          <- Define and apply exclusion criteria.
     ├── 02_Descriptive.ipynb        <- Descriptive analyses of MaRs-IB response data.
     ├── 03_Modeling.ipynb           <- IRT analyses of MaRs-IB response data.
-    ├── 04_Assembly.ipynb           <- Optimal test assembly using IRT model estimates. 
