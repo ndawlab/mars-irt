@@ -141,15 +141,16 @@ for i, j in product(range(2), range(3)):
     I = np.square(alpha[items[i,j]]) * ((1-p) / p) * np.square((p - gamma) / (1 - gamma))    
     TIF = I.sum(axis=1).round(6)
     
-    ## Compute scale reliability.
+    ## Compute score reliability.
     mu = np.outer(theta, alpha[items[i,j]]) - beta[items[i,j]]
     p = gamma + (1-gamma) * inv_logit(mu)
-    I = np.square(alpha[items[i,j]]) * ((1-p) / p) * np.square((p - gamma) / (1 - gamma))    
-    reliability = np.sum(w * (I.sum(axis=1) / (I.sum(axis=1) + 1)))
+    sigma_t = w @ np.square(p.sum(axis=1) - w @ p.sum(axis=1))    
+    sigma_e = w @ np.sum(p * (1-p), axis=1)    
+    rho = sigma_t / (sigma_t + sigma_e)
     
     ## Store. Append.
     dd.update({x: y for x, y in zip(pts, TIF)})
-    dd['reliability'] = reliability
+    dd['reliability'] = np.round(rho, 6)
     info.append(dd)
     
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
