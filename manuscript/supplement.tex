@@ -2,19 +2,31 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{amsmath}            % equation formatting
+\usepackage{graphicx}           % figure formatting
+\usepackage{xurl, hyperref}     % link formatting
+\usepackage{xcolor,soul}        % highlight formatting
 
-% override apa6 first paragraph index
-% https://tex.stackexchange.com/questions/155028/indentation-apa6-class-for-2nd-paragraphs-after-title
-% \makeatletter
-%   \b@level@one@skip=-2.5ex plus -1ex minus -.2ex
-%   \b@level@two@skip=-2.5ex plus -1ex minus -.2ex
-% \makeatother
+% specify link style
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue
+}
 
+% define highlight style
+\colorlet{usercolorname}{yellow!00}    % use for public version
+% \colorlet{usercolorname}{yellow!40}    % use for reviewer version
+\sethlcolor{usercolorname}
+
+
+% define title / short-title
 \title{Supplemental materials for ``An item response theory analysis of the Matrix Reasoning Item Bank (MaRs-IB)''}
 \shorttitle{Supplemental materials for ``IRT analysis of MaRs-IB''}
+
+% define authors
 \author{Samuel Zorowitz$^1$, Gabriele Chierchia$^3$, Sarah-Jayne Blakemore$^3$, Nathaniel D. Daw$^{1,2}$}
 \affiliation{$^1$Princeton Neuroscience Institute, Princeton University, USA\\$^2$Department of Psychology, Princeton University, USA\\$^3$Department of Psychology, University of Cambridge, Downing Street, Cambridge, UK}
 
@@ -23,7 +35,9 @@
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
+% start document
 \begin{document}
+
 \maketitle
 
 \section*{Speed-accuracy trade-offs in \cite{chierchia2019matrix}}
@@ -62,6 +76,31 @@ To define a threshold for rapid guessing, we found the corresponding response ti
 
 Every item template in the MaRs-IB has three unique versions that differ only in the geometric shapes populating its cells. There are 45 unique geometric shapes in total, organized into nine stimulus sets, where each item clone draws a subset of shapes from one of the nine sets (Figure S2). As such, shape set --- indicating whether a clone is the 1st, 2nd, or 3rd version of an item template --- is not a meaningful nominal variable. Furthermore, item clones drawing from the same shape set are not always populated by the same geometric shapes, making complicated the possibility of modeling the nine stimulus sets instead. The most rigorous way of modeling the presence or absence of a given geometric shape on item functioning would be to include each as a binary attribute predicting item difficulty and discrimination. In order to keep our models simple, we elected to leave shape set unmodeled and accounted for by the residual variability terms instead. 
 
+\section{\texorpdfstring{\hl{Bayesian additive multilevel item structure (AMIS) model priors}}{}}
+
+In the additive multilevel item structure (AMIS) models, there are three families of parameters: item difficulty parameters, item discrimination parameters, and person ability parameters. We describe the priors for each set of parameters in turn. The model code is publicly available at \url{https://github.com/ndawlab/mars-irt}.
+
+The item difficulty parameters can be decomposed into their fixed and random effects components. The fixed effects components include the grand mean, $\mu_\beta$, the effects of template-level (level-1) attributes, $\delta_{\beta_n}$, and the effects of clone-level (level-2) attributes, $\delta_{\beta_m}$. All three fixed effects terms were assigned standard normal priors, $\mathcal{N}(0,1)$. The template- and clone-level random effects components, $\epsilon_{\beta j}$ and $\epsilon_{\beta k}$, were each assigned normally distributed priors with a mean of zero and standard deviations estimated by the model, $\sigma_{\beta j}$ and $\sigma_{\beta k}$. These standard deviations were, in turn, assigned half-student-t distributions with a mean of zero, a standard deviation of one, and three degrees of freedom, $\text{StudentT}(3, 0, 1)$.
+
+Similarly, the item discrimination parameters can be decomposed into their fixed and random effects components. The fixed effects components include the grand mean, $\mu_\alpha$, the effects of template-level (level-1) attributes, $\delta_{\alpha_n}$, and the effects of clone-level (level-2) attributes, $\delta_{\alpha_m}$. All three fixed effects terms were assigned standard normal priors, $\mathcal{N}(0,1)$. The template- and clone-level random effects components, $\epsilon_{\alpha j}$ and $\epsilon_{\alpha k}$, were each assigned normally distributed priors with a mean of zero and standard deviations estimated by the model, $\sigma_{\alpha j}$ and $\sigma_{\alpha k}$. These standard deviations were, in turn, assigned half-student-t distributions with a mean of zero, a standard deviation of one, and three degrees of freedom, $\text{StudentT}(3, 0, 1)$. Importantly, item discrimination parameters were restricted to be in the range $\alpha_{jk} \in [0, 5]$. This was achieved by passing the clone-level discrimination parameter through the standard normal cumulative distribution function (i.e. scaling parameters between 0 and 1), and multiplying the result by 5.  
+
+Finally, the person ability parameters can be decomposed into their fixed and random effects components. The fixed effects components comprise the partial correlation coefficients, $\rho_p$. Before transformation, the partial correlation coefficients were assigned standard normal priors, $\mathcal{N}(0,1)$. These values were then transformed such that the sum of their squared values could not exceed 1. The random effects components, $\epsilon_\theta$, were assigned a normally distributed prior with a mean of zero and a variance equal to 1 - minus the sum of squared partial correlations (i.e. fixing the variance of the person ability distribution to 1).
+
+\section{\texorpdfstring{\hl{Parameter recovery \& power analysis}}{}}
+
+In order to assess the robustness of our item calibration analysis, we performed a parameter recovery and power analysis. The objectives of this analysis were threefold. First, we wanted to evaluate our ability to accurately estimate person and item parameters given our sample size and experiment design. Second, we wanted to quantify our power to detect an association between item attributes and item functioning (i.e. difficulty, discrimination) for different magnitudes of association. Third, we wanted to determine how imprecision in our estimates of item parameters impact optimal test assembly and test score reliability. 
+
+We generated 100 artificial datasets whose statistical properties were matched to what we observed empirically in the item calibration dataset. Specifically, each dataset was composed of simulated item responses  from 1500 ``participants'' whose latent abilities were drawn from a standard normal distribution. Each participant ``completed'' 16 item clones from a pool of 384 item clones (nested among 64 item templates). Thus, each artificial item clone was completed by an average of 62.5 participants. The simulated distribution of item difficulty and discrimination parameters were matched to what was observed empirically ($\mu_\beta = 0.20$, $\sigma_\beta = 1.55$; $\mu_\alpha = 1.30$, $\sigma_\alpha = 0.22$). The total variance explained by item attributes for item difficulty and discrimination parameters was also matched to what was observed empirically ($r^2_\beta \approx 60\%$; $r^2_\alpha \approx 40\%$). To estimate our statistical power to detect associations between item attributes and parameters, we specified two large effects and two small effects per item parameter. That is, there were two pairs of attributes that explained 20\% and 10\% of the variance in item difficulty, respectively; and there were two pairs of attributes that explained 14\% and 7\% of the variance in item discrimination, respectively. Based on what we observed empirically, the residual variance in item difficulty and discrimination parameters was split equally between the template- ($\epsilon_j$) and clone-levels ($\epsilon_k$). 
+
+Models 5 and 6 were fitted to each simulated dataset. We tested Model 5 because this was the model deemed the best-fitting, parsimonious model in the item calibration study. We tested Model 6 because it is true data generating model for the simulations. Comparing these two models therefore allows us to evaluate whether selecting Model 5 produces any systematic bias in our analyses. All models were estimated within a Bayesian framework using Hamiltonian Monte Carlo as implemented in Stan (v2.22). For all models, four separate chains with randomised start values each took 4,000 samples from the posterior. The first 3,000 samples from each chain were discarded. As such, 4,000 post-warmup samples from the joint posterior were retained. The $\hat{R}$ values for all parameters were less than 1.02, indicating acceptable convergence between chains, and there were no divergent transitions in any chain. 
+
+The results of the parameter recovery study are summarized Figure \ref{fig:figS04}. For both models, we observed good recovery of the latent ability parameter (Model 5: $r = 0.873$; Model 6: $r = 0.873$). Furthermore, we observed excellent recovery for the item difficulty parameters (Model 5: $r = 0.962$; Model 6: $r = 0.962$). In contrast, we observed only adequate recovery of the item discrimination parameters (Model 5: $r = 0.667$; Model 6: $r = 0.671$). This result is not altogether unexpected given recent research that recommended at least $N=100$ observations per item for accurate item parameter estimation \cite{konig2020optimized}. This result, however, must be interpreted in context. We demonstrate below that the less-than-ideal recovery of item discrimination parameters does not seriously impact the outputs of optimal test assembly. 
+
+Next we calculated the statistical power (i.e. true positive rate) for detecting an association between item attributes and item parameters. We defined a true positive as an association between an item attribute and parameter whose 95\% highest density interval excluded zero. The results are summarized in the second column of Figure \ref{fig:figS04}. For the item difficulty parameters, we detected the large association (20\% variance explained) and small association (10\% variance explained) in all 100 simulations. This result indicates that we were suitably powered to detect associations between item attributes and item difficulty of the magnitude reported in the manuscript. In contrast, true positive rates for contrasts involving item discrimination were smaller. For large effects (14\% variance explained), the TPR was approximately 70\% (Model 5: TPR = 0.720; Model 6: TPR = 0.700). For small effects (7\% variance explained), the TPR was above 40\% (Model 5: TPR = 0.435; Model 6: TPR = 0.400). Thus, while our study design was moderately powered for detecting larger associations between item attributes and item discrimination, we are underpowedered for detecting smaller associations. As such, our mostly null findings for associations between item attributes and item discrimination should be interpreted with caution. (That said, if any associations do exist, they are likely small in magnitude.) Regardless, this result does not alter one of the main findings of the item calibration study; namely, item clones systematically differ in their difficulty by distractor type and are not therefore exchangeable. 
+
+Finally, we investigated the effects of item parameter misestimation on test assembly. For each simulated dataset, we submitted the ground-truth (simulated) and model-predicted (recovered) item parameters to test assembly under the same constraints used to generate the MaRs-IB short form measures. We then calculated for each test form its test information function (TIF) and IRT test score reliability \cite{kim2010estimation, nicewander2018conditional}. Crucially, we calculated the TIF and reliability for the short forms using the true (i.e. not recovered) item parameter estimates; therefore, we can quantify how much the psychometric properties of test forms are impacted by suboptimal item selection due to parameter estimation noise. The results are summarized in the third and fourth columns of Figure \ref{fig:figS04}. As is expected, TIF was larger for the test forms made using the true item parameters, indicating that estimation noise can lead to suboptimal item selection. Despite this, estimation noise led to only marginal decrements in IRT test reliability. For item parameters estimated using Model 5, parameter noise resulted in an average loss of score reliability of $\Delta \rho = 0.020$ (SD = 0.014). For item parameters estimated using Model 6, parameter noise resulted in an average loss of score reliability of $\Delta \rho = 0.019$ (SD = 0.013). 
+
+In sum, our sample size and experiment design was sufficient with regard to our study objectives. The results of the parameter recovery analysis demonstrate that we are able to estimate item difficulty parameters, and their association with item attributes, with excellent precision. In contrast, we were able to estimate item discrimination parameters, and their association with item attributes, only with moderate precision. Because the observed variability in item discrimination parameters were small, however, imprecision in the estimation of these parameters yields minimal impact on subsequent test assembly. Indeed, the loss of score reliability due to suboptimal item selection was negligible. 
 
 \bibliography{supplement}
 
@@ -87,20 +126,21 @@ Every item template in the MaRs-IB has three unique versions that differ only in
 
 \begin{table}
 \centering
-\begin{tabular*}{\textwidth}{ccccccllll}
+\begin{tabular*}{0.9\textwidth}{cccccclll}
 \toprule
- & & & & & & \multicolumn{4}{c}{Spearman rank correlation} \\
-\cmidrule(lr){7-10}
-Measure & & Mean (SD) & & IQR & &  NFC-10 & PCF-8a & SNS & MaRs-SF \\
+ & & & & & & \multicolumn{3}{c}{Spearman rank correlation} \\
+\cmidrule(lr){7-9}
+Measure & & Mean (SD) & & IQR & &  NFC-10 & PCF-8a & SNS \\
 \midrule
-NFC-10 & & 25.03 (8.27) & & 20.00 -- 31.00 & & \multicolumn{1}{c}{-} &  &  & \\
-PCF-8a   &  & 22.17 (6.29) & & 18.75 -- 26.25 & & 0.27** &  \multicolumn{1}{c}{-} &  &  \\
-SNS   &  & 29.07 (7.48) & & 25.00 -- 35.00 & & 0.46** &  0.29** &  \multicolumn{1}{c}{-} &   \\
-MaRs-SF & &   8.00 (2.53) & &   6.00 -- 10.00 & & -0.04 &  0.04 &  0.14* &  \multicolumn{1}{c}{-} \\
+NFC-10  & & 24.44 (9.01) & & 19 -- 31 & & \multicolumn{1}{c}{-} &  &  \\
+PCF-8a  & & 22.58 (6.45) & & 18 -- 28 & & 0.28** &  \multicolumn{1}{c}{-} &   \\
+SNS     & & 29.02 (7.36) & & 25 -- 35 & & 0.42** &  0.32** &  \multicolumn{1}{c}{-}   \\
+MaRs-IB SF & &  8.00 (2.53) & &  6 -- 10 & & -0.04  &  0.04 &  0.14*  \\
+MaRs-IB LF & & 15.73 (5.13) & & 12 -- 20 & & 0.12*   &  -0.06 &  0.18*  \\
 \bottomrule
 \end{tabular*}
 \captionsetup{width=1.\textwidth}
-\caption{\normalfont Correlations between performance on the MaRs-IB short forms and self-report measures. Abbreviations: IQR = interquartile range; NFC-10 = need for cognition (10-item) scale \citep{chiesi2018applying}; PCF = PROMIS cognitive functioning scale (8a; \citealt{iverson2021normative}); SNS = subjective numeracy scale \citep{fagerlin2007measuring}. ** p < 0.001,  * p < 0.05 (not corrected for multiple comparisons)}
+\caption{\normalfont Correlations between performance on the MaRs-IB short/long form and self-report measures. Abbreviations: IQR = interquartile range; NFC-10 = need for cognition (10-item) scale \citep{chiesi2018applying}; PCF = PROMIS cognitive functioning scale (8a; \citealt{iverson2021normative}); SNS = subjective numeracy scale \citep{fagerlin2007measuring}. ** p < 0.001,  * p < 0.05 (not corrected for multiple comparisons)}
 \end{table}
 
 \begin{figure}
@@ -119,6 +159,12 @@ MaRs-SF & &   8.00 (2.53) & &   6.00 -- 10.00 & & -0.04 &  0.04 &  0.14* &  \mul
 \centering
 \includegraphics[width=0.8\textwidth]{figures/figS03.png}
 \caption{\label{fig:figS03} Estimates of the rapid guessing weights ($w_{ij}$) and their corresponding responses times from the effort-moderated item response theory (EM-IRT) model fit to response data from N=180 pilot participants. The dashed line indicates the chosen rapid guessing threshold, i.e. where $w = 0.5$.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/figS04.png}
+\caption{\label{fig:figS04} Summary of results from the parameter recovery \& power analysis. (Column 1) Pearson correlation coefficients between the ground-truth and recovered model parameters. (Column 2) True positive rates for detecting an association between item attributes and item parameters. For the item difficulty parameters (beta), large and small effects indicate 20\% and 10\% variance explained, respectively. For the item discrimination parameters (alpha), large and small effects indicate 14\% and 7\% variance explained, respectively. (Column 3) Test information function estimates for the test forms produced using the ground-truth (simulated; blue) and recovered (orange) item parameter estimates. (Column 4) IRT test score reliability estimates for the test forms produced using the ground-truth (simulated; blue) and recovered (orange) item parameter estimates.}
 \end{figure}
 
 \end{document}
