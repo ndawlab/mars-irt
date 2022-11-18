@@ -1,13 +1,18 @@
 # An item response theory analysis of the MaRs-IB
 
-Code and data for Zorowitz et al. (forthcoming), "An item response theory analysis of the Matrix Reasoning Item Bank (MaRs-IB)"
+Code and data for Zorowitz et al. (under revision), "An item response theory analysis of the Matrix Reasoning Item Bank (MaRs-IB)".
 
 ## Author
 Sam Zorowitz (zorowitz [at] princeton.edu)
 
 ## Project Organization
 
-The code for this project is divided across three branches: (1) `main` (current branch), which contains all of the data and analysis code; (2) `calibration`, which contains the software for the calibration experiment; and (3) `validation`, which contains the software for the validation experiment. 
+The code for this project is divided across four branches:
+
+    main (current branch)         <- all of the data and analysis code
+    calibration                   <- software for the calibration experiment
+    validation-A                  <- software for the validation experiment (short-forms)
+    validation-B                  <- software for the validation experiment (long-forms)
 
 The organization of the main branch (current branch) is as follows:
 
@@ -18,6 +23,10 @@ The organization of the main branch (current branch) is as follows:
     ├── 05_Figures                  <- Figures for presentations & manuscript.
     ├── manuscript                  <- LaTeX code for the manuscript.
     ├── tutorials                   <- MaRs-IB item parameters, short forms, and optimal assembly tutorials.
+
+## MaRs-IB Stimuli 
+
+The actual stimuli of the MaRs-IB are publicly available at this [OSF repository](https://osf.io/g96f4/). 
 
 ## Acknowledgements
 
