@@ -1,4 +1,4 @@
-\documentclass[a4paper,man,natbib]{apa6}
+\documentclass[a4paper,man,natbib,noextraspace]{apa6}
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -39,7 +39,7 @@
 \affiliation{$^1$Princeton Neuroscience Institute, Princeton University, USA\\$^2$Department of Psychology, Princeton University, USA\\$^3$Department of Psychology, University of Cambridge, Downing Street, Cambridge, UK}
 
 % define abstract
-\abstract{Matrix reasoning tasks are among the most widely used measures of cognitive ability in the behavioral sciences, but the lack of matrix reasoning tests in the public domain complicates their use. Here we present an extensive investigation and psychometric validation of the matrix reasoning item bank (MaRs-IB), an open-access set of matrix reasoning items. In a first study, we calibrate the psychometric functioning of the items in the MaRs-IB in a large sample adults participants (N=1501). Using additive multilevel item structure models, we establish that the MaRs-IB has many desirable psychometric properties: its items span a wide range of difficulty, possess medium- to-large levels of discrimination, and exhibit robust associations between item complexity and difficulty. However, we also find that item clones are not always psychometrically equivalent and cannot assumed to be exchangeable. In a second study, we demonstrate how researchers can use the item parameters we estimated to design new MaRs-IB tests using optimal item assembly. With these methods, we design two new sets of test forms that exhibited good score reliability and convergent validity with an established measure of matrix reasoning in an independent sample of adults (N=600). We hope that the materials, results, and tutorials made available here will encourage researchers to use the MaRs-IB in their studies.}
+\abstract{Matrix reasoning tasks are among the most widely used measures of cognitive ability in the behavioral sciences, but the lack of matrix reasoning tests in the public domain complicates their use. Here we present an extensive investigation and psychometric validation of the matrix reasoning item bank (MaRs-IB), an open-access set of matrix reasoning items. In a first study, we calibrate the psychometric functioning of the items in the MaRs-IB in a large sample adults participants (N=1501). Using additive multilevel item structure models, we establish that the MaRs-IB has many desirable psychometric properties: its items span a wide range of difficulty, possess medium- to-large levels of discrimination, and exhibit robust associations between item complexity and difficulty. However, we also find that item clones are not always psychometrically equivalent and cannot assumed to be exchangeable. In a second study, we demonstrate how experimenters can use the estimated item parameters to design new matrix reasoning tests using optimal item assembly. Specifically, we design and validate two new sets of test forms in an independent sample of adults (N=600). We find these new tests possess good reliability and convergent validity with an established measure of matrix reasoning. We hope that the materials and results made available here will encourage experimenters to use the MaRs-IB in their research.}
 
 % start document
 \begin{document}
@@ -66,7 +66,7 @@ A third contribution is an investigation of the exchangeability of item clones i
 
 The remainder of the paper proceeds as follows. First, we report a calibration study in which a large sample of adult participants completed a number of items from the MaRs-IB. Using their response data, we fitted a series of multilevel item structure models in order to estimate item parameters for each item (and their clones). Using these same models, we also interrogate the relationship between item attributes and item functioning. We conclude by reporting a second validation study, in which an independent sample of participants (N=600) completed one of five novel MaRs-IB test forms. These tests --- designed using optimal test assembly and the item parameter estimates from the first study --- were found to have good psychometric properties and convergent validity with an established measure of matrix reasoning ability. This second study provides a blueprint for how researchers can construct new MaRs-IB test measures based on the results of our first study.
 
-All data, code, model outputs (including the estimated item parameters), and tutorials are publicly available at: \url{https://github.com/ndawlab/mars-irt}.
+All data, code, model outputs (including the estimated item parameters), and tutorials are publicly available at: \url{https://github.com/ndawlab/mars-irt}. The MaRs-IB stimuli are publicly available at: \url{https://osf.io/g96f4/}.
 
 \section{Calibration Study}
 
@@ -187,7 +187,7 @@ We estimated person-level abilities as a function of four covariates: age, gende
 
 All models were estimated within a Bayesian framework using Hamiltonian Monte Carlo as implemented in Stan (v2.22; \citealt{carpenter2017stan}). For all models, four separate chains with randomised start values each took 7500 samples from the posterior. The first 5,000 samples from each chain were discarded. As such, 10,000 post-warmup samples from the joint posterior were retained. The $\hat{R}$ values for all parameters were less than 1.01, indicating acceptable convergence between chains, and there were no divergent transitions in any chain. 
 
-During estimation, the item discrimination parameters were restricted to be in the range $\alpha_{jk} \in [0, 5]$. To ensure the identifiability of all models, person abilities were constrained to have a mean of zero and a variance of 1.0. Specifically, the residual variance of latent ability was specified as $V(\epsilon) = 1 - \sum \rho_p^2$. The specification of the model priors are detailed in the supplement.
+During estimation, the item discrimination parameters were restricted to be in the range $\alpha_{jk} \in [0, 5]$. To ensure the identifiability of all models, person abilities were constrained to have a mean of zero and a variance of 1.0. Specifically, the residual variance of latent ability was specified as $V(\epsilon) = 1 - \sum \rho_p^2$. \hl{The specification of the model priors are detailed in the supplement.}
 
 \subsubsection{Model comparison}
 
