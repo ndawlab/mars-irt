@@ -1,6 +1,6 @@
 # An item response theory analysis of the MaRs-IB
 
-Code and data for Zorowitz et al. (under revision), "An item response theory analysis of the Matrix Reasoning Item Bank (MaRs-IB)".
+Code and data for Zorowitz et al. (in press), "An item response theory analysis of the Matrix Reasoning Item Bank (MaRs-IB)". Behavior Research Methods.
 
 ## Author
 Sam Zorowitz (zorowitz [at] princeton.edu)
